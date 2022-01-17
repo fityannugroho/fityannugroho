@@ -1,11 +1,8 @@
-
 #  F for <b>Fityan</b>
-
-<img src="assets/f-logo.png" width="60" align="right" />
 
 <!-- Start Badges -->
 
-[![d](https://img.shields.io/github/followers/fityannugroho?color=whitesmoke&logo=github)](https://github.com/fityannugroho)
+<!-- [![d](https://img.shields.io/github/followers/fityannugroho?color=whitesmoke&logo=github)](https://github.com/fityannugroho) -->
 
 <!-- End Badges -->
 
