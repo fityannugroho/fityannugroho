@@ -24,7 +24,7 @@
 
 ## 🏆 Trophy
 
-![Fityan's Github Trophy](https://github-profile-trophy.vercel.app/?username=foostan&no-frame=true&theme=tokyonight)
+[![Fityan's Github Trophy](https://github-profile-trophy.vercel.app/?username=foostan&no-frame=true&theme=tokyonight)](https://github.com/fityannugroho)
 
 ## 🤙🏻 Keep Connected
 
