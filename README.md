@@ -16,7 +16,7 @@
 
 ## 📈 Statistics
 
-[![Fityan's Most Used Language](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=compact&hide_border=true&theme=tokyonight)](https://github.com/fityannugroho)
+[![Fityan's Most Used Language](https://github-readme-stats.vercel.app/api/top-langs/?username=fityannugroho&layout=compact&hide_border=true&theme=tokyonight)](https://github.com/fityannugroho)
 
 [![Fityan's Github Stats](https://github-readme-stats.vercel.app/api?username=fityannugroho&show_icons=true&hide_border=true&theme=tokyonight)](https://github.com/fityannugroho)
 
@@ -24,7 +24,7 @@
 
 ## 🏆 Trophy
 
-[![Fityan's Github Trophy](https://github-profile-trophy.vercel.app/?username=foostan&no-frame=true&theme=tokyonight)](https://github.com/fityannugroho)
+[![Fityan's Github Trophy](https://github-profile-trophy.vercel.app/?username=fityannugroho&no-frame=true&theme=tokyonight)](https://github.com/fityannugroho)
 
 ## 🤙🏻 Keep Connected
 
