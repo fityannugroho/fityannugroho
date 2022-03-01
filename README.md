@@ -65,7 +65,7 @@ Hi, coders! You can call me **Fityan**. I'm a software engineer from 🇮🇩 In
 <a href="https://www.twitter.com/fityannugroho" target="_blank">
   <img alt="Twitter" src="https://img.shields.io/badge/-Twitter-00a8e9?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
-<a href="mailto:fityandhiya@gmail.com" target="_blank">
+<a href="mailto:fityannugroho@gmail.com" target="_blank">
   <img alt="Email" src="https://img.shields.io/badge/-Email-ffffff?style=for-the-badge&logo=gmail" />
 </a>
 <a href="https://www.youtube.com/channel/UCTrOx-V_qeEqZ26ZR5pjSIA" target="_blank">
