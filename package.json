@@ -1,0 +1,23 @@
+{
+  "name": "fityannugroho",
+  "version": "0.1.0",
+  "description": "My personal website",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fityannugroho/fityannugroho.git"
+  },
+  "keywords": [
+    "personal-website"
+  ],
+  "author": "@fityannugroho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fityannugroho/fityannugroho/issues"
+  },
+  "homepage": "https://github.com/fityannugroho/fityannugroho#readme"
+}
