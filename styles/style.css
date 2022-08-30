@@ -244,13 +244,13 @@ main {
   color: var(--color-3);
 }
 
-.box-footer {
+.box__buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.box-footer > * {
+.box__buttons > .btn {
   flex: 1 1 auto;
 }
 
@@ -371,21 +371,6 @@ main {
   }
 }
 
-@media screen and (max-width: 840px) {
-  .flex-container {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .box {
-    flex-basis: 100%;
-  }
-
-  .card {
-    flex-basis: 33%;
-  }
-}
-
 /* ----------- Mobile ----------- */
 @media screen and (max-width: 640px) {
   body {
@@ -419,12 +404,6 @@ main {
 
   .navbar__menus__menu {
     display: block;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  .card {
-    flex-basis: 100%;
   }
 }
 
