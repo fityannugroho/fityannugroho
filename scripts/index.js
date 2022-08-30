@@ -56,7 +56,7 @@ window.addEventListener('resize', () => {
 
 // Event when the toggle menu is clicked.
 toggleMenu.addEventListener('click', () => {
-  const menus = document.querySelector('.menus');
+  const menus = document.querySelector('.navbar__menus');
 
   menus.classList.toggle('active');
   toggleMenu.classList.toggle('cross');

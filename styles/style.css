@@ -49,18 +49,18 @@ p {
   background-color: transparent;
 }
 
-.logo {
+.navbar__logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.logo a {
+.navbar__logo a {
   text-decoration: none;
   color: var(--color-4);
 }
 
-.menus {
+.navbar__menus {
   display: flex;
   gap: 0.75rem;
 
@@ -70,25 +70,25 @@ p {
   transition: transform 0.5s ease;
 }
 
-.menu {
+.navbar__menus__menu {
   padding: 0.25rem 0.75rem;
 }
 
-.menu a {
+.navbar__menus__menu a {
   text-decoration: none;
   color: var(--color-4);
 }
 
-.logo a:hover,
-.menu a:hover {
+.navbar__logo a:hover,
+.navbar__menus__menu a:hover {
   font-weight: bolder;
 }
 
-.burger-menu {
+.navbar__menus__menu__toggle {
   display: none;
 }
 
-.burger-menu > span {
+.navbar__menus__menu__toggle > span {
   display: block;
   width: 24px;
   height: 3px;
@@ -97,15 +97,15 @@ p {
   transition: all 0.3s ease;
 }
 
-.burger-menu.cross .line1 {
+.navbar__menus__menu__toggle.cross .line1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.burger-menu.cross .line2 {
+.navbar__menus__menu__toggle.cross .line2 {
   opacity: 0;
 }
 
-.burger-menu.cross .line3 {
+.navbar__menus__menu__toggle.cross .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
@@ -177,10 +177,18 @@ main {
   padding: 2rem;
 }
 
+.container.dark {
+  background-color: var(--color-1);
+}
+
 .container > h2 {
   width: fit-content;
   color: var(--color-3);
   margin: 0 auto;
+}
+
+.container.dark > h2 {
+  color: var(--color-4);
 }
 
 .container > h2::after {
@@ -190,6 +198,10 @@ main {
   background-color: var(--color-3);
   margin-top: 4px;
   border-radius: 4px;
+}
+
+.container.dark > h2::after {
+  background-color: var(--color-4);
 }
 
 .flex-container {
@@ -209,27 +221,15 @@ main {
   text-align: center;
 }
 
+.container.dark .card {
+  border: 2px solid var(--color-4);
+}
+
 .card > h3 {
   margin: 0 auto 0 auto;
   width: fit-content;
   margin-bottom: 1rem;
   color: var(--color-3);
-}
-
-.container.dark {
-  background-color: var(--color-1);
-}
-
-.container.dark > h2 {
-  color: var(--color-4);
-}
-
-.container.dark > h2::after {
-  background-color: var(--color-4);
-}
-
-.container.dark .card {
-  border: 2px solid var(--color-4);
 }
 
 .container.dark .card > h3 {
@@ -381,11 +381,11 @@ main {
     overflow-x: hidden;
   }
 
-  .burger-menu {
+  .navbar__menus__menu__toggle {
     display: block;
   }
 
-  .menus {
+  .navbar__menus {
     position: absolute;
     right: 0;
     top: 60px;
@@ -402,11 +402,11 @@ main {
     transition: transform 0.3s ease-in;
   }
 
-  .menus.active {
+  .navbar__menus.active {
     transform: translateX(0);
   }
 
-  .menu {
+  .navbar__menus__menu {
     display: block;
   }
 }
