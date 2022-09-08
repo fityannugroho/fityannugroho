@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+:root {
+  --color-1: #181d52;
+  --color-2: #030518;
+  --color-3: #5253a0;
+  --color-4: #9b97c9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+p {
+  margin-top: 0;
+}
+
+.header {
+  display: inline;
+}
