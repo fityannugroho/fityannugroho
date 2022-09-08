@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <PageHead title={t.get('title')}></PageHead>
+      <PageHead title={t.get('title')} description={t.get('description')}></PageHead>
       {t.get('homePage')}
     </div>
   );
