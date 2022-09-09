@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import translation from '../utils/translation';
 import styles from './navbar.module.css';
 
@@ -15,9 +15,26 @@ export default function Navbar() {
 
   // The state of the navbar on mobile view.
   const [isActive, setActive] = useState(false);
+  const [isTransparent, setTransparent] = useState(true);
+
+  useEffect(() => {
+    const setNavbarBackground = () => {
+      const NAVBAR_HEIGHT = 60;
+      const TABLET_WIDTH_BREAKPOINT = 768;
+
+      setTransparent(
+          window.scrollY <= NAVBAR_HEIGHT &&
+          window.innerWidth >= TABLET_WIDTH_BREAKPOINT,
+      );
+    };
+    setNavbarBackground();
+
+    window.addEventListener('scroll', setNavbarBackground);
+    window.addEventListener('resize', setNavbarBackground);
+  }, []);
 
   return (
-    <nav className={`${styles.navbar} ${styles.transparent}`}>
+    <nav className={`${styles.navbar} ${isTransparent ? styles.transparent : ''}`}>
       <div className={styles.logo}>
         <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
         <Link href='/'>fityannugroho</Link>
