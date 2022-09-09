@@ -25,8 +25,8 @@ export default function Navbar() {
       const TABLET_WIDTH_BREAKPOINT = 768;
 
       setTransparent(
-          window.scrollY <= NAVBAR_HEIGHT &&
-          window.innerWidth >= TABLET_WIDTH_BREAKPOINT,
+          window.scrollY <= NAVBAR_HEIGHT
+          && window.innerWidth >= TABLET_WIDTH_BREAKPOINT,
       );
     };
 
@@ -46,7 +46,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`${styles.navbar} ${isTransparent ? styles.transparent : ''}`}>
+    <nav
+      className={`${styles.navbar} ${isTransparent ? styles.transparent : ''}`}
+    >
       <div className={styles.logo}>
         <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
         <Link href='/'>fityannugroho</Link>
