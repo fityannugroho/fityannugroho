@@ -14,9 +14,10 @@ export default function Navbar() {
   const {locale, defaultLocale} = useRouter();
   const t = translation(locale ?? defaultLocale);
 
-  // The state of the navbar on mobile view.
-  const [isActive, setActive] = useState(false);
+  // The state of the navbar background.
   const [isTransparent, setTransparent] = useState(true);
+  // The state of the navbar menus on mobile view.
+  const [isOpened, open] = useState(false);
 
   useEffect(() => {
     const setNavbarBackground = () => {
@@ -28,19 +29,19 @@ export default function Navbar() {
           window.innerWidth >= TABLET_WIDTH_BREAKPOINT,
       );
     };
-    setNavbarBackground();
 
+    setNavbarBackground();
     window.addEventListener('scroll', setNavbarBackground);
     window.addEventListener('resize', setNavbarBackground);
   }, []);
 
   const onClickToggleMenu = () => {
-    setActive(!isActive);
+    open(!isOpened);
   };
 
   const onKeyUpToggleMenu = (event) => {
     if (event.key === 'Enter') {
-      setActive(!isActive);
+      open(!isOpened);
     }
   };
 
@@ -50,8 +51,9 @@ export default function Navbar() {
         <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
         <Link href='/'>fityannugroho</Link>
       </div>
+
       <div id='toggleMenu'
-        className={`${styles.toggle} ${isActive ? styles.cross : ''}`}
+        className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
         onClick={onClickToggleMenu}
         onKeyUp={onKeyUpToggleMenu}
         tabIndex={0}
@@ -60,13 +62,14 @@ export default function Navbar() {
         <span className={styles.line2}></span>
         <span className={styles.line3}></span>
       </div>
+
       <NavbarMenus
         menus={[
           {href: '#about', text: t.get('navMenu1')},
           {href: '#project', text: t.get('navMenu2')},
           {href: '#contact', text: t.get('navMenu3')},
         ]}
-        isParentVisible={isActive}
+        isParentVisible={isOpened}
       />
     </nav>
   );
