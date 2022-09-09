@@ -77,12 +77,12 @@
   width: 24px;
   height: 3px;
   background-color: var(--color-4);
-  margin: 5px;
+  margin: 4px;
   transition: all 0.3s ease;
 }
 
 .toggle.cross .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-4px, 6px);
 }
 
 .toggle.cross .line2 {
@@ -90,7 +90,7 @@
 }
 
 .toggle.cross .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(45deg) translate(-4px, -6px);
 }
 
 /* ----------- Tablet ----------- */
