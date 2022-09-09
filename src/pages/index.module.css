@@ -1,0 +1,14 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo {
+  margin-bottom: 1rem;
+}
+
+.about p {
+  text-align: center;
+  max-width: 800px;
+}
