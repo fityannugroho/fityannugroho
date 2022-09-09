@@ -54,17 +54,7 @@
   transform: translateX(0);
 }
 
-.menu {
-  padding: 0.25rem 0.75rem;
-}
-
-.menu a {
-  text-decoration: none;
-  color: var(--color-4);
-}
-
-.logo a:hover,
-.menu a:hover {
+.logo a:hover {
   font-weight: bolder;
 }
 
