@@ -23,7 +23,7 @@ export default function HomePage() {
       </header>
       <main>
         <Parallax />
-        <Container>
+        <Container theme='light-to-dark'>
           <h2 id='about'>{t.get('navMenu1')}</h2>
           <div className={styles.about}>
             <div className={styles.photo}>

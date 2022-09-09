@@ -3,11 +3,15 @@ import styles from './container.module.css';
 
 /**
  * The container component.
+ *
+ * Available themes: ['light', 'dark', 'light-to-dark', 'dark-to-light'].
+ * Default: 'light'.
+ *
  * @return {JSX.Element}
  */
 export default function Container({
   children,
-  darkTheme,
+  theme,
   fullpage,
   className,
   ...props
@@ -16,7 +20,7 @@ export default function Container({
     <div
       className={`
         ${styles.container}
-        ${darkTheme ? styles.dark : ''}
+        ${theme !== 'light' ? styles[theme] : ''}
         ${fullpage ? styles.fullpage : ''}
         ${className}
       `}
@@ -29,7 +33,7 @@ export default function Container({
 
 Container.propTypes = {
   children: PropTypes.node,
-  darkTheme: PropTypes.bool,
+  theme: PropTypes.string,
   fullpage: PropTypes.bool,
   className: PropTypes.string,
   props: PropTypes.object,

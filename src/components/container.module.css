@@ -5,7 +5,15 @@
 }
 
 .container.dark {
-  background-color: var(--color-2);
+  background: var(--color-2);
+}
+
+.container.light-to-dark {
+  background: linear-gradient(var(--color-1), var(--color-2));
+}
+
+.container.dark-to-light {
+  background: linear-gradient(var(--color-2), var(--color-1));
 }
 
 .container.fullpage {
