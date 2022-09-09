@@ -30,3 +30,7 @@ p {
 .header {
   display: inline;
 }
+
+main {
+  margin-top: -60px;
+}
