@@ -20,6 +20,7 @@
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "operator-linebreak": ["error", "before"]
+    "operator-linebreak": ["error", "before"],
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }
