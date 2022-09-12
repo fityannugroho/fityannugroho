@@ -25,7 +25,6 @@ Button.propTypes = {
   name: PropTypes.string,
   style: PropTypes.string,
   faIcon: PropTypes.string,
-  tag: PropTypes.string,
   type: PropTypes.string,
   props: PropTypes.object,
 };
