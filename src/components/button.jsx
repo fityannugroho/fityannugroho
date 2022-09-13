@@ -25,6 +25,7 @@ export default function Button({
   style,
   faIcon,
   iconOnly,
+  iconOnlyOnMobile,
   href,
   nextProps,
   ...props
@@ -33,6 +34,7 @@ export default function Button({
     className: `
       ${styles.btn}
       ${style !== 'light' ? styles[style] : ''}
+      ${iconOnlyOnMobile ? styles['icon-only'] : ''}
     `,
     ...(iconOnly ? {title: name} : {}),
   };
@@ -66,6 +68,7 @@ Button.propTypes = {
   style: PropTypes.string,
   faIcon: PropTypes.string,
   iconOnly: PropTypes.bool,
+  iconOnlyOnMobile: PropTypes.bool,
   href: PropTypes.string,
   nextProps: PropTypes.object,
   props: PropTypes.object,
