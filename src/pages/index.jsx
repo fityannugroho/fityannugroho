@@ -27,8 +27,8 @@ export default function HomePage() {
       </header>
       <main>
         <Parallax />
-        <Container theme='light-to-dark'>
-          <h2 id='about'>{t.get('navMenu1')}</h2>
+        <Container id='about' theme='light-to-dark' large={true}>
+          <h2>{t.get('navMenu1')}</h2>
           <div className={styles.about}>
             <div className={styles.photo}>
               <Image
@@ -42,12 +42,12 @@ export default function HomePage() {
             <p>{t.get('myDescription')}</p>
           </div>
         </Container>
-        <Container theme='dark'>
-          <h2 id='project'>{t.get('navMenu2')}</h2>
+        <Container id='project' theme='dark' large={true}>
+          <h2>{t.get('navMenu2')}</h2>
           <Projects projects={projects} />
         </Container>
-        <Container theme='dark-to-light'>
-          <h2 id='contact'>{t.get('navMenu3')}</h2>
+        <Container id='contact' theme='dark-to-light' large={true}>
+          <h2>{t.get('navMenu3')}</h2>
           <Contacts />
         </Container>
       </main>

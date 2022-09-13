@@ -4,6 +4,10 @@
   color: var(--color-4);
 }
 
+.container.large {
+  padding: 3.6rem 2rem;
+}
+
 .container.dark {
   background: var(--color-2);
 }

@@ -12,6 +12,7 @@ import styles from './container.module.css';
 export default function Container({
   children,
   theme,
+  large,
   fullpage,
   className,
   ...props
@@ -21,6 +22,7 @@ export default function Container({
       className={`
         ${styles.container}
         ${theme !== 'light' ? styles[theme] : ''}
+        ${large ? styles.large : ''}
         ${fullpage ? styles.fullpage : ''}
         ${className}
       `}
@@ -34,6 +36,7 @@ export default function Container({
 Container.propTypes = {
   children: PropTypes.node,
   theme: PropTypes.string,
+  large: PropTypes.bool,
   fullpage: PropTypes.bool,
   className: PropTypes.string,
   props: PropTypes.object,
