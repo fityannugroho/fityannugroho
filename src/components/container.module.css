@@ -1,0 +1,55 @@
+.container {
+  padding: 2rem;
+  background: inherit;
+  color: var(--color-4);
+}
+
+.container.large {
+  padding: 3.6rem 2rem;
+}
+
+.container.white {
+  background: white;
+}
+
+.container.light {
+  background: var(--color-1);
+}
+
+.container.dark {
+  background: var(--color-2);
+}
+
+.container.light-to-dark {
+  background: linear-gradient(var(--color-1), var(--color-2));
+}
+
+.container.dark-to-light {
+  background: linear-gradient(var(--color-2), var(--color-1));
+}
+
+.container.fullpage {
+  min-height: calc(100vh - 60px);
+}
+
+.container > h2 {
+  width: fit-content;
+  margin: 0 auto 2rem auto;
+}
+
+.container.dark > h2 {
+  color: var(--color-4);
+}
+
+.container > h2::after {
+  content: ' ';
+  display: block;
+  height: 3px;
+  background-color: var(--color-4);
+  margin-top: 4px;
+  border-radius: 4px;
+}
+
+.container.dark > h2::after {
+  background-color: var(--color-4);
+}

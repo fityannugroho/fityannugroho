@@ -1,0 +1,31 @@
+.parallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+
+  background-image: url('/f-banner-1280x720.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.inner {
+  margin: 2rem;
+  padding: 3rem 2rem;
+}
+
+.inner h1,
+.inner h2 {
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.inner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
