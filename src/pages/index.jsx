@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {useRouter} from 'next/router';
+import Contacts from '../components/contacts';
 import Container from '../components/container';
 import Navbar from '../components/navbar';
 import PageHead from '../components/page-head';
@@ -43,6 +44,10 @@ export default function HomePage() {
         <Container theme='dark'>
           <h2 id='project'>{t.get('navMenu2')}</h2>
           <Projects projects={projects} />
+        </Container>
+        <Container theme='dark-to-light'>
+          <h2 id='contact'>{t.get('navMenu3')}</h2>
+          <Contacts />
         </Container>
       </main>
     </>
