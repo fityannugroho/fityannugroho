@@ -4,6 +4,8 @@ import Container from '../components/container';
 import Navbar from '../components/navbar';
 import PageHead from '../components/page-head';
 import Parallax from '../components/parallax';
+import Projects from '../components/projects';
+import projects from '../data/projects.json';
 import translation from '../utils/translation';
 import styles from './index.module.css';
 
@@ -37,6 +39,10 @@ export default function HomePage() {
             </div>
             <p>{t.get('myDescription')}</p>
           </div>
+        </Container>
+        <Container theme='dark'>
+          <h2 id='project'>{t.get('navMenu2')}</h2>
+          <Projects projects={projects} />
         </Container>
       </main>
     </>
