@@ -2,6 +2,7 @@ import Image from 'next/image';
 import {useRouter} from 'next/router';
 import Contacts from '../components/contacts';
 import Container from '../components/container';
+import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import PageHead from '../components/page-head';
 import Parallax from '../components/parallax';
@@ -50,6 +51,7 @@ export default function HomePage() {
           <Contacts />
         </Container>
       </main>
+      <Footer />
     </>
   );
 }
