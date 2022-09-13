@@ -1,11 +1,19 @@
 .container {
   padding: 2rem;
-  background-color: var(--color-1);
+  background: inherit;
   color: var(--color-4);
 }
 
 .container.large {
   padding: 3.6rem 2rem;
+}
+
+.container.white {
+  background: white;
+}
+
+.container.light {
+  background: var(--color-1);
 }
 
 .container.dark {

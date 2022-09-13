@@ -4,8 +4,9 @@ import styles from './container.module.css';
 /**
  * The container component.
  *
- * Available themes: ['light', 'dark', 'light-to-dark', 'dark-to-light'].
- * Default: 'light'.
+ * Available themes:
+ * ['none', 'white', 'light', 'dark', 'light-to-dark', 'dark-to-light'].
+ * Default: 'none'.
  *
  * @return {JSX.Element}
  */
@@ -21,7 +22,7 @@ export default function Container({
     <div
       className={`
         ${styles.container}
-        ${theme !== 'light' ? styles[theme] : ''}
+        ${theme !== 'none' ? styles[theme] : ''}
         ${large ? styles.large : ''}
         ${fullpage ? styles.fullpage : ''}
         ${className}
