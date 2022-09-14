@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import translation from '../utils/translation';
 import NavbarMenus from './navbar-menus';
 import styles from './navbar.module.css';
@@ -14,26 +14,8 @@ export default function Navbar() {
   const {locale, defaultLocale} = useRouter();
   const t = translation(locale ?? defaultLocale);
 
-  // The state of the navbar background.
-  const [isTransparent, setTransparent] = useState(true);
   // The state of the navbar menus on mobile view.
   const [isOpened, open] = useState(false);
-
-  useEffect(() => {
-    const setNavbarBackground = () => {
-      const NAVBAR_HEIGHT = 60;
-      const TABLET_WIDTH_BREAKPOINT = 768;
-
-      setTransparent(
-          window.scrollY <= NAVBAR_HEIGHT
-          && window.innerWidth >= TABLET_WIDTH_BREAKPOINT,
-      );
-    };
-
-    setNavbarBackground();
-    window.addEventListener('scroll', setNavbarBackground);
-    window.addEventListener('resize', setNavbarBackground);
-  }, []);
 
   const onClickToggleMenu = () => {
     open(!isOpened);
@@ -46,9 +28,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`${styles.navbar} ${isTransparent ? styles.transparent : ''}`}
-    >
+    <nav className={styles.navbar}>
       <div className={styles.logo}>
         <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
         <Link href='/'>fityannugroho</Link>
