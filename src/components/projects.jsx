@@ -14,7 +14,7 @@ export default function Projects({projects}) {
     <div className={styles.projects}>
       {
         projects.map((project, index) => (
-          <Project key={index} data={project} />
+          <Project key={index} project={project} />
         ))
       }
     </div>

@@ -6,26 +6,43 @@ import styles from './project.module.css';
 /**
  * The project component.
  *
- * Use `data` prop to pass the project data (required).
+ * Use `project` prop to pass the project data (required).
+ *
+ * You can pass the locale `title` and `description`
+ * in the `project.[locale]` object.
+ * If the locale is not available, the default locale will be used.
  *
  * @param {Object} props The component props.
+ *
+ * @param {Object} props.project The project (required).
+ *
+ * @param {string} props.project.title The project title (required).
+ *
+ * @param {string} props.project.description The project description (required).
+ *
+ * @param {string} props.project.github The project github link.
+ *
+ * @param {string} props.project.deploy The project deploy link.
+ *
+ * @param {string} props.project.download The project download link.
+ *
  * @return {JSX.Element} The project component.
  */
-export default function Project({data}) {
+export default function Project({project}) {
   const {locale} = useRouter();
 
-  // Get the project data based on the locale.
-  data.title = data[locale]?.title ?? data.title;
-  data.description = data[locale]?.description ?? data.description;
+  // Get the project project based on the locale.
+  project.title = project[locale]?.title ?? project.title;
+  project.description = project[locale]?.description ?? project.description;
 
   return (
     <div className={styles.project}>
-      <h3 className={styles.title}>{data.title}</h3>
-      <p>{data.description}</p>
+      <h3 className={styles.title}>{project.title}</h3>
+      <p>{project.description}</p>
       <div className={styles.buttons}>
-        {data.github && (
+        {project.github && (
           <Button
-            href={`https://github.com/${data.github}`}
+            href={`https://github.com/${project.github}`}
             name='GitHub'
             style='light-outline'
             faIcon='fa-brands fa-github'
@@ -34,9 +51,9 @@ export default function Project({data}) {
             rel='noopener noreferrer'
           />
         )}
-        {data.deploy && (
+        {project.deploy && (
           <Button
-            href={data.deploy}
+            href={project.deploy}
             name='Demo'
             style='light-outline'
             faIcon='fa-solid fa-play'
@@ -45,9 +62,9 @@ export default function Project({data}) {
             rel='noopener noreferrer'
           />
         )}
-        {data.download && (
+        {project.download && (
           <Button
-            href={data.download}
+            href={project.download}
             name='Download'
             style='light-outline'
             faIcon='fa-solid fa-download'
@@ -62,5 +79,5 @@ export default function Project({data}) {
 }
 
 Project.propTypes = {
-  data: PropTypes.object.isRequired,
+  project: PropTypes.object.isRequired,
 };
