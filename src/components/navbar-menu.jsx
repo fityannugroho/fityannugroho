@@ -5,9 +5,18 @@ import styles from './navbar-menu.module.css';
 
 /**
  * The navbar menu component.
- * @return {JSX.Element}
+ *
+ * @param {object} props The component props.
+ *
+ * @param {string} props.label The menu label (required).
+ *
+ * @param {string} props.href The menu link.
+ *
+ * @param {boolean} props.isParentVisible Whether the parent element is visible.
+ *
+ * @return {JSX.Element} The navbar menu component.
  */
-export default function NavbarMenu({href, text, isParentVisible}) {
+export default function NavbarMenu({label, href, isParentVisible}) {
   const [isVisible, setVisibility] = useState(true);
 
   useEffect(() => {
@@ -23,14 +32,14 @@ export default function NavbarMenu({href, text, isParentVisible}) {
   return (
     <li className={styles.menu}>
       <Link href={href}>
-        <a tabIndex={isVisible || isParentVisible ? 0 : -1}>{text}</a>
+        <a tabIndex={isVisible || isParentVisible ? 0 : -1}>{label}</a>
       </Link>
     </li>
   );
 }
 
 NavbarMenu.propTypes = {
+  label: PropTypes.string.isRequired,
   href: PropTypes.string,
-  text: PropTypes.string,
   isParentVisible: PropTypes.bool,
 };

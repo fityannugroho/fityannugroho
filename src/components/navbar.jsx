@@ -8,7 +8,8 @@ import styles from './navbar.module.css';
 
 /**
  * The navbar component.
- * @return {JSX.Element}
+ *
+ * @return {JSX.Element} The navbar component.
  */
 export default function Navbar() {
   const {locale, defaultLocale} = useRouter();
@@ -47,9 +48,9 @@ export default function Navbar() {
 
       <NavbarMenus
         menus={[
-          {href: '#about', text: t.get('navMenu1')},
-          {href: '#project', text: t.get('navMenu2')},
-          {href: '#contact', text: t.get('navMenu3')},
+          {label: t.get('navMenu1'), href: '#about'},
+          {label: t.get('navMenu2'), href: '#project'},
+          {label: t.get('navMenu3'), href: '#contact'},
         ]}
         isParentVisible={isOpened}
       />
