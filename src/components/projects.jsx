@@ -7,9 +7,24 @@ import styles from './projects.module.css';
  *
  * Use `projects` prop to pass the project list.
  *
- * @return {JSX.Element}
+ * @param {Object} props The component props.
+ *
+ * @param {object[]} props.projects The project list.
+ *
+ * @param {string} props.projects[].title The project title (required).
+ *
+ * @param {string} props.projects[].description
+ * The project description (required).
+ *
+ * @param {string} props.projects[].github The project github link.
+ *
+ * @param {string} props.projects[].deploy The project deploy link.
+ *
+ * @param {string} props.projects[].download The project download link.
+ *
+ * @return {JSX.Element} The project list component.
  */
-export default function Projects({projects}) {
+export default function Projects({projects = []}) {
   return (
     <div className={styles.projects}>
       {
