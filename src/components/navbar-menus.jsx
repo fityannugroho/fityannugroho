@@ -12,8 +12,8 @@ export default function NavbarMenus({menus, isParentVisible = false}) {
       {menus.map((menu, i) => (
         <NavbarMenu
           key={i}
+          label={menu.text}
           href={menu.href}
-          text={menu.text}
           isParentVisible={isParentVisible}
         />
       ))}
