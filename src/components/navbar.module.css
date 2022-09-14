@@ -15,10 +15,6 @@
   opacity: .90;
 }
 
-.navbar.transparent {
-  background-color: transparent;
-}
-
 .logo {
   display: flex;
   align-items: center;
