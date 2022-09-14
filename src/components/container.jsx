@@ -4,19 +4,35 @@ import styles from './container.module.css';
 /**
  * The container component.
  *
- * Available themes:
- * ['none', 'white', 'light', 'dark', 'light-to-dark', 'dark-to-light'].
- * Default: 'none'.
+ * You can pass any **other props** to the container element.
  *
- * @return {JSX.Element}
+ * @param {object} props The component props.
+ *
+ * @param {JSX.Element} props.children The component children.
+ *
+ * @param {string} props.theme The theme of the container.
+ * Available themes are:
+ * - `none`: No theme.
+ * - `white`: White background.
+ * - `light`: Light background.
+ * - `dark`: Dark background.
+ * - `light-to-dark`: Gradient from light to dark.
+ * - `dark-to-light`: Gradient from dark to light.
+ * Default: `none`.
+ *
+ * @param {boolean} props.large Whether to use large container.
+ * Default: `false`.
+ *
+ * @param {boolean} props.fullpage Whether to use fullpage container.
+ *
+ * @return {JSX.Element} The container component.
  */
 export default function Container({
   children,
   theme,
   large,
   fullpage,
-  className,
-  ...props
+  ...others
 }) {
   return (
     <div
@@ -25,9 +41,8 @@ export default function Container({
         ${theme !== 'none' ? styles[theme] : ''}
         ${large ? styles.large : ''}
         ${fullpage ? styles.fullpage : ''}
-        ${className}
       `}
-      {...props}
+      {...others}
     >
       {children}
     </div>
@@ -39,6 +54,4 @@ Container.propTypes = {
   theme: PropTypes.string,
   large: PropTypes.bool,
   fullpage: PropTypes.bool,
-  className: PropTypes.string,
-  props: PropTypes.object,
 };
