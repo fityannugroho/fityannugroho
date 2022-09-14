@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 
 /**
  * The head component.
+ *
  * @param {Object} props The props.
- * @return {JSX.Element}
+ *
+ * @param {string} props.title The page title.
+ *
+ * @param {string} props.description The page description.
+ *
+ * @param {string} props.keywords The page keywords.
+ *
+ * @return {JSX.Element} The head component.
  */
 export default function PageHead({
   title = '',
