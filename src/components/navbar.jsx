@@ -8,7 +8,8 @@ import styles from './navbar.module.css';
 
 /**
  * The navbar component.
- * @return {JSX.Element}
+ *
+ * @return {JSX.Element} The navbar component.
  */
 export default function Navbar() {
   const {locale, defaultLocale} = useRouter();
