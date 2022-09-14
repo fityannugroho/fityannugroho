@@ -6,18 +6,46 @@ import styles from './button.module.css';
  * The button component that can be used as a link.
  *
  * Use `href` prop to make it a link button.
+ *
  * The `nextProps` prop is used to pass props to the Next.js Link component.
  *
  * Use `style` prop to determine the button style.
- * ('primary', 'primary-outline', 'light', 'light-outline').
- * The default is 'light'.
  *
  * Use `faIcon` prop to add an icon from Font Awesome.
  *
  * Use `iconOnly` prop to hide the button text.
  *
- * @param {object} props
- * @return {JSX.Element}
+ * You can pass any **other props** to the button element. For example, `target`
+ * and `rel` props to make the button open a link in a new tab.
+ *
+ * @param {object} props The component props.
+ *
+ * @param {string} props.name The button name (required). This will be used as
+ * the button text. If the `iconOnly` prop is true, this will be used as
+ * the button title.
+ *
+ * @param {string} props.style The button style. The default is 'light'.
+ * Available styles are:
+ * - `primary`: A primary button.
+ * - `primary-outline`: A primary button with outline.
+ * - `light`: A light button.
+ * - `light-outline`: A light button with outline.
+ *
+ * @param {string} props.faIcon The Font Awesome icon name.
+ *
+ * @param {boolean} props.iconOnly Whether to hide the button text.
+ *
+ * @param {boolean} props.iconOnlyOnMobile Whether to hide the button text
+ * on mobile.
+ *
+ * @param {string} props.href The link to go to. If this prop is set,
+ * the button will be a link.
+ *
+ * @param {object} props.nextProps The props to pass to the Next.js Link
+ * component.
+ *
+ * @return {JSX.Element} The button component.
+ *
  * @see https://nextjs.org/docs/api-reference/next/link for `nextProps` prop
  */
 export default function Button({
@@ -28,7 +56,7 @@ export default function Button({
   iconOnlyOnMobile,
   href,
   nextProps,
-  ...props
+  ...others
 }) {
   const mainProps = {
     className: `
@@ -49,13 +77,13 @@ export default function Button({
   const button = href
   ? (
     <Link href={href} {...nextProps}>
-      <a {...mainProps} {...props}>
+      <a {...mainProps} {...others}>
         {content}
       </a>
     </Link>
   )
   : (
-    <button {...mainProps} {...props}>
+    <button {...mainProps} {...others}>
       {content}
     </button>
   );
@@ -71,5 +99,4 @@ Button.propTypes = {
   iconOnlyOnMobile: PropTypes.bool,
   href: PropTypes.string,
   nextProps: PropTypes.object,
-  props: PropTypes.object,
 };
