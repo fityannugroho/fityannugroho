@@ -31,14 +31,12 @@ import styles from './project.module.css';
 export default function Project({project}) {
   const {locale} = useRouter();
 
-  // Get the project project based on the locale.
-  project.title = project[locale]?.title ?? project.title;
-  project.description = project[locale]?.description ?? project.description;
-
   return (
     <div className={styles.project}>
-      <h3 className={styles.title}>{project.title}</h3>
-      <p>{project.description}</p>
+      <h3 className={styles.title}>
+        {project[locale]?.title ?? project.title}
+      </h3>
+      <p>{project[locale]?.description ?? project.description}</p>
       <div className={styles.buttons}>
         {project.github && (
           <Button
