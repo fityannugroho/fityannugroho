@@ -28,7 +28,7 @@ export default function Contacts() {
       />
       <Button
         name='YouTube'
-        href='https://youtube.com/channel/UCTrOx-V_qeEqZ26ZR5pjSIA'
+        href='https://youtube.com/@fityannugroho'
         style='primary'
         faIcon='fa-brands fa-youtube'
         iconOnlyOnMobile={true}
