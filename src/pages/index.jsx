@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {useRouter} from 'next/router';
+import Button from '../components/button';
 import Contacts from '../components/contacts';
 import Container from '../components/container';
 import Footer from '../components/footer';
@@ -42,6 +43,12 @@ export default function HomePage() {
                 />
               </div>
               <p>{t.get('myDescription')}</p>
+              <Button
+                name={t.get('btnResume')}
+                style='primary'
+                faIcon='fa-solid fa-file-pdf'
+                href='/resume'
+              />
             </div>
           </Container>
           <Container id='project' theme='dark' large={true}>
