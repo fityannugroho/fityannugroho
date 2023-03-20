@@ -12,22 +12,28 @@
   padding: 1rem 2rem;
   transition: all 0.3s ease;
   background-color: var(--color-2);
-  opacity: .90;
 }
 
-.logo {
+.section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.logo a {
   text-decoration: none;
   color: var(--color-4);
 }
 
-.logo a:hover {
+.brand:hover {
   font-weight: bolder;
+}
+
+.brand-name {
+  display: none;
 }
 
 .toggle {
@@ -55,8 +61,31 @@
   transform: rotate(45deg) translate(-4px, -6px);
 }
 
+.dropdown {
+  padding: 0.25em 0.5em;
+  margin: 0;
+  font-family: inherit;
+  background-color: var(--color-2);
+  color: var(--color-4);
+  border: 1px solid var(--color-4);
+  outline: none;
+  border-radius: 0.25em;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.dropdown:hover, .dropdown:focus {
+  outline: 1px solid var(--color-4);
+}
+
 /* ----------- Tablet ----------- */
 @media screen and (min-width: 768px) {
+  .brand-name {
+    display: block;
+  }
+
   .toggle {
     display: none;
   }

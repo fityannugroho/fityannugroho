@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import {useContext} from 'react';
 import NavbarMenu from './navbar-menu';
 import styles from './navbar-menus.module.css';
+import NavbarContext from './Navbar/NavbarContext';
 
 /**
  * The navbar menus component.
@@ -13,20 +15,18 @@ import styles from './navbar-menus.module.css';
  *
  * @param {string} props.menus[].href The menu link.
  *
- * @param {boolean} props.isParentVisible Whether the parent element is visible.
- * Default is false.
- *
  * @return {JSX.Element} The navbar menus component.
  */
-export default function NavbarMenus({menus = [], isParentVisible = false}) {
+export default function NavbarMenus({menus = []}) {
+  const {open} = useContext(NavbarContext);
+
   return (
-    <ul className={`${styles.menus} ${isParentVisible ? styles.active : ''}`}>
+    <ul className={`${styles.menus} ${open ? styles.active : ''}`}>
       {menus.map((menu, i) => (
         <NavbarMenu
           key={i}
           label={menu.label}
           href={menu.href}
-          isParentVisible={isParentVisible}
         />
       ))}
     </ul>
@@ -35,5 +35,4 @@ export default function NavbarMenus({menus = [], isParentVisible = false}) {
 
 NavbarMenus.propTypes = {
   menus: PropTypes.array,
-  isParentVisible: PropTypes.bool,
 };
