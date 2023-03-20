@@ -5,8 +5,16 @@
 .menu a {
   text-decoration: none;
   color: var(--color-4);
+  font-size: large;
 }
 
 .menu a:hover {
   font-weight: bolder;
+}
+
+/* ----------- Tablet ----------- */
+@media screen and (min-width: 768px) {
+  .menu a {
+    font-size: inherit;
+  }
 }

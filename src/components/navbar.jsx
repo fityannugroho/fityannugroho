@@ -39,20 +39,22 @@ export default function Navbar() {
   return (
     <NavbarContext.Provider value={navbarContext}>
       <nav className={styles.navbar}>
-        <div className={styles.logo}>
-          <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
-          <Link href='/'>fityannugroho</Link>
-        </div>
+        <div className={styles['nav-left']}>
+          <div id='toggleMenu'
+            className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
+            onClick={onClickToggleMenu}
+            onKeyUp={onKeyUpToggleMenu}
+            tabIndex={0}
+          >
+            <span className={styles.line1}></span>
+            <span className={styles.line2}></span>
+            <span className={styles.line3}></span>
+          </div>
 
-        <div id='toggleMenu'
-          className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
-          onClick={onClickToggleMenu}
-          onKeyUp={onKeyUpToggleMenu}
-          tabIndex={0}
-        >
-          <span className={styles.line1}></span>
-          <span className={styles.line2}></span>
-          <span className={styles.line3}></span>
+          <div className={`${styles.logo}`}>
+            <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
+            <Link href='/'>fityannugroho</Link>
+          </div>
         </div>
 
         <NavbarMenus

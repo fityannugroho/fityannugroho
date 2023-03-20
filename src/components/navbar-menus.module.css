@@ -6,16 +6,16 @@
   justify-content: space-around;
 
   position: absolute;
-  right: 0;
+  left: 0;
   top: 60px;
   height: calc(100vh - 60px);
-  width: 50vw;
+  width: 100vw;
 
-  background-color: inherit;
+  background: linear-gradient(var(--color-2), var(--color-1));
   margin: 0;
   padding: 0;
   list-style: none;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.3s ease-in;
 }
 
@@ -31,7 +31,7 @@
     flex-direction: row;
     height: auto;
     width: auto;
-    background-color: inherit;
+    background: inherit;
     transform: none;
     gap: 1rem;
   }
