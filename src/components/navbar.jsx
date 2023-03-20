@@ -51,10 +51,10 @@ export default function Navbar() {
             <span className={styles.line3}></span>
           </div>
 
-          <div className={`${styles.logo}`}>
+          <Link href='/' className={`${styles.brand}`}>
             <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
-            <Link href='/'>fityannugroho</Link>
-          </div>
+            <span className={styles['brand-name']}>fityannugroho</span>
+          </Link>
         </div>
 
         <NavbarMenus

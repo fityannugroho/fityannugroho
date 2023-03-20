@@ -20,19 +20,20 @@
   gap: 1.5rem;
 }
 
-.logo {
+.brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.logo a {
   text-decoration: none;
   color: var(--color-4);
 }
 
-.logo a:hover {
+.brand:hover {
   font-weight: bolder;
+}
+
+.brand-name {
+  display: none;
 }
 
 .toggle {
@@ -62,6 +63,10 @@
 
 /* ----------- Tablet ----------- */
 @media screen and (min-width: 768px) {
+  .brand-name {
+    display: block;
+  }
+
   .toggle {
     display: none;
   }
