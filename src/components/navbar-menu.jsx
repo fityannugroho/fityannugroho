@@ -31,8 +31,8 @@ export default function NavbarMenu({label, href, isParentVisible}) {
 
   return (
     <li className={styles.menu}>
-      <Link href={href}>
-        <a tabIndex={isVisible || isParentVisible ? 0 : -1}>{label}</a>
+      <Link href={href} tabIndex={isVisible || isParentVisible ? 0 : -1}>
+        {label}
       </Link>
     </li>
   );

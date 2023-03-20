@@ -7,8 +7,6 @@ import styles from './button.module.css';
  *
  * Use `href` prop to make it a link button.
  *
- * The `nextProps` prop is used to pass props to the Next.js Link component.
- *
  * Use `style` prop to determine the button style.
  *
  * Use `faIcon` prop to add an icon from Font Awesome.
@@ -41,12 +39,7 @@ import styles from './button.module.css';
  * @param {string} props.href The link to go to. If this prop is set,
  * the button will be a link.
  *
- * @param {object} props.nextProps The props to pass to the Next.js Link
- * component.
- *
  * @return {JSX.Element} The button component.
- *
- * @see https://nextjs.org/docs/api-reference/next/link for `nextProps` prop
  */
 export default function Button({
   name,
@@ -55,7 +48,6 @@ export default function Button({
   iconOnly,
   iconOnlyOnMobile,
   href,
-  nextProps,
   ...others
 }) {
   const mainProps = {
@@ -76,10 +68,8 @@ export default function Button({
 
   const button = href
   ? (
-    <Link href={href} {...nextProps}>
-      <a {...mainProps} {...others}>
-        {content}
-      </a>
+    <Link href={href} {...mainProps} {...others}>
+      {content}
     </Link>
   )
   : (
@@ -98,5 +88,4 @@ Button.propTypes = {
   iconOnly: PropTypes.bool,
   iconOnlyOnMobile: PropTypes.bool,
   href: PropTypes.string,
-  nextProps: PropTypes.object,
 };
