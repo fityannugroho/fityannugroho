@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import styles from './navbar-menu.module.css';
+import NavbarContext from './Navbar/NavbarContext';
 
 /**
  * The navbar menu component.
@@ -12,11 +13,10 @@ import styles from './navbar-menu.module.css';
  *
  * @param {string} props.href The menu link.
  *
- * @param {boolean} props.isParentVisible Whether the parent element is visible.
- *
  * @return {JSX.Element} The navbar menu component.
  */
-export default function NavbarMenu({label, href, isParentVisible}) {
+export default function NavbarMenu({label, href}) {
+  const {open, setClose} = useContext(NavbarContext);
   const [isVisible, setVisibility] = useState(true);
 
   useEffect(() => {
@@ -31,7 +31,11 @@ export default function NavbarMenu({label, href, isParentVisible}) {
 
   return (
     <li className={styles.menu}>
-      <Link href={href} tabIndex={isVisible || isParentVisible ? 0 : -1}>
+      <Link
+        href={href}
+        tabIndex={isVisible || open ? 0 : -1}
+        onClick={() => setClose()}
+      >
         {label}
       </Link>
     </li>
@@ -41,5 +45,4 @@ export default function NavbarMenu({label, href, isParentVisible}) {
 NavbarMenu.propTypes = {
   label: PropTypes.string.isRequired,
   href: PropTypes.string,
-  isParentVisible: PropTypes.bool,
 };

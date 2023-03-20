@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useState} from 'react';
+import {useMemo, useState} from 'react';
 import translation from '../utils/translation';
 import NavbarMenus from './navbar-menus';
 import styles from './navbar.module.css';
+import NavbarContext from './Navbar/NavbarContext';
 
 /**
  * The navbar component.
@@ -28,32 +29,40 @@ export default function Navbar() {
     }
   };
 
+  const navbarContext = useMemo(() => ({
+    open: isOpened,
+    toggle: () => open(!isOpened),
+    setOpen: () => open(true),
+    setClose: () => open(false),
+  }), [isOpened]);
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
-        <Link href='/'>fityannugroho</Link>
-      </div>
+    <NavbarContext.Provider value={navbarContext}>
+      <nav className={styles.navbar}>
+        <div className={styles.logo}>
+          <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
+          <Link href='/'>fityannugroho</Link>
+        </div>
 
-      <div id='toggleMenu'
-        className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
-        onClick={onClickToggleMenu}
-        onKeyUp={onKeyUpToggleMenu}
-        tabIndex={0}
-      >
-        <span className={styles.line1}></span>
-        <span className={styles.line2}></span>
-        <span className={styles.line3}></span>
-      </div>
+        <div id='toggleMenu'
+          className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
+          onClick={onClickToggleMenu}
+          onKeyUp={onKeyUpToggleMenu}
+          tabIndex={0}
+        >
+          <span className={styles.line1}></span>
+          <span className={styles.line2}></span>
+          <span className={styles.line3}></span>
+        </div>
 
-      <NavbarMenus
-        menus={[
-          {label: t.get('navMenu1'), href: '#about'},
-          {label: t.get('navMenu2'), href: '#project'},
-          {label: t.get('navMenu3'), href: '#contact'},
-        ]}
-        isParentVisible={isOpened}
-      />
-    </nav>
+        <NavbarMenus
+          menus={[
+            {label: t.get('navMenu1'), href: '#about'},
+            {label: t.get('navMenu2'), href: '#project'},
+            {label: t.get('navMenu3'), href: '#contact'},
+          ]}
+        />
+      </nav>
+    </NavbarContext.Provider>
   );
 }
