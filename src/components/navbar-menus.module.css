@@ -9,9 +9,9 @@
   right: 0;
   top: 60px;
   height: calc(100vh - 60px);
-  width: 30%;
+  width: 50vw;
 
-  background-color: var(--color-2);
+  background-color: inherit;
   margin: 0;
   padding: 0;
   list-style: none;

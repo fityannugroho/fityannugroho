@@ -12,7 +12,6 @@
   padding: 1rem 2rem;
   transition: all 0.3s ease;
   background-color: var(--color-2);
-  opacity: .90;
 }
 
 .logo {
