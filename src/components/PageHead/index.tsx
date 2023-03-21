@@ -2,18 +2,18 @@ import Head from 'next/head';
 import Script from 'next/script';
 
 export type PageHeadProps = {
-  title?: string;
   description?: string;
   keywords?: string;
+  title?: string;
 }
 
 /**
  * The head component.
  */
 export default function PageHead({
-  title,
   description,
   keywords,
+  title,
 }: PageHeadProps) {
   return (
     <>
@@ -30,7 +30,7 @@ export default function PageHead({
 }
 
 PageHead.defaultProps = {
-  title: undefined,
   description: undefined,
   keywords: undefined,
+  title: undefined,
 };

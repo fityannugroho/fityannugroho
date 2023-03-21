@@ -27,9 +27,9 @@ export type ContainerProps = React.HTMLAttributes<HTMLDivElement> & {
  */
 export default function Container({
   children,
-  theme = 'none',
-  large,
   fullpage,
+  large,
+  theme = 'none',
   ...others
 }: ContainerProps) {
   return (

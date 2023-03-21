@@ -4,14 +4,17 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './navbar-menu.module.css';
 
 export type NavbarMenuProps = {
-  label: string;
   href: string;
+  label: string;
 };
 
 /**
  * The navbar menu component.
  */
-export default function NavbarMenu({ label, href }: NavbarMenuProps) {
+export default function NavbarMenu({
+  href,
+  label,
+}: NavbarMenuProps) {
   const { open, setClose } = useContext(NavbarContext);
   const [isVisible, setVisibility] = useState(true);
 

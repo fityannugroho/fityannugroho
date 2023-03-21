@@ -1,5 +1,4 @@
 import Link, { LinkProps } from 'next/link';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './button.module.css';
 
@@ -16,19 +15,13 @@ export type ButtonProps<
   ? ExtendedHTMLButtonProps : ExtendedLinkProps
 ) & {
   /**
-   * The button name (required). This will be used as the button text.
-   * If the `iconOnly` prop is true, this will be used as the button title.
-   */
-  name: string;
-  /**
-   * The button variant.
-   * @default 'light'.
-   */
-  variant?: 'primary' | 'primary-outline' | 'light' | 'light-outline';
-  /**
    * The Font Awesome icon name.
    */
   faIcon?: string;
+  /**
+   * The link to go to. If this prop is set, the button will be a link.
+   */
+  href?: Href;
   /**
    * Whether to hide the button text.
    */
@@ -38,9 +31,15 @@ export type ButtonProps<
    */
   iconOnlyOnMobile?: boolean;
   /**
-   * The link to go to. If this prop is set, the button will be a link.
+   * The button name (required). This will be used as the button text.
+   * If the `iconOnly` prop is true, this will be used as the button title.
    */
-  href?: Href;
+  name: string;
+  /**
+   * The button variant.
+   * @default 'light'.
+   */
+  variant?: 'primary' | 'primary-outline' | 'light' | 'light-outline';
 };
 
 /**
@@ -52,12 +51,12 @@ export type ButtonProps<
 export default function Button<
   Href extends string | undefined = undefined,
 >({
-  name,
-  variant = 'light',
   faIcon,
+  href,
+  name,
   iconOnly,
   iconOnlyOnMobile,
-  href,
+  variant = 'light',
   ...others
 }: ButtonProps<Href>) {
   const className = `
@@ -74,7 +73,7 @@ export default function Button<
     </>
   );
 
-  const button = href ? (
+  return href ? (
     <Link
       href={href}
       className={className}
@@ -93,15 +92,12 @@ export default function Button<
       {content}
     </button>
   );
-
-  return button;
 }
 
-Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  style: PropTypes.string,
-  faIcon: PropTypes.string,
-  iconOnly: PropTypes.bool,
-  iconOnlyOnMobile: PropTypes.bool,
-  href: PropTypes.string,
+Button.defaultProps = {
+  faIcon: undefined,
+  href: undefined,
+  iconOnly: undefined,
+  iconOnlyOnMobile: undefined,
+  variant: 'light',
 };
