@@ -1,25 +1,20 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import PropTypes from 'prop-types';
+
+export type PageHeadProps = {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
 
 /**
  * The head component.
- *
- * @param {Object} props The props.
- *
- * @param {string} props.title The page title.
- *
- * @param {string} props.description The page description.
- *
- * @param {string} props.keywords The page keywords.
- *
- * @return {JSX.Element} The head component.
  */
 export default function PageHead({
-  title = '',
-  description = '',
-  keywords = '',
-}) {
+  title,
+  description,
+  keywords,
+}: PageHeadProps) {
   return (
     <>
       <Head>
@@ -33,9 +28,3 @@ export default function PageHead({
     </>
   );
 }
-
-PageHead.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  keywords: PropTypes.string,
-};

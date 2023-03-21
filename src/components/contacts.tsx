@@ -3,7 +3,6 @@ import styles from './contacts.module.css';
 
 /**
  * The contact list component.
- * @return {JSX.Element} The contact list component.
  */
 export default function Contacts() {
   return (

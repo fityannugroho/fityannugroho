@@ -1,35 +1,25 @@
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
+import { Project as TProject } from '../types/Project';
 import Button from './button';
 import styles from './project.module.css';
+
+export type ProjectProps = {
+  /**
+   * The project data.
+   */
+  project: TProject;
+}
 
 /**
  * The project component.
  *
  * Use `project` prop to pass the project data (required).
  *
- * You can pass the locale `title` and `description`
- * in the `project.[locale]` object.
+ * You can pass the locale `title` and `description` in the `project.[locale]` object.
  * If the locale is not available, the default locale will be used.
- *
- * @param {Object} props The component props.
- *
- * @param {Object} props.project The project (required).
- *
- * @param {string} props.project.title The project title (required).
- *
- * @param {string} props.project.description The project description (required).
- *
- * @param {string} props.project.github The project github link.
- *
- * @param {string} props.project.deploy The project deploy link.
- *
- * @param {string} props.project.download The project download link.
- *
- * @return {JSX.Element} The project component.
  */
-export default function Project({ project }) {
-  const { locale } = useRouter();
+export default function Project({ project }: ProjectProps) {
+  const { defaultLocale, locale = defaultLocale ?? 'en' } = useRouter();
 
   return (
     <div className={styles.project}>
@@ -75,7 +65,3 @@ export default function Project({ project }) {
     </div>
   );
 }
-
-Project.propTypes = {
-  project: PropTypes.object.isRequired,
-};

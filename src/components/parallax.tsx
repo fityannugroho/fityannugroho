@@ -4,7 +4,6 @@ import styles from './parallax.module.css';
 
 /**
  * The parallax component.
- * @return {JSX.Element}
  */
 export default function Parallax() {
   const { locale, defaultLocale } = useRouter();

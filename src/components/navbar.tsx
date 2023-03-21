@@ -9,8 +9,6 @@ import NavbarContext from './Navbar/NavbarContext';
 
 /**
  * The navbar component.
- *
- * @return {JSX.Element} The navbar component.
  */
 export default function Navbar() {
   const { defaultLocale, locale, locales, pathname, replace } = useRouter();
@@ -23,7 +21,7 @@ export default function Navbar() {
     open(!isOpened);
   };
 
-  const onKeyUpToggleMenu = (event) => {
+  const onKeyUpToggleMenu = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       open(!isOpened);
     }
@@ -71,10 +69,10 @@ export default function Navbar() {
             className={styles.dropdown}
             defaultValue={locale ?? defaultLocale}
             onInput={(e) => replace(pathname, pathname, {
-              locale: e.target.value,
+              locale: e.currentTarget.value,
             })}
           >
-            {locales.map((item) => (
+            {locales?.map((item) => (
               <option key={item} value={item}>
                 {item.toUpperCase()}
               </option>

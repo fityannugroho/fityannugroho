@@ -10,12 +10,12 @@ import Parallax from '../components/parallax';
 import Projects from '../components/projects';
 import Wrapper from '../components/wrapper';
 import projects from '../data/projects.json';
+import { Project as TProject } from '../types/Project';
 import translation from '../utils/translation';
 import styles from './index.module.css';
 
 /**
  * The main page.
- * @return {JSX.Element}
  */
 export default function HomePage() {
   const { locale, defaultLocale } = useRouter();
@@ -53,7 +53,7 @@ export default function HomePage() {
           </Container>
           <Container id="project" theme="dark" large={true}>
             <h2>{t.get('navMenu2')}</h2>
-            <Projects projects={projects} />
+            <Projects projects={projects as unknown as TProject[]} />
           </Container>
           <Container id="contact" theme="dark-to-light" large={true}>
             <h2>{t.get('navMenu3')}</h2>

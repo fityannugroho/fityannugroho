@@ -1,5 +1,7 @@
-const translation = (locale) => {
-  let translation = {};
+type Translation = Record<string, string>;
+
+const translation = (locale?: string) => {
+  let translation: Translation = {};
 
   try {
     translation = require(`../locales/${locale}`).default;
@@ -14,10 +16,10 @@ const translation = (locale) => {
   return {
     /**
      * Get translation by key.
-     * @param {string} key The key of translation.
-     * @return {string} The translation.
+     * @param key The key of translation.
+     * @return The translation.
      */
-    get(key) {
+    get(key: string): string {
       return translation[key];
     },
   };
