@@ -5,7 +5,6 @@
   },
   "extends": [
     "next",
-    "google",
     "plugin:react/recommended"
   ],
   "parserOptions": {
