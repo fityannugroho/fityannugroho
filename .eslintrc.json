@@ -24,6 +24,13 @@
     "operator-linebreak": ["error", "before"],
     "jsx-quotes": ["error", "prefer-double"],
     "object-curly-spacing": ["error", "always"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "max-len": ["error", {
+      "code": 80,
+      "ignoreComments": true,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": true,
+      "ignoreRegExpLiterals": true
+    }]
   }
 }
