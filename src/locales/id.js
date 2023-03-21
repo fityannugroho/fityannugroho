@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 
 const locale = {
-  title: 'fityannugroho | Software Engineer',
-  description: 'Halo, Saya Fityandhiya Islam Nugroho, seorang software engineer.',
+  title: 'fityannugroho | Insinyur Perangkat Lunak',
+  description: 'Halo, Saya Fityandhiya Islam Nugroho, seorang insinyur perangkat lunak.',
   navMenu1: 'Tentang',
   navMenu2: 'Proyek',
   navMenu3: 'Kontak',
