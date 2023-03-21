@@ -1,5 +1,5 @@
-import { Project as TProject } from '../../types/Project';
-import Project from './Item';
+import ProjectItem from '@/components/Projects/Item';
+import { Project as TProject } from '@/types/Project';
 import styles from './projects.module.css';
 
 export type ProjectsProps = {
@@ -11,11 +11,11 @@ export type ProjectsProps = {
  *
  * Use `projects` prop to pass the project list.
  */
-export default function Projects({ projects }: ProjectsProps) {
+export default function ProjectList({ projects }: ProjectsProps) {
   return (
     <div className={styles.projects}>
       {projects.map((project, index) => (
-        <Project key={index} project={project} />
+        <ProjectItem key={index} project={project} />
       ))}
     </div>
   );

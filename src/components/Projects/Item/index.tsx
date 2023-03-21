@@ -1,6 +1,6 @@
+import Button from '@/components/Button';
+import { Project as TProject } from '@/types/Project';
 import { useRouter } from 'next/router';
-import { Project as TProject } from '../../../types/Project';
-import Button from '../../Button';
 import styles from './project.module.css';
 
 export type ProjectProps = {
@@ -18,7 +18,7 @@ export type ProjectProps = {
  * You can pass the locale `title` and `description` in the `project.[locale]` object.
  * If the locale is not available, the default locale will be used.
  */
-export default function Project({ project }: ProjectProps) {
+export default function ProjectItem({ project }: ProjectProps) {
   const { defaultLocale, locale = defaultLocale ?? 'en' } = useRouter();
 
   return (
