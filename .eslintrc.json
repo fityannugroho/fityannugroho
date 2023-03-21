@@ -22,7 +22,16 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "operator-linebreak": ["error", "before"],
+    "quotes": ["error", "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }],
     "jsx-quotes": ["error", "prefer-double"],
+    "comma-dangle": ["error", "always-multiline"],
+    "comma-spacing": ["error", {
+      "before": false,
+      "after": true
+    }],
     "object-curly-spacing": ["error", "always"],
     "semi": ["error", "always"],
     "max-len": ["error", {
