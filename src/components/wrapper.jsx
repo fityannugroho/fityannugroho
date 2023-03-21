@@ -11,7 +11,7 @@ import styles from './wrapper.module.css';
  * @param {JSX.Element} props.children The children of the component.
  * @return {JSX.Element} The wrapper component.
  */
-export default function Wrapper({children}) {
+export default function Wrapper({ children }) {
   return (
     <div className={styles.wrapper}>
       {children}

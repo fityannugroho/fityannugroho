@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './navbar-menu.module.css';
 import NavbarContext from './Navbar/NavbarContext';
 
@@ -15,8 +15,8 @@ import NavbarContext from './Navbar/NavbarContext';
  *
  * @return {JSX.Element} The navbar menu component.
  */
-export default function NavbarMenu({label, href}) {
-  const {open, setClose} = useContext(NavbarContext);
+export default function NavbarMenu({ label, href }) {
+  const { open, setClose } = useContext(NavbarContext);
   const [isVisible, setVisibility] = useState(true);
 
   useEffect(() => {

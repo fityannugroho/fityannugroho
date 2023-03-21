@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import NavbarMenu from './navbar-menu';
 import styles from './navbar-menus.module.css';
 import NavbarContext from './Navbar/NavbarContext';
@@ -17,8 +17,8 @@ import NavbarContext from './Navbar/NavbarContext';
  *
  * @return {JSX.Element} The navbar menus component.
  */
-export default function NavbarMenus({menus = []}) {
-  const {open} = useContext(NavbarContext);
+export default function NavbarMenus({ menus = [] }) {
+  const { open } = useContext(NavbarContext);
 
   return (
     <ul className={`${styles.menus} ${open ? styles.active : ''}`}>

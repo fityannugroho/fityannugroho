@@ -24,7 +24,7 @@ import styles from './projects.module.css';
  *
  * @return {JSX.Element} The project list component.
  */
-export default function Projects({projects = []}) {
+export default function Projects({ projects = [] }) {
   return (
     <div className={styles.projects}>
       {

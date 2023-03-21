@@ -1,4 +1,4 @@
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import Button from './button';
 import styles from './project.module.css';
@@ -28,8 +28,8 @@ import styles from './project.module.css';
  *
  * @return {JSX.Element} The project component.
  */
-export default function Project({project}) {
-  const {locale} = useRouter();
+export default function Project({ project }) {
+  const { locale } = useRouter();
 
   return (
     <div className={styles.project}>
@@ -41,34 +41,34 @@ export default function Project({project}) {
         {project.github && (
           <Button
             href={`https://github.com/${project.github}`}
-            name='GitHub'
-            style='light-outline'
-            faIcon='fa-brands fa-github'
+            name="GitHub"
+            style="light-outline"
+            faIcon="fa-brands fa-github"
             iconOnly={true}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           />
         )}
         {project.deploy && (
           <Button
             href={project.deploy}
-            name='Demo'
-            style='light-outline'
-            faIcon='fa-solid fa-play'
+            name="Demo"
+            style="light-outline"
+            faIcon="fa-solid fa-play"
             iconOnlyOnMobile={true}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           />
         )}
         {project.download && (
           <Button
             href={project.download}
-            name='Download'
-            style='light-outline'
-            faIcon='fa-solid fa-download'
+            name="Download"
+            style="light-outline"
+            faIcon="fa-solid fa-download"
             iconOnlyOnMobile={true}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           />
         )}
       </div>

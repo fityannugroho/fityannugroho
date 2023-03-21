@@ -6,7 +6,7 @@ import './styles.css';
  * @param {object} props
  * @return {JSX.Element}
  */
-export default function MyApp({Component, pageProps}) {
+export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
 

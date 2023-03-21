@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Button from '../components/button';
 import Contacts from '../components/contacts';
 import Container from '../components/container';
@@ -18,44 +18,44 @@ import styles from './index.module.css';
  * @return {JSX.Element}
  */
 export default function HomePage() {
-  const {locale, defaultLocale} = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const t = translation(locale ?? defaultLocale);
 
   return (
     <>
       <PageHead title={t.get('title')} description={t.get('description')} />
       <Wrapper>
-        <header className='header'>
+        <header className="header">
           <Navbar />
         </header>
         <main>
           <Parallax />
-          <Container id='about' theme='light-to-dark' large={true}>
+          <Container id="about" theme="light-to-dark" large={true}>
             <h2>{t.get('navMenu1')}</h2>
             <div className={styles.about}>
               <div className={styles.photo}>
                 <Image
-                  src='/profile-pic.png'
+                  src="/profile-pic.png"
                   width={120}
                   height={120}
-                  alt='Fityan picture'
-                  className='rounded-picture'
+                  alt="Fityan picture"
+                  className="rounded-picture"
                 />
               </div>
               <p>{t.get('myDescription')}</p>
               <Button
                 name={t.get('btnResume')}
-                style='primary'
-                faIcon='fa-solid fa-file-pdf'
-                href='/resume'
+                style="primary"
+                faIcon="fa-solid fa-file-pdf"
+                href="/resume"
               />
             </div>
           </Container>
-          <Container id='project' theme='dark' large={true}>
+          <Container id="project" theme="dark" large={true}>
             <h2>{t.get('navMenu2')}</h2>
             <Projects projects={projects} />
           </Container>
-          <Container id='contact' theme='dark-to-light' large={true}>
+          <Container id="contact" theme="dark-to-light" large={true}>
             <h2>{t.get('navMenu3')}</h2>
             <Contacts />
           </Container>

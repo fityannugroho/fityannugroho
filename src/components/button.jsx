@@ -56,7 +56,7 @@ export default function Button({
       ${style !== 'light' ? styles[style] : ''}
       ${iconOnlyOnMobile ? styles['icon-only'] : ''}
     `,
-    ...(iconOnly ? {title: name} : {}),
+    ...(iconOnly ? { title: name } : {}),
   };
 
   const content = (

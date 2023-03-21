@@ -1,4 +1,4 @@
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import React from 'react';
 import PageHead from '../components/page-head';
 import translation from '../utils/translation';
@@ -9,7 +9,7 @@ import translation from '../utils/translation';
  * @return {JSX.Element}
  */
 export default function GoToResumeFile() {
-  const {locale, defaultLocale} = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const t = translation(locale ?? defaultLocale);
 
   const pageTitle = locale === 'id-ID'
