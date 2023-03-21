@@ -22,6 +22,8 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "operator-linebreak": ["error", "before"],
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "object-curly-spacing": ["error", "always"],
+    "semi": ["error", "always"]
   }
 }
