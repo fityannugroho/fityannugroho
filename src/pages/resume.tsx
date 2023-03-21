@@ -21,7 +21,7 @@ export default function ResumePage() {
   return (
     <PageHead
       title={pageTitle}
-      description={`${locale === 'id-ID' ? 'Baca': 'Read'} ${pageTitle}`}
+      description={`${locale === 'id-ID' ? 'Baca' : 'Read'} ${pageTitle}`}
       keywords={`resume, fityan, fityannugroho, Fityandhiya Islam Nugroho,
         software engineer, web engineer, back-end engineer, portfolio,
       `}

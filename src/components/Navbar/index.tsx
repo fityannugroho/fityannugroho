@@ -11,7 +11,9 @@ import styles from './navbar.module.css';
  * The navbar component.
  */
 export default function Navbar() {
-  const { defaultLocale, locale, locales, pathname, replace } = useRouter();
+  const {
+    defaultLocale, locale, locales, pathname, replace,
+  } = useRouter();
   const t = translation(locale ?? defaultLocale);
 
   // The state of the navbar menus on mobile view.
@@ -38,15 +40,17 @@ export default function Navbar() {
     <NavbarContext.Provider value={navbarContext}>
       <nav className={styles.navbar}>
         <div className={styles.section}>
-          <div id="toggleMenu"
+          <div
+            id="toggleMenu"
             className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
             onClick={onClickToggleMenu}
             onKeyUp={onKeyUpToggleMenu}
+            role="button"
             tabIndex={0}
           >
-            <span className={styles.line1}></span>
-            <span className={styles.line2}></span>
-            <span className={styles.line3}></span>
+            <span className={styles.line1} />
+            <span className={styles.line2} />
+            <span className={styles.line3} />
           </div>
 
           <Link href="/" className={`${styles.brand}`}>

@@ -17,3 +17,7 @@ export default function Wrapper({ children }: WrapperProps) {
     </div>
   );
 }
+
+Wrapper.defaultProps = {
+  children: undefined,
+};

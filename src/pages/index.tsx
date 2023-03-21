@@ -30,7 +30,7 @@ export default function HomePage() {
         </header>
         <main>
           <Parallax />
-          <Container id="about" theme="light-to-dark" large={true}>
+          <Container id="about" theme="light-to-dark" large>
             <h2>{t.get('navMenu1')}</h2>
             <div className={styles.about}>
               <div className={styles.photo}>
@@ -45,17 +45,17 @@ export default function HomePage() {
               <p>{t.get('myDescription')}</p>
               <Button
                 name={t.get('btnResume')}
-                style="primary"
+                variant="primary"
                 faIcon="fa-solid fa-file-pdf"
                 href="/resume"
               />
             </div>
           </Container>
-          <Container id="project" theme="dark" large={true}>
+          <Container id="project" theme="dark" large>
             <h2>{t.get('navMenu2')}</h2>
             <ProjectList projects={projects as unknown as TProject[]} />
           </Container>
-          <Container id="contact" theme="dark-to-light" large={true}>
+          <Container id="contact" theme="dark-to-light" large>
             <h2>{t.get('navMenu3')}</h2>
             <Contacts />
           </Container>

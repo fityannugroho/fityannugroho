@@ -15,12 +15,16 @@ export default function NavbarMenus({ menus = [] }: NavbarMenusProps) {
 
   return (
     <ul className={`${styles.menus} ${open ? styles.active : ''}`}>
-      {menus.map((menu, i) => (
+      {menus.map((menu) => (
         <NavbarMenu
-          key={i}
+          key={`${menu.label}`}
           {...menu}
         />
       ))}
     </ul>
   );
 }
+
+NavbarMenus.defaultProps = {
+  menus: [],
+};

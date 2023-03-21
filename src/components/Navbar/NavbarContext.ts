@@ -9,10 +9,7 @@ export type TNavbarContext = {
 
 const NavbarContext = React.createContext<TNavbarContext>({
   open: false,
-  toggle: () => {},
-  setOpen: () => {},
-  setClose: () => {},
-});
+} as TNavbarContext);
 
 NavbarContext.displayName = 'NavbarContext';
 

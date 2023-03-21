@@ -12,7 +12,7 @@ type ExtendedHTMLButtonProps = Omit<
 
 export type ButtonProps<
   Href extends string | undefined = undefined,
-> =  (Href extends undefined
+> = (Href extends undefined
   ? ExtendedHTMLButtonProps : ExtendedLinkProps
 ) & {
   /**
@@ -21,10 +21,10 @@ export type ButtonProps<
    */
   name: string;
   /**
-   * The button style.
+   * The button variant.
    * @default 'light'.
    */
-  style?: 'primary' | 'primary-outline' | 'light' | 'light-outline';
+  variant?: 'primary' | 'primary-outline' | 'light' | 'light-outline';
   /**
    * The Font Awesome icon name.
    */
@@ -53,7 +53,7 @@ export default function Button<
   Href extends string | undefined = undefined,
 >({
   name,
-  style = 'light',
+  variant = 'light',
   faIcon,
   iconOnly,
   iconOnlyOnMobile,
@@ -62,7 +62,7 @@ export default function Button<
 }: ButtonProps<Href>) {
   const className = `
     ${styles.btn}
-    ${style !== 'light' ? styles[style] : ''}
+    ${variant !== 'light' ? styles[variant] : ''}
     ${iconOnlyOnMobile ? styles['icon-only'] : ''}
   `;
   const title = iconOnly ? name : undefined;
@@ -87,6 +87,7 @@ export default function Button<
     <button
       className={className}
       title={title}
+      type="button"
       {...others as ExtendedHTMLButtonProps}
     >
       {content}

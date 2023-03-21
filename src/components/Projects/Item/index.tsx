@@ -32,9 +32,9 @@ export default function ProjectItem({ project }: ProjectProps) {
           <Button
             href={`https://github.com/${project.github}`}
             name="GitHub"
-            style="light-outline"
+            variant="light-outline"
             faIcon="fa-brands fa-github"
-            iconOnly={true}
+            iconOnly
             target="_blank"
             rel="noopener noreferrer"
           />
@@ -43,9 +43,9 @@ export default function ProjectItem({ project }: ProjectProps) {
           <Button
             href={project.deploy}
             name="Demo"
-            style="light-outline"
+            variant="light-outline"
             faIcon="fa-solid fa-play"
-            iconOnlyOnMobile={true}
+            iconOnlyOnMobile
             target="_blank"
             rel="noopener noreferrer"
           />
@@ -54,9 +54,9 @@ export default function ProjectItem({ project }: ProjectProps) {
           <Button
             href={project.download}
             name="Download"
-            style="light-outline"
+            variant="light-outline"
             faIcon="fa-solid fa-download"
-            iconOnlyOnMobile={true}
+            iconOnlyOnMobile
             target="_blank"
             rel="noopener noreferrer"
           />

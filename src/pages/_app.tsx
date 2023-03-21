@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app';
-import PropTypes from 'prop-types';
 import './styles.css';
 
 /**
@@ -8,8 +7,3 @@ import './styles.css';
 export default function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.func,
-  pageProps: PropTypes.object,
-};

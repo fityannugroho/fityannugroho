@@ -28,3 +28,9 @@ export default function PageHead({
     </>
   );
 }
+
+PageHead.defaultProps = {
+  title: undefined,
+  description: undefined,
+  keywords: undefined,
+};

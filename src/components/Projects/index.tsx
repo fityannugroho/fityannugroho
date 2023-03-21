@@ -14,8 +14,8 @@ export type ProjectsProps = {
 export default function ProjectList({ projects }: ProjectsProps) {
   return (
     <div className={styles.projects}>
-      {projects.map((project, index) => (
-        <ProjectItem key={index} project={project} />
+      {projects.map((project) => (
+        <ProjectItem key={project.title} project={project} />
       ))}
     </div>
   );

@@ -6,20 +6,20 @@ export type ContainerProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   children?: React.ReactNode;
   /**
+   * Whether to use fullpage container.
+   */
+  fullpage?: boolean;
+  /**
+   * Whether to use large container.
+   */
+  large?: boolean;
+  /**
    * The theme of the container.
    *
    * @default 'none'
    */
   theme?: 'none' | 'white' | 'light' | 'dark' | 'light-to-dark'
     | 'dark-to-light';
-  /**
-   * Whether to use large container.
-   */
-  large?: boolean;
-  /**
-   * Whether to use fullpage container.
-   */
-  fullpage?: boolean;
 }
 
 /**
@@ -46,3 +46,10 @@ export default function Container({
     </div>
   );
 }
+
+Container.defaultProps = {
+  children: undefined,
+  fullpage: undefined,
+  large: undefined,
+  theme: 'none',
+};
