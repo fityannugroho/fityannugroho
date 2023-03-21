@@ -1,6 +1,6 @@
 {
   "name": "fityannugroho",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "description": "My personal website",
   "main": "index.js",
   "private": true,
@@ -26,15 +26,21 @@
   "homepage": "https://github.com/fityannugroho/fityannugroho#readme",
   "dependencies": {
     "next": "^13.2.4",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.31.0"
   },
   "devDependencies": {
+    "@types/node": "18.15.5",
+    "@types/react": "18.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
-    "eslint-config-google": "^0.14.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^13.2.4",
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

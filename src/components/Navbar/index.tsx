@@ -1,19 +1,19 @@
+import NavbarMenus from '@/components/Navbar/Menus';
+import NavbarContext from '@/components/Navbar/NavbarContext';
+import translation from '@/utils/translation';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
-import {useMemo, useState} from 'react';
-import translation from '../utils/translation';
-import NavbarMenus from './navbar-menus';
+import { useRouter } from 'next/router';
+import { useMemo, useState } from 'react';
 import styles from './navbar.module.css';
-import NavbarContext from './Navbar/NavbarContext';
 
 /**
  * The navbar component.
- *
- * @return {JSX.Element} The navbar component.
  */
 export default function Navbar() {
-  const {defaultLocale, locale, locales, pathname, replace} = useRouter();
+  const {
+    defaultLocale, locale, locales, pathname, replace,
+  } = useRouter();
   const t = translation(locale ?? defaultLocale);
 
   // The state of the navbar menus on mobile view.
@@ -23,7 +23,7 @@ export default function Navbar() {
     open(!isOpened);
   };
 
-  const onKeyUpToggleMenu = (event) => {
+  const onKeyUpToggleMenu = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       open(!isOpened);
     }
@@ -40,19 +40,21 @@ export default function Navbar() {
     <NavbarContext.Provider value={navbarContext}>
       <nav className={styles.navbar}>
         <div className={styles.section}>
-          <div id='toggleMenu'
+          <div
+            id="toggleMenu"
             className={`${styles.toggle} ${isOpened ? styles.cross : ''}`}
             onClick={onClickToggleMenu}
             onKeyUp={onKeyUpToggleMenu}
+            role="button"
             tabIndex={0}
           >
-            <span className={styles.line1}></span>
-            <span className={styles.line2}></span>
-            <span className={styles.line3}></span>
+            <span className={styles.line1} />
+            <span className={styles.line2} />
+            <span className={styles.line3} />
           </div>
 
-          <Link href='/' className={`${styles.brand}`}>
-            <Image src='/f-logo.ico' alt='Fit Logo' height='24' width='24' />
+          <Link href="/" className={`${styles.brand}`}>
+            <Image src="/f-logo.ico" alt="Fit Logo" height="24" width="24" />
             <span className={styles['brand-name']}>fityannugroho</span>
           </Link>
         </div>
@@ -60,21 +62,21 @@ export default function Navbar() {
         <div className={styles.section}>
           <NavbarMenus
             menus={[
-              {label: t.get('navMenu1'), href: '#about'},
-              {label: t.get('navMenu2'), href: '#project'},
-              {label: t.get('navMenu3'), href: '#contact'},
+              { label: t.get('navMenu1'), href: '#about' },
+              { label: t.get('navMenu2'), href: '#project' },
+              { label: t.get('navMenu3'), href: '#contact' },
             ]}
           />
 
           <select
-            id='lang'
+            id="lang"
             className={styles.dropdown}
             defaultValue={locale ?? defaultLocale}
             onInput={(e) => replace(pathname, pathname, {
-              locale: e.target.value,
+              locale: e.currentTarget.value,
             })}
           >
-            {locales.map((item) => (
+            {locales?.map((item) => (
               <option key={item} value={item}>
                 {item.toUpperCase()}
               </option>

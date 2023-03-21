@@ -1,13 +1,12 @@
-import {useRouter} from 'next/router';
-import translation from '../utils/translation';
+import translation from '@/utils/translation';
+import { useRouter } from 'next/router';
 import styles from './parallax.module.css';
 
 /**
  * The parallax component.
- * @return {JSX.Element}
  */
 export default function Parallax() {
-  const {locale, defaultLocale} = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const t = translation(locale ?? defaultLocale);
 
   return (
