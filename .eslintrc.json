@@ -4,9 +4,15 @@
     "es2021": true
   },
   "extends": [
-    "next",
-    "plugin:react/recommended"
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/typescript",
+    "next"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -17,29 +23,36 @@
     "tsconfigRootDir": "./"
   },
   "plugins": [
-    "react"
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "operator-linebreak": ["error", "before"],
-    "quotes": ["error", "single", {
-      "avoidEscape": true,
-      "allowTemplateLiterals": true
-    }],
-    "jsx-quotes": ["error", "prefer-double"],
-    "comma-dangle": ["error", "always-multiline"],
-    "comma-spacing": ["error", {
-      "before": false,
-      "after": true
-    }],
-    "object-curly-spacing": ["error", "always"],
-    "semi": ["error", "always"],
     "max-len": ["error", {
-      "code": 80,
       "ignoreComments": true,
       "ignoreTrailingComments": true,
       "ignoreUrls": true,
       "ignoreRegExpLiterals": true
-    }]
+    }],
+    "react/jsx-filename-extension": ["error", {
+      "extensions": [
+        ".tsx"
+      ]
+    }],
+    "react/jsx-props-no-spreading": ["error", {
+      "html": "ignore",
+      "custom": "ignore",
+      "exceptions": [""]
+    }],
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never"
+    }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
