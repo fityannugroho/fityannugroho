@@ -5,7 +5,7 @@
     "github": "fityannugroho/fastvoting",
     "deploy": "https://fastvoting.online",
     "download": "",
-    "id-ID": {
+    "id": {
       "title": "FastVoting",
       "description": "Aplikasi web untuk membuat dan mengelola acara pemungutan suara."
     }
@@ -16,7 +16,7 @@
     "github": "fityannugroho/idn-area",
     "deploy": "https://idn-area.herokuapp.com",
     "download": "",
-    "id-ID": {
+    "id": {
       "title": "API Wilayah Indonesia",
       "description": "API yang menyediakan informasi provinsi, kabupaten/kota, kecamatan, dan desa di Indonesia."
     }
@@ -27,7 +27,7 @@
     "github": "fityannugroho/lister",
     "deploy": "",
     "download": "https://github.com/fityannugroho/lister/releases/download/v1.0.0/app-release.apk",
-    "id-ID": {
+    "id": {
       "title": "Aplikasi Lister",
       "description": "Aplikasi Android untuk mencatat daftar kegiatan, dan berbagi dengan pengguna lain."
     }
@@ -38,7 +38,7 @@
     "github": "fityannugroho/faculty-upi",
     "deploy": "https://faculty-upi.herokuapp.com",
     "download": "",
-    "id-ID": {
+    "id": {
       "title": "API Fakultas UPI",
       "description": "API yang menyediakan informasi fakultas dan program studi yang ada di Universitas Pendidikan Indonesia."
     }
