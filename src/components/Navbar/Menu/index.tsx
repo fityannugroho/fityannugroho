@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 import styles from './navbar-menu.module.css';
-import NavbarContext from './Navbar/NavbarContext';
+import NavbarContext from '../NavbarContext';
 
 export type NavbarMenuProps = {
   label: string;

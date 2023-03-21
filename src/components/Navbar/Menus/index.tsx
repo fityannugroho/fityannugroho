@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import NavbarMenu, { NavbarMenuProps } from './navbar-menu';
+import NavbarMenu, { NavbarMenuProps } from '../Menu';
 import styles from './navbar-menus.module.css';
-import NavbarContext from './Navbar/NavbarContext';
+import NavbarContext from '../NavbarContext';
 
 export type NavbarMenusProps = {
   menus?: NavbarMenuProps[];

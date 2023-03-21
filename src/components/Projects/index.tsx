@@ -1,5 +1,5 @@
-import { Project as TProject } from '../types/Project';
-import Project from './project';
+import { Project as TProject } from '../../types/Project';
+import Project from './Item';
 import styles from './projects.module.css';
 
 export type ProjectsProps = {

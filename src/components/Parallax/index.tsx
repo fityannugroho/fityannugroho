@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import translation from '../utils/translation';
+import translation from '../../utils/translation';
 import styles from './parallax.module.css';
 
 /**
