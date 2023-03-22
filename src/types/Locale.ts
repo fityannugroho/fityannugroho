@@ -7,6 +7,8 @@ export type Locale = {
   homePage: string;
   myDescription: string;
   btnResume: string;
+  resumeTitle: string;
+  resumeDescription: string;
   resumeLink: string;
   parallaxTitle: string;
   parallaxSubtitle: string;

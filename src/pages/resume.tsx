@@ -6,11 +6,7 @@ import React from 'react';
  * Endpoint to resume file.
  */
 export default function ResumePage() {
-  const { locale, translate } = useTranslation();
-
-  const pageTitle = locale === 'id'
-    ? 'Resume Fityandhiya Islam Nugroho'
-    : 'Fityandhiya Islam Nugroho\'s Resume';
+  const { translate } = useTranslation();
 
   React.useEffect(() => {
     window.location.replace(translate('resumeLink'));
@@ -18,8 +14,8 @@ export default function ResumePage() {
 
   return (
     <PageHead
-      title={pageTitle}
-      description={`${locale === 'id' ? 'Baca' : 'Read'} ${pageTitle}`}
+      title={translate('resumeTitle')}
+      description={translate('resumeDescription')}
       keywords={`resume, fityan, fityannugroho, Fityandhiya Islam Nugroho,
         software engineer, web engineer, back-end engineer, portfolio,
       `}
