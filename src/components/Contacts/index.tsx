@@ -17,6 +17,15 @@ export default function Contacts() {
         rel="noopener noreferrer"
       />
       <Button
+        name="LinkedIn"
+        href="https://www.linkedin.com/in/fityannugroho"
+        variant="primary"
+        faIcon="fa-brands fa-linkedin"
+        iconOnlyOnMobile
+        target="_blank"
+        rel="noopener noreferrer"
+      />
+      <Button
         name="GitHub"
         href="https://github.com/fityannugroho"
         variant="primary"
