@@ -1,27 +1,25 @@
 import PageHead from '@/components/PageHead';
-import translation from '@/utils/translation';
-import { useRouter } from 'next/router';
+import useTranslation from '@/utils/hooks/useTranslation';
 import React from 'react';
 
 /**
  * Endpoint to resume file.
  */
 export default function ResumePage() {
-  const { locale, defaultLocale } = useRouter();
-  const t = translation(locale ?? defaultLocale);
+  const { locale, translate } = useTranslation();
 
-  const pageTitle = locale === 'id-ID'
+  const pageTitle = locale === 'id'
     ? 'Resume Fityandhiya Islam Nugroho'
     : 'Fityandhiya Islam Nugroho\'s Resume';
 
   React.useEffect(() => {
-    window.location.replace(t.get('resumeLink'));
+    window.location.replace(translate('resumeLink'));
   });
 
   return (
     <PageHead
       title={pageTitle}
-      description={`${locale === 'id-ID' ? 'Baca' : 'Read'} ${pageTitle}`}
+      description={`${locale === 'id' ? 'Baca' : 'Read'} ${pageTitle}`}
       keywords={`resume, fityan, fityannugroho, Fityandhiya Islam Nugroho,
         software engineer, web engineer, back-end engineer, portfolio,
       `}

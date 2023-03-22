@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
+import { Locale } from '@/types/Locale';
 
-const locale = {
+const locale: Locale = {
   title: 'fityannugroho | Insinyur Perangkat Lunak',
   description: 'Halo, Saya Fityandhiya Islam Nugroho, seorang insinyur perangkat lunak.',
   navMenu1: 'Tentang',

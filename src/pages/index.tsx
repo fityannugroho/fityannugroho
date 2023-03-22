@@ -9,21 +9,22 @@ import ProjectList from '@/components/Projects';
 import Wrapper from '@/components/Wrapper';
 import projects from '@/data/projects.json';
 import { Project as TProject } from '@/types/Project';
-import translation from '@/utils/translation';
+import useTranslation from '@/utils/hooks/useTranslation';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import styles from './index.module.css';
 
 /**
  * The main page.
  */
 export default function HomePage() {
-  const { locale, defaultLocale } = useRouter();
-  const t = translation(locale ?? defaultLocale);
+  const { translate } = useTranslation();
 
   return (
     <>
-      <PageHead title={t.get('title')} description={t.get('description')} />
+      <PageHead
+        title={translate('title')}
+        description={translate('description')}
+      />
       <Wrapper>
         <header className="header">
           <Navbar />
@@ -31,7 +32,7 @@ export default function HomePage() {
         <main>
           <Parallax />
           <Container id="about" theme="light-to-dark" large>
-            <h2>{t.get('navMenu1')}</h2>
+            <h2>{translate('navMenu1')}</h2>
             <div className={styles.about}>
               <div className={styles.photo}>
                 <Image
@@ -42,9 +43,9 @@ export default function HomePage() {
                   className="rounded-picture"
                 />
               </div>
-              <p>{t.get('myDescription')}</p>
+              <p>{translate('myDescription')}</p>
               <Button
-                name={t.get('btnResume')}
+                name={translate('btnResume')}
                 variant="primary"
                 faIcon="fa-solid fa-file-pdf"
                 href="/resume"
@@ -52,11 +53,11 @@ export default function HomePage() {
             </div>
           </Container>
           <Container id="project" theme="dark" large>
-            <h2>{t.get('navMenu2')}</h2>
+            <h2>{translate('navMenu2')}</h2>
             <ProjectList projects={projects as unknown as TProject[]} />
           </Container>
           <Container id="contact" theme="dark-to-light" large>
-            <h2>{t.get('navMenu3')}</h2>
+            <h2>{translate('navMenu3')}</h2>
             <Contacts />
           </Container>
         </main>
