@@ -49,6 +49,7 @@ export default function HomePage() {
                 variant="primary"
                 faIcon="fa-solid fa-file-pdf"
                 href="/resume"
+                target="_blank"
               />
             </div>
           </Container>
