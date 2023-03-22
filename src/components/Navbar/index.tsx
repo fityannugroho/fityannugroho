@@ -1,6 +1,6 @@
 import NavbarMenus from '@/components/Navbar/Menus';
 import NavbarContext from '@/components/Navbar/NavbarContext';
-import translation from '@/utils/translation';
+import useTranslation from '@/utils/hooks/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -11,10 +11,10 @@ import styles from './navbar.module.css';
  * The navbar component.
  */
 export default function Navbar() {
+  const { pathname, replace } = useRouter();
   const {
-    defaultLocale, locale, locales, pathname, replace,
-  } = useRouter();
-  const t = translation(locale ?? defaultLocale);
+    defaultLocale, locale, locales, translate,
+  } = useTranslation();
 
   // The state of the navbar menus on mobile view.
   const [isOpened, open] = useState(false);
@@ -62,9 +62,9 @@ export default function Navbar() {
         <div className={styles.section}>
           <NavbarMenus
             menus={[
-              { label: t.get('navMenu1'), href: '#about' },
-              { label: t.get('navMenu2'), href: '#project' },
-              { label: t.get('navMenu3'), href: '#contact' },
+              { label: translate('navMenu1'), href: '#about' },
+              { label: translate('navMenu2'), href: '#project' },
+              { label: translate('navMenu3'), href: '#contact' },
             ]}
           />
 
