@@ -12,7 +12,7 @@ const locale: Locale = {
   btnResume: 'Baca Resume Saya',
   resumeTitle: 'Resume Fityandhiya Islam Nugroho',
   resumeDescription: 'Baca Resume Fityandhiya Islam Nugroho',
-  resumeLink: 'https://drive.google.com/file/d/1k4502xUe0Wn4Q_S4Pm-Yh8Lg2BXPSwNf/view?usp=share_link',
+  resumeLink: 'https://drive.google.com/file/d/15nhJSEAceZ4ktrUUTeXzdkaYG531TY7G/view?usp=sharing',
   parallaxTitle: 'Halo dunia, Saya Fityan!',
   parallaxSubtitle: 'Seorang Insinyur Perangkat Lunak',
 };
