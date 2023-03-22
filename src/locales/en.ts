@@ -8,7 +8,7 @@ const locale: Locale = {
   navMenu2: 'Projects',
   navMenu3: 'Contact',
   homePage: 'Home',
-  myDescription: 'You can call me Fityan. I\'m from Indramayu, West Java, Indonesia. I started programming in 2019, and have developed many websites using various programming languages and frameworks.',
+  myDescription: 'My name is Fityandhiya Islam Nugroho. I\'m from Indramayu, West Java, Indonesia. I started programming in 2019, and have developed many websites using various programming languages and frameworks.',
   btnResume: 'Read My Resume',
   resumeTitle: 'Fityandhiya Islam Nugroho\'s Resume',
   resumeDescription: 'Read Fityandhiya Islam Nugroho\'s Resume',
