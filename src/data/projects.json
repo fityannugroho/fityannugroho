@@ -1,13 +1,13 @@
 [
   {
     "title": "FastVoting",
-    "description": "Web app to create and manage voting events.",
+    "description": "Progressive web app to create and manage voting events.",
     "github": "fityannugroho/fastvoting",
     "deploy": "https://fastvoting.online",
     "download": "",
     "id": {
       "title": "FastVoting",
-      "description": "Aplikasi web untuk membuat dan mengelola acara pemungutan suara."
+      "description": "Aplikasi web progresif untuk membuat dan mengelola acara pemungutan suara."
     }
   },
   {
@@ -22,13 +22,13 @@
     }
   },
   {
-    "title": "Lister App",
+    "title": "Lister",
     "description": "Android app to take note of to-do lists, and share them with other users.",
     "github": "fityannugroho/lister",
     "deploy": "",
     "download": "https://github.com/fityannugroho/lister/releases/download/v1.0.0/app-release.apk",
     "id": {
-      "title": "Aplikasi Lister",
+      "title": "Lister",
       "description": "Aplikasi Android untuk mencatat daftar kegiatan, dan berbagi dengan pengguna lain."
     }
   },
@@ -41,6 +41,17 @@
     "id": {
       "title": "API Fakultas UPI",
       "description": "API yang menyediakan informasi fakultas dan program studi yang ada di Universitas Pendidikan Indonesia."
+    }
+  },
+  {
+    "title": "Fresto",
+    "description": "Progressive web app that provide restaurant list, built without any framework.",
+    "github": "fityannugroho/restaurant-apps",
+    "deploy": "https://fresto.netlify.app",
+    "download": "",
+    "id": {
+      "title": "Fresto",
+      "description": "Aplikasi web progresif yang menyediakan daftar restoran, dibangun tanpa framework apapun."
     }
   }
 ]
