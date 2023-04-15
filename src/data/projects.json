@@ -14,7 +14,7 @@
     "title": "Indonesian Area API",
     "description": "API that provides information on provinces, regencies, districts, and villages in Indonesia.",
     "github": "fityannugroho/idn-area",
-    "deploy": "https://idn-area.herokuapp.com",
+    "deploy": "http://13.213.50.245:3000",
     "download": "",
     "id": {
       "title": "API Wilayah Indonesia",
