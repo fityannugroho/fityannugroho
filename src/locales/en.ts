@@ -12,7 +12,7 @@ const locale: Locale = {
   btnResume: 'Read My Resume',
   resumeTitle: 'Fityandhiya Islam Nugroho\'s Resume',
   resumeDescription: 'Read Fityandhiya Islam Nugroho\'s Resume',
-  resumeLink: 'https://drive.google.com/file/d/1M_gUkT7sLv9LPWPU4nHFvRo3RAgux1cT/view?usp=sharing',
+  resumeLink: 'https://drive.google.com/file/d/16OVU65RTMNN9Iudb4x4zMTFVkj6R2VP_/view?usp=sharing',
   parallaxTitle: 'Hello world, I\'m Fityan!',
   parallaxSubtitle: 'A Software Engineer',
 };
