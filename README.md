@@ -108,8 +108,8 @@ Hi, coders! You can call me **Fityan**. I'm a software engineer from 🇮🇩 In
 ## Statistics
 
 <p>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=fityannugroho&layout=compact&hide_border=true&theme=tokyonight" alt="Fityan's Most Used Language" height="160"/>
-  <img src="https://github-readme-stats.vercel.app/api?username=fityannugroho&show_icons=true&hide_border=true&theme=tokyonight" alt="Fityan's Github Stats" height=160"/>
+  <img src="https://github-readme-stats.fityannugroho.vercel.app/api/top-langs/?username=fityannugroho&layout=compact&hide_border=true&theme=tokyonight" alt="Fityan's Most Used Language" height="160"/>
+  <img src="https://github-readme-stats.fityannugroho.vercel.app/api?username=fityannugroho&show_icons=true&hide_border=true&theme=tokyonight" alt="Fityan's Github Stats" height=160"/>
 </p>
 
 
