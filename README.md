@@ -3,8 +3,7 @@
 Hi, coders! You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia.
 
 - 🚹 Male
-- 🎂 June 2001
-- 🏫 Bachelor of Software Engineering at [UPI](https://www.upi.edu)
+- 🏫 Bachelor of Software Engineering at [Universitas Pendidikan Indonesia](https://www.upi.edu)
 - 🚀 Interest on website & android development
 
 ## Things I code with
