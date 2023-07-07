@@ -137,7 +137,7 @@ You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia. I l
 <a href="mailto:fityannugroho@gmail.com" target="_blank">
   <img alt="Email" src="https://img.shields.io/badge/-Email-ffffff?style=for-the-badge&logo=gmail" />
 </a>
-<a href="https://www.youtube.com/channel/UCTrOx-V_qeEqZ26ZR5pjSIA" target="_blank">
+<a href="https://www.youtube.com/@fityannugroho" target="_blank">
   <img alt="YouTube" src="https://img.shields.io/badge/-YouTube-f70000?style=for-the-badge&logo=youtube&logoColor=white" />
 </a>
 <a href="https://fityannugroho.medium.com" target="_blank">
