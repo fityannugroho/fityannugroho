@@ -2,7 +2,7 @@ import ProjectItem from '@/components/Projects/Item';
 import { Project as TProject } from '@/types/Project';
 import styles from './projects.module.css';
 
-export type ProjectsProps = {
+export interface ProjectsProps {
   projects: TProject[];
 }
 

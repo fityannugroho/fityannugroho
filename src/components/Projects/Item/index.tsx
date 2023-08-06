@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router';
 import Button from '@/components/Button';
 import { Project as TProject } from '@/types/Project';
-import { useRouter } from 'next/router';
 import styles from './project.module.css';
 
-export type ProjectProps = {
+export interface ProjectProps {
   /**
    * The project data.
    */

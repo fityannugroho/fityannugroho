@@ -1,8 +1,8 @@
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import localeEN from '@/locales/en';
 import localeID from '@/locales/id';
 import { Locale } from '@/types/Locale';
-import { useRouter } from 'next/router';
-import { useMemo } from 'react';
 
 const useTranslation = () => {
   const { defaultLocale, locale, locales } = useRouter();

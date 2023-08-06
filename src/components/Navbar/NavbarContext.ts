@@ -1,11 +1,11 @@
 import React from 'react';
 
-export type TNavbarContext = {
+export interface TNavbarContext {
   open: boolean;
   toggle: () => void;
   setOpen: () => void;
   setClose: () => void;
-};
+}
 
 const NavbarContext = React.createContext<TNavbarContext>({
   open: false,
