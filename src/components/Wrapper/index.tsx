@@ -1,6 +1,6 @@
 import styles from './wrapper.module.css';
 
-export type WrapperProps = {
+export interface WrapperProps {
   children?: React.ReactNode;
 }
 

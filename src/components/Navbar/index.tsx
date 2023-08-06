@@ -1,10 +1,10 @@
-import NavbarMenus from '@/components/Navbar/Menus';
-import NavbarContext from '@/components/Navbar/NavbarContext';
-import useTranslation from '@/utils/hooks/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
+import NavbarMenus from '@/components/Navbar/Menus';
+import useTranslation from '@/utils/hooks/useTranslation';
+import NavbarContext from '@/components/Navbar/NavbarContext';
 import styles from './navbar.module.css';
 
 /**

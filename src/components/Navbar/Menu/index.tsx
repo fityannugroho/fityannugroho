@@ -1,12 +1,12 @@
-import NavbarContext from '@/components/Navbar/NavbarContext';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
+import NavbarContext from '@/components/Navbar/NavbarContext';
 import styles from './navbar-menu.module.css';
 
-export type NavbarMenuProps = {
+export interface NavbarMenuProps {
   href: string;
   label: string;
-};
+}
 
 /**
  * The navbar menu component.

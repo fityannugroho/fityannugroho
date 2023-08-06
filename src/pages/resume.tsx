@@ -1,6 +1,6 @@
+import React from 'react';
 import PageHead from '@/components/PageHead';
 import useTranslation from '@/utils/hooks/useTranslation';
-import React from 'react';
 
 /**
  * Endpoint to resume file.

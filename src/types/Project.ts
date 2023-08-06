@@ -4,9 +4,7 @@ export type Project = {
   github: string;
   deploy: string;
   download: string;
-} & {
-  [locale: string]: {
+} & Record<string, {
     title: string;
     description: string;
-  } | undefined;
-};
+  } | undefined>;

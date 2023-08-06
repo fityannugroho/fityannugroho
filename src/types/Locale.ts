@@ -1,4 +1,4 @@
-export type Locale = {
+export interface Locale {
   title: string;
   description: string;
   navMenu1: string;

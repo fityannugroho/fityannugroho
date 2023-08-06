@@ -5,8 +5,8 @@
   },
   "extends": [
     "airbnb",
-    "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/stylistic",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/typescript",
@@ -25,7 +25,6 @@
   "plugins": [
     "@typescript-eslint",
     "react",
-    "react-hooks",
     "jsx-a11y"
   ],
   "rules": {

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 
-export type PageHeadProps = {
+export interface PageHeadProps {
   description?: string;
   keywords?: string;
   title?: string;

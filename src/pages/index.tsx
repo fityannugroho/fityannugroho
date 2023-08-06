@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Button from '@/components/Button';
 import Contacts from '@/components/Contacts';
 import Container from '@/components/Container';
@@ -10,7 +11,6 @@ import Wrapper from '@/components/Wrapper';
 import projects from '@/data/projects.json';
 import { Project as TProject } from '@/types/Project';
 import useTranslation from '@/utils/hooks/useTranslation';
-import Image from 'next/image';
 import styles from './index.module.css';
 
 /**
