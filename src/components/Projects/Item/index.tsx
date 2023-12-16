@@ -39,12 +39,12 @@ export default function ProjectItem({ project }: ProjectProps) {
             rel="noopener noreferrer"
           />
         )}
-        {project.deploy && (
+        {project.link && (
           <Button
-            href={project.deploy}
-            name="Demo"
+            href={project.link}
+            name="Link"
             variant="light-outline"
-            faIcon="fa-solid fa-play"
+            faIcon="fa-solid fa-arrow-up-right-from-square"
             iconOnlyOnMobile
             target="_blank"
             rel="noopener noreferrer"
