@@ -64,7 +64,7 @@ export default function Button<
     ${variant !== 'light' ? styles[variant] : ''}
     ${iconOnlyOnMobile ? styles['icon-only'] : ''}
   `;
-  const title = iconOnly ? name : undefined;
+  const title = others.title ?? name;
 
   const content = (
     <>
