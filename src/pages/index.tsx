@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Button from '@/components/Button';
 import Contacts from '@/components/Contacts';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
+import KofiWidget from '@/components/KofiWidget';
 import Navbar from '@/components/Navbar';
 import PageHead from '@/components/PageHead';
 import Parallax from '@/components/Parallax';
@@ -11,6 +11,7 @@ import Wrapper from '@/components/Wrapper';
 import projects from '@/data/projects.json';
 import { Project as TProject } from '@/types/Project';
 import useTranslation from '@/utils/hooks/useTranslation';
+import Image from 'next/image';
 import styles from './index.module.css';
 
 /**
@@ -63,6 +64,7 @@ export default function HomePage() {
           </Container>
         </main>
         <Footer />
+        <KofiWidget />
       </Wrapper>
     </>
   );

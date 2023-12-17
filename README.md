@@ -15,7 +15,6 @@ You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia. I l
   </a>
 </p>
 
-
 ## Keep Connected
 
 <a href="https://www.linkedin.com/in/fityannugroho" target="_blank">
@@ -23,9 +22,6 @@ You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia. I l
 </a>
 <a href="https://www.twitter.com/fityannugroho" target="_blank">
   <img alt="X / Twitter" src="https://img.shields.io/badge/-X (Twitter)-000000?style=for-the-badge&logo=x" />
-</a>
-<a href="mailto:fityannugroho@gmail.com" target="_blank">
-  <img alt="Email" src="https://img.shields.io/badge/-Email-ffffff?style=for-the-badge&logo=gmail" />
 </a>
 <a href="https://www.youtube.com/@fityannugroho" target="_blank">
   <img alt="YouTube" src="https://img.shields.io/badge/-YouTube-f70000?style=for-the-badge&logo=youtube&logoColor=white" />
@@ -36,6 +32,5 @@ You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia. I l
 
 ## Support Me
 
-- [GitHub Sponsors](https://github.com/sponsors/fityannugroho)
-- [Trakteer](https://trakteer.id/fityannugroho/tip)
-- [Saweria](https://saweria.co/fityannugroho)
+<a href="https://ko-fi.com/J3J1S7T4L" target="_blank"><img height="36" style="border:0px;height:36px;" src="https://storage.ko-fi.com/cdn/kofi1.png?v=3" alt="Buy Me a ko-fi" /></a>
+<a href="https://trakteer.id/fityannugroho/tip" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-3.png" height="36" style="border: 0px; height: 36px; " alt="Trakteer Saya" /></a>
