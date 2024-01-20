@@ -6,9 +6,15 @@
     "jsxImportSource": "react",
     "baseUrl": "/home/fityannugroho/programming/projects/fityannugroho",
     "paths": {
-      "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@helpers/*": ["src/helpers/*"],
       "@layouts/*": ["src/layouts/*"],
     },
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin",
+      },
+    ],
   },
 }
