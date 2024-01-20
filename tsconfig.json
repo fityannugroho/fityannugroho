@@ -4,12 +4,9 @@
     "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": "/home/fityannugroho/programming/projects/fityannugroho",
+    "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@layouts/*": ["src/layouts/*"],
+      "@/*": ["./src/*"],
     },
     "plugins": [
       {
