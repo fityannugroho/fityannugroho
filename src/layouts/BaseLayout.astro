@@ -2,7 +2,7 @@
 import Head from "@/components/Head.astro";
 import "@/styles/globals.css";
 
-type Props = {
+export type Props = {
   title: string;
   description: string;
 };
@@ -25,8 +25,10 @@ const ogImageUrl = new URL("/og.jpg", Astro.url);
 
   if (typeof localStorage !== "undefined") {
     const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      localStorage.setItem(
+        "theme",
+        document.documentElement.classList.contains("dark") ? "dark" : "light",
+      );
     });
 
     observer.observe(document.documentElement, {

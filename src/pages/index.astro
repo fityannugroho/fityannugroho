@@ -1,9 +1,9 @@
 ---
-import Navbar from "@/components/Navbar.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
-<BaseLayout title="foo" description="bar">
-  <Navbar />
+<MainLayout title="foo" description="bar">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
   <h1 class="text-xl text-orange-500">Hello, World!</h1>
-</BaseLayout>
+</MainLayout>
