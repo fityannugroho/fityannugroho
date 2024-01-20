@@ -1,0 +1,21 @@
+---
+import Head from "@/components/Head.astro";
+import "@/styles/globals.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+const ogImageUrl = new URL("/og.jpg", Astro.url);
+---
+
+<html lang="en">
+  <Head {title} {description} ogImage={ogImageUrl} />
+  <body>
+    <main class="p-4">
+      <slot />
+    </main>
+  </body>
+</html>
