@@ -1,0 +1,45 @@
+{
+  "name": "fityannugroho",
+  "version": "0.1.0",
+  "description": "My personal website",
+  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "lint": "prettier --check . && astro check",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fityannugroho/fityannugroho.git"
+  },
+  "keywords": [
+    "personal-website",
+    "astro",
+    "portfolio",
+    "fityannugroho"
+  ],
+  "author": "Fityandhiya Islam Nugroho <fityannugroho@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fityannugroho/fityannugroho/issues"
+  },
+  "homepage": "https://github.com/fityannugroho/fityannugroho#readme",
+  "funding": "https://github.com/sponsors/fityannugroho",
+  "engines": {
+    "node": ">=18.14.1"
+  },
+  "dependencies": {
+    "astro": "^4.2.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.4.1",
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.3.3"
+  }
+}
