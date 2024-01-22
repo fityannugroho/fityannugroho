@@ -2,19 +2,22 @@
 import { ThemeToggle } from "./ThemeToggle";
 ---
 
-<nav
-  class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 md:px-6 lg:px-8 border-b-2"
->
-  {/* Left */}
-  <div class="flex items-center gap-4">
-    <a href="/" class="text-lg font-semibold">fityannugroho</a>
-  </div>
+<nav class="sticky top-0 z-50 border-b-2 py-2">
+  <div class="container flex items-center justify-between">
+    {/* Left */}
+    <div class="flex items-center gap-4">
+      <a href="/" class="flex items-center gap-1">
+        <img src="/f-logo.ico" alt="Logo" class="w-6 h-6" />
+        <span class="text-primary md:inline-block hidden"> fityannugroho </span>
+      </a>
+    </div>
 
-  {/* Right */}
-  <div class="flex items-center gap-4">
-    {/* Icon group */}
-    <div class="flex gap-1">
-      <ThemeToggle client:load variant="ghost" />
+    {/* Right */}
+    <div class="flex items-center gap-4">
+      {/* Icon group */}
+      <div class="flex gap-1">
+        <ThemeToggle client:load variant="ghost" />
+      </div>
     </div>
   </div>
 </nav>

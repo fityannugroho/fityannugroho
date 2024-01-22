@@ -3,14 +3,19 @@ import Navbar from "@/components/Navbar.astro";
 import type { Props as BaseLayoutProps } from "./BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
 
-type Props = BaseLayoutProps;
+type Props = BaseLayoutProps & {
+  /**
+   * The class name for the main element.
+   */
+  mainClass?: string;
+};
 
-const props = Astro.props;
+const { mainClass, ...props } = Astro.props;
 ---
 
 <BaseLayout {...props}>
   <Navbar />
-  <main>
+  <main class={mainClass}>
     <slot />
   </main>
 </BaseLayout>
