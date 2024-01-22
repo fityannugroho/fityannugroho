@@ -9,25 +9,25 @@ import {
 
 export function Hero() {
   return (
-    <div className="container flex flex-col md:flex-row-reverse gap-8 items-center justify-center md:justify-around py-8">
+    <div className="container flex flex-col md:flex-row-reverse gap-8 items-center md:justify-around py-16 md:px-14 lg:px-32">
       {/* Column 1 */}
-      <div>
+      <div className="basis-1/2 md:basis-1/4 flex justify-center items-center">
         <img
           src="profile.png"
           alt="Fityandhiya Islam Nugroho"
-          className="rounded-full w-32 h-32"
+          className="rounded-full w-40 h-40"
         />
       </div>
       {/* Column 2 */}
-      <div>
-        <h1 className="text-2xl mb-2 font-bold md:text-4xl text-center md:text-left">
-          <span className="text-primary">Fityan</span>dhiya Islam
+      <div className="basis-1/2 md:basis-3/4 ">
+        <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left">
+          <span className="text-primary">Fityan</span>dhiya Islam{" "}
           <span className="text-primary">Nugroho</span>
         </h1>
-        <h2 className="text-xl md:text-2xl font-semibold text-center md:text-left mb-4">
+        <h2 className="text-xl md:text-2xl font-semibold text-center md:text-left mt-2">
           Software Engineer
         </h2>
-        <div className="flex gap-2 justify-center md:justify-start">
+        <div className="flex gap-2 justify-center md:justify-start mt-5">
           <IconLink
             href="https://github.com/fityannugroho"
             variant="outline"
