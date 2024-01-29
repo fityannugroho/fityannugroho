@@ -1,13 +1,16 @@
 ---
 import Head from "@/components/Head.astro";
 import "@/styles/globals.css";
+import type { MarkdownLayoutProps } from "astro";
 
-export type Props = {
+type BaseLayoutProps = {
   title: string;
   description: string;
 };
 
-const { title, description } = Astro.props;
+export type Props = MarkdownLayoutProps<BaseLayoutProps> & BaseLayoutProps;
+
+const { title, description } = Astro.props.frontmatter || Astro.props;
 const ogImageUrl = new URL("/og.jpg", Astro.url);
 ---
 

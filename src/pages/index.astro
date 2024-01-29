@@ -1,6 +1,10 @@
 ---
 import { Hero } from "@/components/Hero";
+import { Link } from "@/components/Link";
+import { ProjectCard } from "@/components/ProjectCard";
+import projects from "@/data/projects";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 ---
 
 <MainLayout
@@ -9,16 +13,45 @@ import MainLayout from "@/layouts/MainLayout.astro";
 >
   <Hero />
 
-  <div class="container container-wrapper">
-    <h2 class="text-2xl font-bold mb-4 text-center">About Me</h2>
-    <p class="break-normal">
-      Passionate and innovative software developer with a flair for crafting
-      cutting-edge solutions that seamlessly enhance user experiences.
-      Proficient in PHP, JavaScript, and TypeScript, I specialize in utilizing
-      diverse frameworks like Laravel, React, Next.js, and NestJS to architect
-      robust front-end and back-end applications. My fascination extends beyond
-      conventional realms, as I actively engage with website development,
-      Android projects, and contribute to open source initiatives.
-    </p>
-  </div>
+  <section class="container container-wrapper py-12 md:py-16 max-w-5xl">
+    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+    <div
+      class="py-6 px-4 border-y border-y-primary border-dashed md:text-justify"
+    >
+      <article class="prose dark:prose-invert mx-auto">
+        <p>
+          <strong>Passionate and innovative</strong> software engineer with a flair
+          for crafting cutting-edge solutions that seamlessly enhance user experiences.
+        </p>
+        <p>
+          Proficient in <strong>PHP</strong>, <strong>JavaScript</strong>, and
+          <strong>TypeScript</strong>, I specialize in utilizing diverse
+          <strong>frameworks</strong> like Laravel, React, Next.js, and NestJS to
+          build robust <strong>front-end</strong> and <strong>back-end</strong>
+          applications. I actively engage in website development, Android projects,
+          and contribute to <strong>open-source</strong> projects.
+        </p>
+      </article>
+
+      <div class="flex justify-center mt-4">
+        <Link href="/about">
+          Read More
+          <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
+        </Link>
+      </div>
+    </div>
+  </section>
+
+  <section class="container container-wrapper py-12 md:py-16">
+    <h2 class="text-3xl font-bold mb-6 text-center">My Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.slice(0, 3).map((project) => <ProjectCard data={project} />)}
+    </div>
+    <div class="flex justify-center mt-6">
+      <Link href="/projects">
+        See More Projects
+        <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
+      </Link>
+    </div>
+  </section>
 </MainLayout>

@@ -4,9 +4,12 @@ import { type AnchorHTMLAttributes } from "react";
 import { buttonVariants } from "./ui/button";
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    disableButtonStyle?: boolean;
+  };
 
 export function Link({
+  disableButtonStyle,
   size,
   variant = "link",
   children,
@@ -14,7 +17,15 @@ export function Link({
   ...props
 }: LinkProps) {
   return (
-    <a className={cn(buttonVariants({ variant, size }), className)} {...props}>
+    <a
+      className={cn(
+        disableButtonStyle
+          ? "text-primary underline-offset-4 hover:underline"
+          : buttonVariants({ variant, size }),
+        className,
+      )}
+      {...props}
+    >
       {children}
     </a>
   );

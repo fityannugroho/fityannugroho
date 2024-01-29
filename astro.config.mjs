@@ -1,5 +1,7 @@
+import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 
 // https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables
@@ -18,5 +20,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     react(),
+    mdx(),
   ],
+  output: "hybrid",
+  adapter: vercel(),
 });

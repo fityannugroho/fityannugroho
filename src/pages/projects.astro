@@ -1,0 +1,18 @@
+---
+import { ProjectCard } from "@/components/ProjectCard";
+import projects from "@/data/projects";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="My Projects | fityannugroho"
+  description="fityannugroho's projects"
+>
+  <div class="container container-wrapper py-16">
+    <h1 class="text-3xl font-bold text-center mb-8">My Projects</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => <ProjectCard data={project} />)}
+    </div>
+  </div>
+</MainLayout>

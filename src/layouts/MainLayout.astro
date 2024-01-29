@@ -2,15 +2,19 @@
 import Navbar from "@/components/Navbar.astro";
 import type { Props as BaseLayoutProps } from "./BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
+import Footer from "@/components/Footer.astro";
+import type { MarkdownLayoutProps } from "astro";
 
-type Props = BaseLayoutProps & {
+type MainLayoutProps = BaseLayoutProps & {
   /**
    * The class name for the main element.
    */
   mainClass?: string;
 };
 
-const { mainClass, ...props } = Astro.props;
+export type Props = MarkdownLayoutProps<MainLayoutProps> & MainLayoutProps;
+
+const { mainClass, ...props } = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout {...props}>
@@ -18,4 +22,5 @@ const { mainClass, ...props } = Astro.props;
   <main class={mainClass}>
     <slot />
   </main>
+  <Footer />
 </BaseLayout>
