@@ -1,0 +1,13 @@
+---
+import type { MDXLayoutProps } from "astro";
+import type { Props as MainLayoutProps } from "./MainLayout.astro";
+import MainLayout from "./MainLayout.astro";
+
+export type Props = MDXLayoutProps<MainLayoutProps>;
+
+const props = Astro.props.frontmatter;
+---
+
+<MainLayout {...props}>
+  <slot />
+</MainLayout>
