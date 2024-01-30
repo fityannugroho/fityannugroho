@@ -1,6 +1,7 @@
 ---
 import Head from "@/components/Head.astro";
 import "@/styles/globals.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 export type Props = {
   title: string;
@@ -42,5 +43,6 @@ const ogImageUrl = new URL("/og.jpg", Astro.url);
   <Head {title} {description} ogImage={ogImageUrl} />
   <body>
     <slot />
+    <SpeedInsights />
   </body>
 </html>
