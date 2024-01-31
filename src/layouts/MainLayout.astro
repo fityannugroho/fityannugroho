@@ -1,5 +1,5 @@
 ---
-import Navbar from "@/components/Navbar.astro";
+import { Navbar } from "@/components/Navbar";
 import type { Props as BaseLayoutProps } from "./BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Footer from "@/components/Footer.astro";
@@ -12,10 +12,16 @@ export type Props = BaseLayoutProps & {
 };
 
 const { mainClass, ...props } = Astro.props;
+
+const menus = [
+  { title: "About", href: "/about" },
+  { title: "Projects", href: "/projects" },
+  { title: "Blog", href: "/blog" },
+];
 ---
 
 <BaseLayout {...props}>
-  <Navbar />
+  <Navbar client:idle items={menus} current={Astro.url.pathname} />
   <main class={mainClass}>
     <slot />
   </main>
