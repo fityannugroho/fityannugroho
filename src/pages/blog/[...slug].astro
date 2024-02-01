@@ -37,9 +37,12 @@ const { Content } = await entry.render();
         @fityannugroho
       </a>
 
-      <span class="text-muted-foreground">
+      <time
+        datetime={entry.data.postDate.toISOString()}
+        class="text-muted-foreground"
+      >
         {dayjs(entry.data.postDate).format("MMMM D, YYYY")}
-      </span>
+      </time>
     </div>
     <h1>{entry.data.title}</h1>
 
