@@ -1,0 +1,71 @@
+---
+import { badgeVariants } from "@/components/ui/badge";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import dayjs from "dayjs";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<MainLayout
+  title={entry.data.title + " | fityannugroho"}
+  description={entry.data.summary}
+  className="container container-wrapper"
+>
+  <article class="prose lg:prose-lg dark:prose-invert mx-auto">
+    <div class="flex gap-1 items-center mb-4 flex-wrap">
+      <a
+        href="/about"
+        class="flex gap-2 items-center text-muted-foreground mr-1 text-sm"
+      >
+        <img
+          width="24"
+          height="24"
+          src="/profile.webp"
+          class="not-prose w-6 h-6 rounded-full"
+          alt="fityannugroho"
+        />
+        @fityannugroho
+      </a>
+
+      <span class="text-muted-foreground">
+        {dayjs(entry.data.postDate).format("MMMM D, YYYY")}
+      </span>
+    </div>
+    <h1>{entry.data.title}</h1>
+
+    {
+      entry.data.image && (
+        <img
+          src={entry.data.image.src}
+          alt={entry.data.image.alt}
+          class="w-full rounded-lg"
+        />
+      )
+    }
+
+    <Content />
+
+    <div class="flex gap-1 mt-8 md:mt-16">
+      {
+        entry.data.tags.map((tag) => (
+          <a
+            href={`/blog/tag/${tag}`}
+            class:list={[badgeVariants({ variant: "default" }), "no-underline"]}
+          >
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>
