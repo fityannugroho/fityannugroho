@@ -3,11 +3,24 @@ import type { MDXLayoutProps } from "astro";
 import type { Props as MainLayoutProps } from "./MainLayout.astro";
 import MainLayout from "./MainLayout.astro";
 
-export type Props = MDXLayoutProps<MainLayoutProps>;
+type MdxLayoutFrontmatter = MainLayoutProps & {
+  /**
+   * Disable prose styling for this page.
+   */
+  disableProse?: boolean;
+};
 
-const props = Astro.props.frontmatter;
+export type Props = MDXLayoutProps<MdxLayoutFrontmatter>;
+
+const { disableProse, ...props } = Astro.props.frontmatter;
 ---
 
 <MainLayout {...props}>
-  <slot />
+  <article
+    class:list={[
+      !disableProse && "prose lg:prose-lg dark:prose-invert mx-auto",
+    ]}
+  >
+    <slot />
+  </article>
 </MainLayout>

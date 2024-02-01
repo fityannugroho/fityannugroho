@@ -8,10 +8,14 @@ export type Props = BaseLayoutProps & {
   /**
    * The class name for the main element.
    */
-  mainClass?: string;
+  className?: string;
+  /**
+   * Disables the default container wrapper.
+   */
+  disableWrapper?: boolean;
 };
 
-const { mainClass, ...props } = Astro.props;
+const { className, disableWrapper, ...props } = Astro.props;
 
 const menus = [
   { title: "About", href: "/about" },
@@ -22,7 +26,12 @@ const menus = [
 
 <BaseLayout {...props}>
   <Navbar client:idle items={menus} current={Astro.url.pathname} />
-  <main class={mainClass}>
+  <main
+    class:list={[
+      !disableWrapper && "container container-wrapper py-8 md:py-16",
+      className,
+    ]}
+  >
     <slot />
   </main>
   <Footer />
