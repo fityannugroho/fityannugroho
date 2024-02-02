@@ -14,11 +14,14 @@ const blogEntries = await getCollection("blog");
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {
-      blogEntries.map((blogPostEntry) => (
-        <a href={`/blog/${blogPostEntry.slug}`}>
-          <BlogCard data={blogPostEntry.data} />
-        </a>
-      ))
+      blogEntries
+        // Sort by date in descending order
+        .sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime())
+        .map((blogPostEntry) => (
+          <a href={`/blog/${blogPostEntry.slug}`}>
+            <BlogCard data={blogPostEntry.data} />
+          </a>
+        ))
     }
   </div>
 </MainLayout>
