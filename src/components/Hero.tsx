@@ -13,7 +13,7 @@ export function Hero() {
       {/* Column 1 */}
       <div className="basis-1/2 md:basis-1/4 flex justify-center items-center">
         <img
-          src="profile.webp"
+          src="/profile.webp"
           alt="Fityandhiya Islam Nugroho"
           className="rounded-full w-40 h-40 lg:w-48 lg:h-48"
         />
