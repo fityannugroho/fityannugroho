@@ -2,6 +2,8 @@ import config from "@/lib/config";
 import { type APIRoute } from "astro";
 import { z } from "astro/zod";
 
+export const prerender = false;
+
 function jsonResponse(body: object, status: number = 200) {
   return new Response(
     JSON.stringify({
