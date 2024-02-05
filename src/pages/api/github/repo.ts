@@ -37,6 +37,7 @@ export type GetGitHubRepoResponse = {
   forks: number;
   language: string;
   license?: string;
+  description?: string;
 };
 
 export const GET: APIRoute = async ({ request }) => {
@@ -82,6 +83,7 @@ export const GET: APIRoute = async ({ request }) => {
       forks: body.forks_count,
       language: body.language,
       license: body.license?.name,
+      description: body.description,
     },
   });
 };

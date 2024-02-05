@@ -48,7 +48,15 @@ export function ProjectCard({ data }: ProjectProps) {
     <Card>
       <CardHeader>
         <CardTitle>{data.name}</CardTitle>
-        <CardDescription>{data.description}</CardDescription>
+        {data.description ? (
+          <CardDescription>{data.description}</CardDescription>
+        ) : ghData ? (
+          ghData.description && (
+            <CardDescription>{ghData.description}</CardDescription>
+          )
+        ) : (
+          <Skeleton className="h-5 w-full mt-1" />
+        )}
       </CardHeader>
       {gitHubRepoUrl && (
         <CardContent>
