@@ -17,6 +17,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
+import { Skeleton } from "./ui/skeleton";
 
 type ProjectProps = {
   data: Project;
@@ -49,17 +50,25 @@ export function ProjectCard({ data }: ProjectProps) {
         <CardTitle>{data.name}</CardTitle>
         <CardDescription>{data.description}</CardDescription>
       </CardHeader>
-      {ghData && (
+      {gitHubRepoUrl && (
         <CardContent>
           <div className="flex items-center flex-wrap gap-2 mb-2">
             <div className="flex gap-1 items-center mr-3" title="Stargazers">
               <StarFilledIcon className="w-4 h-4" />
-              <span className="text-sm">{ghData.stars}</span>
+              {ghData ? (
+                <span className="text-sm">{ghData.stars}</span>
+              ) : (
+                <Skeleton className="h-5 w-6" />
+              )}
             </div>
 
             <div className="flex gap-1 items-center mr-3" title="Forks">
               <RepoForkedIcon />
-              <span className="text-sm">{ghData.forks}</span>
+              {ghData ? (
+                <span className="text-sm">{ghData.forks}</span>
+              ) : (
+                <Skeleton className="h-5 w-6" />
+              )}
             </div>
 
             <div
@@ -67,15 +76,23 @@ export function ProjectCard({ data }: ProjectProps) {
               title="Main Programming Language"
             >
               <CodeIcon />
-              <span className="text-sm">{ghData.language}</span>
+              {ghData ? (
+                <span className="text-sm">{ghData.language}</span>
+              ) : (
+                <Skeleton className="h-5 w-20" />
+              )}
             </div>
           </div>
 
-          {ghData.license && (
-            <div className="flex gap-2 items-center" title="License">
-              <LawIcon />
-              <span className="text-sm">{ghData.license}</span>
-            </div>
+          {ghData ? (
+            ghData.license && (
+              <div className="flex gap-2 items-center" title="License">
+                <LawIcon />
+                <span className="text-sm">{ghData.license}</span>
+              </div>
+            )
+          ) : (
+            <Skeleton className="h-5 w-24" />
           )}
         </CardContent>
       )}
