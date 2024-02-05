@@ -1,6 +1,6 @@
 export type Project = {
   name: string;
-  description: string;
+  description?: string;
   links: {
     site?: string;
     download?: string;
@@ -12,7 +12,7 @@ const projects: readonly Project[] = [
   {
     name: "idn-area",
     description:
-      "API that provides information on provinces, regencies, districts, and villages in Indonesia.",
+      "API that provides information about provinces, regencies, districts, villages, and islands in Indonesia.",
     links: {
       site: "https://idn-area.up.railway.app",
       code: "https://github.com/fityannugroho/idn-area",
@@ -32,6 +32,20 @@ const projects: readonly Project[] = [
     links: {
       site: "https://npmjs.org/package/img-dl",
       code: "https://github.com/fityannugroho/img-dl",
+    },
+  },
+  {
+    name: "idn-area-data",
+    links: {
+      site: "https://npmjs.org/package/idn-area-data",
+      code: "https://github.com/fityannugroho/idn-area-data",
+    },
+  },
+  {
+    name: "idn-area-map",
+    links: {
+      site: "https://idn-area-map.vercel.app",
+      code: "https://github.com/fityannugroho/idn-area-map",
     },
   },
   {
