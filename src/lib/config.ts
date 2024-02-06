@@ -2,7 +2,7 @@ export default {
   /**
    * The default title for the website
    */
-  title: "fityannugroho | Software Engineer",
+  title: "Fityandhiya Islam Nugroho | Software Engineer",
   /**
    * The default description for the website
    */
