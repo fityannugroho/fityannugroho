@@ -19,6 +19,7 @@ const { Content } = await entry.render();
 <MainLayout
   title={entry.data.title + " | fityannugroho"}
   description={entry.data.summary}
+  ogImage={entry.data.image?.src}
   className="container container-wrapper"
 >
   <article class="prose lg:prose-lg dark:prose-invert mx-auto">

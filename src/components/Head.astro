@@ -1,19 +1,31 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import config from "@/lib/config";
 
-type Props = {
+export type Props = {
   title?: string | undefined;
   description?: string | undefined;
-  ogImage?: URL | undefined;
+  /**
+   * The path to the image to use for Open Graph.
+   *
+   * Can be a relative path or an absolute URL.
+   *
+   * External URLs are allowed, but it's recommended to use a local image.
+   *
+   * If not provided, the default image will be used.
+   */
+  ogImage?: string | undefined;
 };
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL("og-image.png", canonicalURL);
-}
+const {
+  title = config.title,
+  description = config.description,
+  ogImage = config.ogImage,
+} = Astro.props;
 
-const { title, description, ogImage } = Astro.props;
+const ogImageUrl = new URL(ogImage, canonicalURL);
 ---
 
 <meta charset="utf-8" />
@@ -31,13 +43,13 @@ const { title, description, ogImage } = Astro.props;
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={ogImageUrl} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:image" content={ogImageUrl} />
 
 <ViewTransitions />
 
