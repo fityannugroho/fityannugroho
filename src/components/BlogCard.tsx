@@ -33,7 +33,7 @@ export function BlogCard({ data }: BlogCardProps) {
         <CardDescription>{data.summary}</CardDescription>
       </CardHeader>
       <CardFooter>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {data.tags.map((tag) => (
             <Badge key={tag}>{tag}</Badge>
           ))}
