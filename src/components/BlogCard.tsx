@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "./ui/card";
 
-type Blog = z.infer<typeof blogSchema>;
+type Blog = z.infer<ReturnType<typeof blogSchema>>;
 
 type BlogCardProps = {
   data: Blog;
@@ -19,12 +19,12 @@ export function BlogCard({ data }: BlogCardProps) {
   return (
     <Card>
       <CardHeader>
-        {data.image && (
+        {data.cover && (
           <img
-            src={data.image.src}
-            alt={data.image.alt}
-            title={data.image.title}
             className="rounded-sm mb-4 h-40 w-full object-cover"
+            src={data.cover.file.src}
+            alt={data.cover.alt}
+            title={data.cover.title}
             height={160}
             width={320}
           />
