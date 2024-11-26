@@ -1,11 +1,6 @@
 import type { Project } from "@/data/projects";
 import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
-import {
-  DownloadIcon,
-  ExternalLinkIcon,
-  GithubIcon,
-  StarIcon,
-} from "lucide-react";
+import { DownloadIcon, ExternalLinkIcon, StarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "./Link";
 import {
@@ -18,6 +13,7 @@ import {
 } from "./ui/card";
 import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
 import { Skeleton } from "./ui/skeleton";
+import GithubIcon from "./icons/GithubIcon";
 
 type ProjectProps = {
   data: Project;
