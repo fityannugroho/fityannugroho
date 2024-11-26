@@ -1,11 +1,9 @@
 import { IconLink } from "@/components/Link.tsx";
-import XLogoIcon from "@/components/XLogoIcon";
-import {
-  MailIcon,
-  GithubIcon,
-  InstagramIcon,
-  LinkedinIcon,
-} from "lucide-react";
+import XLogoIcon from "@/components/icons/XIcon";
+import { MailIcon } from "lucide-react";
+import InstagramIcon from "./icons/InstagramIcon";
+import GithubIcon from "./icons/GithubIcon";
+import LinkedinIcon from "./icons/LinkedinIcon";
 
 export function Hero() {
   return (
