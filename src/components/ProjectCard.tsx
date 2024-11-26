@@ -1,11 +1,6 @@
 import type { Project } from "@/data/projects";
 import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
-import {
-  DownloadIcon,
-  ExternalLinkIcon,
-  GitHubLogoIcon,
-  StarFilledIcon,
-} from "@radix-ui/react-icons";
+import { DownloadIcon, ExternalLinkIcon, StarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "./Link";
 import {
@@ -18,6 +13,7 @@ import {
 } from "./ui/card";
 import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
 import { Skeleton } from "./ui/skeleton";
+import GithubIcon from "./icons/GithubIcon";
 
 type ProjectProps = {
   data: Project;
@@ -62,7 +58,7 @@ export function ProjectCard({ data }: ProjectProps) {
         <CardContent>
           <div className="flex items-center flex-wrap gap-2 mb-2">
             <div className="flex gap-1 items-center mr-3" title="Stargazers">
-              <StarFilledIcon className="w-4 h-4" />
+              <StarIcon className="w-4 h-4" />
               {ghData ? (
                 <span className="text-sm">{ghData.stars}</span>
               ) : (
@@ -141,7 +137,7 @@ export function ProjectCard({ data }: ProjectProps) {
                 {gitHubRepoUrl ? "GitHub" : "Source Code"}
               </span>
               {gitHubRepoUrl ? (
-                <GitHubLogoIcon className="w-5 h-5" />
+                <GithubIcon className="w-5 h-5" />
               ) : (
                 <CodeIcon className="w-5 h-5" />
               )}
