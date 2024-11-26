@@ -1,8 +1,8 @@
+import { cn } from "@/lib/utils";
 import { MenuIcon } from "lucide-react";
+import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 type NavMenuItemProps = {
   title: string;
