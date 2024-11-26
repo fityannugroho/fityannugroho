@@ -1,5 +1,5 @@
-import type { blogSchema } from "@/content/config";
 import type { z } from "astro:content";
+import type { blogSchema } from "@/content/config";
 import { Badge } from "./ui/badge";
 import {
   Card,

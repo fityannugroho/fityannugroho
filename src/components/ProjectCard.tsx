@@ -3,6 +3,8 @@ import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
 import { DownloadIcon, ExternalLinkIcon, StarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "./Link";
+import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
+import GithubIcon from "./icons/GithubIcon";
 import {
   Card,
   CardContent,
@@ -11,9 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
 import { Skeleton } from "./ui/skeleton";
-import GithubIcon from "./icons/GithubIcon";
 
 type ProjectProps = {
   data: Project;

@@ -1,4 +1,4 @@
-import { defineCollection, z, type SchemaContext } from "astro:content";
+import { type SchemaContext, defineCollection, z } from "astro:content";
 
 export const blogSchema = (ctx: SchemaContext) =>
   z.object({
