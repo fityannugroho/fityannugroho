@@ -1,11 +1,11 @@
 import { IconLink } from "@/components/Link.tsx";
 import XLogoIcon from "@/components/XLogoIcon";
 import {
-  EnvelopeClosedIcon,
-  GitHubLogoIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
+  MailIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+} from "lucide-react";
 
 export function Hero() {
   return (
@@ -34,7 +34,7 @@ export function Hero() {
             target="_blank"
             label="GitHub"
           >
-            <GitHubLogoIcon className="w-5 h-5" />
+            <GithubIcon className="w-5 h-5" />
           </IconLink>
           <IconLink
             href="https://www.linkedin.com/in/fityannugroho"
@@ -42,7 +42,7 @@ export function Hero() {
             target="_blank"
             label="LinkedIn"
           >
-            <LinkedInLogoIcon className="w-5 h-5" />
+            <LinkedinIcon className="w-5 h-5" />
           </IconLink>
           <IconLink
             href="https://twitter.com/fityannugroho"
@@ -58,14 +58,14 @@ export function Hero() {
             target="_blank"
             label="Instagram"
           >
-            <InstagramLogoIcon className="w-5 h-5" />
+            <InstagramIcon className="w-5 h-5" />
           </IconLink>
           <IconLink
             href="mailto:fityannugroho@gmail.com"
             variant="outline"
             label="Email"
           >
-            <EnvelopeClosedIcon className="w-5 h-5" />
+            <MailIcon className="w-5 h-5" />
           </IconLink>
         </div>
       </div>

@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon } from "lucide-react";
 import * as React from "react";
 
 type Props = React.ComponentPropsWithRef<typeof Button>;

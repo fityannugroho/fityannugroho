@@ -1,4 +1,4 @@
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { MenuIcon } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -68,7 +68,7 @@ export function Navbar({ items, current }: NavbarProps) {
             className="md:hidden"
             onClick={() => setOpen(!open)}
           >
-            <HamburgerMenuIcon className="w-6 h-6" />
+            <MenuIcon className="w-6 h-6" />
             <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
