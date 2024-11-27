@@ -96,7 +96,7 @@ export function ProjectCard({ data }: ProjectProps) {
       <CardHeader>
         <CardTitle>{data.name}</CardTitle>
         <CardDescription>
-          {ghData.description ?? data.description}
+          {data.description ?? ghData.description}
         </CardDescription>
       </CardHeader>
 
