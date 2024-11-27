@@ -42,10 +42,8 @@ export function ProjectCard({ data }: ProjectProps) {
           <CardTitle>
             <Skeleton className="h-5 w-24" />
           </CardTitle>
-          <CardDescription>
-            <Skeleton className="h-4 w-60" />
-            <Skeleton className="h-4 w-60 mt-1" />
-          </CardDescription>
+          <Skeleton className="h-4 w-60" />
+          <Skeleton className="h-4 w-60 mt-1" />
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-2">
