@@ -1,7 +1,7 @@
 import type { Project } from "@/data/projects";
+import { useFetch } from "@/hooks/useFetch";
 import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
 import { DownloadIcon, ExternalLinkIcon, StarIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Link } from "./Link";
 import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
 import GithubIcon from "./icons/GithubIcon";
@@ -23,56 +23,81 @@ const gitHubRepoRegex =
   /^http(?:s)?:\/{2}(?:www.)?github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
 
 export function ProjectCard({ data }: ProjectProps) {
-  const [gitHubRepoUrl, ghUsername, ghRepo] =
-    data.links.code?.match(gitHubRepoRegex) ?? [];
+  const [, ghUsername, ghRepo] = data.links.code?.match(gitHubRepoRegex) ?? [];
 
-  const [ghData, setGhData] = useState<GetGitHubRepoResponse>();
+  const {
+    data: ghData,
+    loading,
+    error,
+  } = useFetch<GetGitHubRepoResponse>(
+    ghUsername && ghRepo
+      ? `/api/github/repo?username=${ghUsername}&repo=${ghRepo}`
+      : undefined,
+  );
 
-  useEffect(() => {
-    fetch(`/api/github/repo?username=${ghUsername}&repo=${ghRepo}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-        return res.json();
-      })
-      .then((body) => setGhData(body.data))
-      .catch((err) => console.error(err));
-  }, [ghUsername, ghRepo]);
+  if (loading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            <Skeleton className="h-5 w-24" />
+          </CardTitle>
+          <CardDescription>
+            <Skeleton className="h-4 w-60" />
+            <Skeleton className="h-4 w-60 mt-1" />
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-5 w-16" />
+            <Skeleton className="h-5 w-16" />
+            <Skeleton className="h-5 w-16" />
+          </div>
+          <Skeleton className="h-5 w-24 mt-2" />
+        </CardContent>
+        <CardFooter>
+          <div className="flex gap-2 w-full">
+            <Skeleton className="h-8 w-24" />
+            <Skeleton className="h-8 w-24" />
+            <Skeleton className="h-8 w-24" />
+          </div>
+        </CardFooter>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>{data.name}</CardTitle>
+          <CardDescription>{error.message}</CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>{data.name}</CardTitle>
-        {data.description ? (
-          <CardDescription>{data.description}</CardDescription>
-        ) : ghData ? (
-          ghData.description && (
-            <CardDescription>{ghData.description}</CardDescription>
-          )
-        ) : (
-          <Skeleton className="h-5 w-full mt-1" />
-        )}
+        <CardDescription>
+          {ghData.description ?? data.description}
+        </CardDescription>
       </CardHeader>
-      {gitHubRepoUrl && (
+
+      {ghData && (
         <CardContent>
           <div className="flex items-center flex-wrap gap-2 mb-2">
             <div className="flex gap-1 items-center mr-3" title="Stargazers">
               <StarIcon className="w-4 h-4" />
-              {ghData ? (
-                <span className="text-sm">{ghData.stars}</span>
-              ) : (
-                <Skeleton className="h-5 w-6" />
-              )}
+
+              <span className="text-sm">{ghData.stars}</span>
             </div>
 
             <div className="flex gap-1 items-center mr-3" title="Forks">
               <RepoForkedIcon />
-              {ghData ? (
-                <span className="text-sm">{ghData.forks}</span>
-              ) : (
-                <Skeleton className="h-5 w-6" />
-              )}
+              <span className="text-sm">{ghData.forks}</span>
             </div>
 
             <div
@@ -80,26 +105,19 @@ export function ProjectCard({ data }: ProjectProps) {
               title="Main Programming Language"
             >
               <CodeIcon />
-              {ghData ? (
-                <span className="text-sm">{ghData.language}</span>
-              ) : (
-                <Skeleton className="h-5 w-20" />
-              )}
+              <span className="text-sm">{ghData.language}</span>
             </div>
           </div>
 
-          {ghData ? (
-            ghData.license && (
-              <div className="flex gap-2 items-center" title="License">
-                <LawIcon />
-                <span className="text-sm">{ghData.license}</span>
-              </div>
-            )
-          ) : (
-            <Skeleton className="h-5 w-24" />
+          {ghData.license && (
+            <div className="flex gap-2 items-center" title="License">
+              <LawIcon />
+              <span className="text-sm">{ghData.license}</span>
+            </div>
           )}
         </CardContent>
       )}
+
       <CardFooter>
         <div className="flex gap-2 w-full">
           {data.links.site && (
@@ -134,9 +152,9 @@ export function ProjectCard({ data }: ProjectProps) {
               target="_blank"
             >
               <span className="sr-only">
-                {gitHubRepoUrl ? "GitHub" : "Source Code"}
+                {ghData ? "GitHub" : "Source Code"}
               </span>
-              {gitHubRepoUrl ? (
+              {ghData ? (
                 <GithubIcon className="w-5 h-5" />
               ) : (
                 <CodeIcon className="w-5 h-5" />

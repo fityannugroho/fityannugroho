@@ -10,10 +10,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {
       projects.map((project) => (
-        <ProjectCard
-          data={project}
-          client:visible
-        />
+        <ProjectCard data={project} client:only="react" />
       ))
     }
   </div>
