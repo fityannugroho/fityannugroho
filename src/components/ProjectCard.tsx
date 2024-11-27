@@ -1,10 +1,17 @@
 import type { Project } from "@/data/projects";
 import { useFetch } from "@/hooks/useFetch";
 import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
-import { DownloadIcon, ExternalLinkIcon, StarIcon } from "lucide-react";
+import {
+  DownloadIcon,
+  ExternalLinkIcon,
+  RefreshCwIcon,
+  StarIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
 import { Link } from "./Link";
 import { CodeIcon, LawIcon, RepoForkedIcon } from "./Octicons";
 import GithubIcon from "./icons/GithubIcon";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
@@ -66,11 +73,20 @@ export function ProjectCard({ data }: ProjectProps) {
 
   if (error) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
-          <CardDescription>{error.message}</CardDescription>
-        </CardHeader>
+      <Card className="flex flex-col items-center justify-center p-6 space-y-4 text-center">
+        <p className="text-red-500 dark:text-red-400 flex items-center gap-1">
+          <TriangleAlertIcon className="w-6 h-6 inline-block ml-2" />
+          Failed to fetch repository data
+        </p>
+
+        <Button
+          variant="outline"
+          onClick={() => window.location.reload()}
+          className="flex items-center gap-1"
+        >
+          <RefreshCwIcon className="w-4 h-4" />
+          Refresh Page
+        </Button>
       </Card>
     );
   }
