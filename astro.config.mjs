@@ -24,6 +24,7 @@ export default defineConfig({
   ],
   output: "hybrid",
   adapter: vercel({
+    isr: true,
     webAnalytics: {
       enabled: true,
     },
