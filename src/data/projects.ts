@@ -12,10 +12,19 @@ const projects: readonly Project[] = [
   {
     name: "idn-area",
     description:
-      "API that provides information about provinces, regencies, districts, villages, and islands in Indonesia.",
+      "API that provides information about provinces, regencies, districts, villages, and islands in Indonesia 🇮🇩",
     links: {
       site: "https://idn-area.up.railway.app",
       code: "https://github.com/fityannugroho/idn-area",
+    },
+  },
+  {
+    name: "idn-area-map",
+    description:
+      "Interactive map to explore provinces, regencies, districts, village, and islands in Indonesia 🇮🇩",
+    links: {
+      site: "https://idn-area-map.vercel.app",
+      code: "https://github.com/fityannugroho/idn-area-map",
     },
   },
   {
@@ -39,13 +48,6 @@ const projects: readonly Project[] = [
     links: {
       site: "https://npmjs.org/package/idn-area-data",
       code: "https://github.com/fityannugroho/idn-area-data",
-    },
-  },
-  {
-    name: "idn-area-map",
-    links: {
-      site: "https://idn-area-map.vercel.app",
-      code: "https://github.com/fityannugroho/idn-area-map",
     },
   },
   {
@@ -73,6 +75,18 @@ const projects: readonly Project[] = [
       download:
         "https://github.com/fityannugroho/lister/releases/download/v1.0.0/app-release.apk",
       code: "https://github.com/fityannugroho/lister",
+    },
+  },
+  {
+    name: "Nest.js + fastify template",
+    links: {
+      code: "https://github.com/fityannugroho/nestjs-fastify-boilerplate",
+    },
+  },
+  {
+    name: "Open Music API",
+    links: {
+      code: "https://github.com/fityannugroho/openmusic-api",
     },
   },
 ] as const;
