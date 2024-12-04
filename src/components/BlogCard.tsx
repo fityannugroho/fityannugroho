@@ -1,5 +1,4 @@
-import type { z } from "astro:content";
-import type { blogSchema } from "@/content/config";
+import type { CollectionEntry } from "astro:content";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -9,10 +8,8 @@ import {
   CardTitle,
 } from "./ui/card";
 
-type Blog = z.infer<ReturnType<typeof blogSchema>>;
-
 type BlogCardProps = {
-  data: Blog;
+  data: CollectionEntry<"blog">["data"];
 };
 
 export function BlogCard({ data }: BlogCardProps) {

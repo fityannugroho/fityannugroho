@@ -15,7 +15,7 @@ const blogEntries = await getCollection("blog");
         // Sort by date in descending order
         .sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime())
         .map((blogPostEntry) => (
-          <a href={`/blog/${blogPostEntry.slug}`}>
+          <a href={`/blog/${blogPostEntry.id}`}>
             <BlogCard data={blogPostEntry.data} />
           </a>
         ))
