@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
+    "allowJs": true, // required, and included with all Astro templates
     "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -13,5 +14,7 @@
         "name": "@astrojs/ts-plugin"
       }
     ]
-  }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }

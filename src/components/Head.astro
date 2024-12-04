@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import config from "@/lib/config";
 
 export type Props = {
@@ -51,7 +51,7 @@ const ogImageUrl = new URL(ogImage, canonicalURL);
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImageUrl} />
 
-<ViewTransitions />
+<ClientRouter />
 
 <!--
 Copyright (c) 2023 AREA44
