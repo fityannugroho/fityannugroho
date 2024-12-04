@@ -1,9 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import { Link } from "@/components/Link";
 import { ProjectCard } from "@/components/ProjectCard";
-import projects from "@/data/projects";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { ExternalLinkIcon } from "lucide-react";
+
+const projects = await getCollection("projects");
 ---
 
 <MainLayout title="My Projects | Fityandhiya Islam Nugroho">
@@ -11,7 +13,7 @@ import { ExternalLinkIcon } from "lucide-react";
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {projects.map((project) => (
-      <ProjectCard data={project} client:only="react" />
+      <ProjectCard data={project.data} client:only="react" />
     ))}
   </div>
 
