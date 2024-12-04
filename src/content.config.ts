@@ -18,7 +18,7 @@ export const blogSchema = (ctx: SchemaContext) =>
   });
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/data/blog" }),
+  loader: glob({ pattern: "**/[^_]*.(md|mdx)", base: "./src/data/blog" }),
   schema: (ctx) => blogSchema(ctx),
 });
 
