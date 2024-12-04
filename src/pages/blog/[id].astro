@@ -1,26 +1,26 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
 import dayjs from "dayjs";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  const blogs = await getCollection("blog");
+  return blogs.map((blog) => ({
+    params: { id: blog.id },
+    props: { blog },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { blog } = Astro.props;
+const { Content } = await render(blog);
 ---
 
 <MainLayout
-  title={entry.data.title + " | Fityandhiya Islam Nugroho"}
-  description={entry.data.summary}
-  ogImage={entry.data.cover?.file.src}
+  title={blog.data.title + " | Fityandhiya Islam Nugroho"}
+  description={blog.data.summary}
+  ogImage={blog.data.cover?.file.src}
   className="container container-wrapper"
 >
   <article class="prose lg:prose-lg dark:prose-invert mx-auto">
@@ -40,20 +40,20 @@ const { Content } = await entry.render();
       </a>
 
       <time
-        datetime={entry.data.postDate.toISOString()}
+        datetime={blog.data.postDate.toISOString()}
         class="text-muted-foreground"
       >
-        {dayjs(entry.data.postDate).format("MMMM D, YYYY")}
+        {dayjs(blog.data.postDate).format("MMMM D, YYYY")}
       </time>
     </div>
-    <h1>{entry.data.title}</h1>
+    <h1>{blog.data.title}</h1>
 
     {
-      entry.data.cover && (
+      blog.data.cover && (
         <Image
-          src={entry.data.cover.file}
-          alt={entry.data.cover.alt}
-          title={entry.data.cover.title}
+          src={blog.data.cover.file}
+          alt={blog.data.cover.alt}
+          title={blog.data.cover.title}
         />
       )
     }
@@ -62,7 +62,7 @@ const { Content } = await entry.render();
 
     <div class="flex gap-2 mt-8 md:mt-16">
       {
-        entry.data.tags.map((tag) => (
+        blog.data.tags.map((tag) => (
           <a
             href={`/blog/tag/${tag}`}
             class:list={[badgeVariants({ variant: "default" }), "no-underline"]}

@@ -1,4 +1,4 @@
-import type { Project } from "@/data/projects";
+import type { CollectionEntry } from "astro:content";
 import { useFetch } from "@/hooks/useFetch";
 import type { GetGitHubRepoResponse } from "@/pages/api/github/repo";
 import {
@@ -23,7 +23,7 @@ import {
 import { Skeleton } from "./ui/skeleton";
 
 type ProjectProps = {
-  data: Project;
+  data: CollectionEntry<"projects">["data"];
 };
 
 const gitHubRepoRegex =

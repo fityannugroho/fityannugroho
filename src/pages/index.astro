@@ -4,11 +4,11 @@ import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
 import { ProjectCard } from "@/components/ProjectCard";
-import projects from "@/data/projects";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { ArrowRightIcon } from "lucide-react";
 
 const blogEntries = await getCollection("blog");
+const projects = await getCollection("projects");
 ---
 
 <MainLayout disableWrapper>
@@ -48,7 +48,7 @@ const blogEntries = await getCollection("blog");
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         projects.slice(0, 3).map((project) => (
-          <ProjectCard data={project} client:only="react" />
+          <ProjectCard data={project.data} client:only="react" />
         ))
       }
     </div>
@@ -69,7 +69,7 @@ const blogEntries = await getCollection("blog");
           // Sort by date in descending order
           .sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime())
           .map((blogPostEntry) => (
-            <a href={`/blog/${blogPostEntry.slug}`}>
+            <a href={`/blog/${blogPostEntry.id}`}>
               <BlogCard data={blogPostEntry.data} />
             </a>
           ))
