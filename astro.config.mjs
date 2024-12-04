@@ -2,7 +2,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 // https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables
 const VERCEL_PREVIEW_SITE =
@@ -27,4 +27,18 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  env: {
+    schema: {
+      GITHUB_TOKEN: envField.string({
+        optional: true,
+        context: "server",
+        access: "secret",
+      }),
+      PAYLOAD_CMS_URL: envField.string({
+        optional: true,
+        context: "server",
+        access: "secret",
+      }),
+    },
+  },
 });
