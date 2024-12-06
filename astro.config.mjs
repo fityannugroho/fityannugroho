@@ -36,7 +36,7 @@ export default defineConfig({
       }),
       PUBLIC_PAYLOAD_CMS_URL: envField.string({
         optional: true,
-        context: "server",
+        context: "client",
         access: "public",
         default: "https://fityannugroho-cms.vercel.app",
       }),

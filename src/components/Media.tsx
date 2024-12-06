@@ -1,3 +1,4 @@
+import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
 import type React from "react";
 
 interface MediaProps {
@@ -18,7 +19,7 @@ const transformUrl = (url: string): string => {
 
   // Check if the URL starts with '/' and is not an absolute URL
   if (url.startsWith("/") && !url.startsWith("//")) {
-    return `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}${url}`;
+    return `${PUBLIC_PAYLOAD_CMS_URL}${url}`;
   }
 
   return url;

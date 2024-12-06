@@ -1,3 +1,5 @@
+import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
+
 export type MimeType =
   | "png"
   | "jpg"
@@ -48,10 +50,10 @@ export type PayloadCMSPost = {
   _status: boolean;
 };
 
-const PAYLOAD_URL = `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}/api`;
+const payloadApiUrl = PUBLIC_PAYLOAD_CMS_URL;
 
 export async function getPosts() {
-  const res = await fetch(`${PAYLOAD_URL}/posts`);
+  const res = await fetch(`${payloadApiUrl}/api/posts`);
   const data = (await res.json()) as {
     docs: PayloadCMSPost[];
     hasNextPage: boolean;
@@ -69,11 +71,11 @@ export async function getPosts() {
 }
 
 export async function getPost(id: string) {
-  const res = await fetch(`${PAYLOAD_URL}/posts/${id}`);
+  const res = await fetch(`${payloadApiUrl}/api/posts/${id}`);
   const data = (await res.json()) as PayloadCMSPost;
   return data;
 }
 
 export function getImageSrc(imgUrl: string) {
-  return `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}/${imgUrl}`;
+  return `${payloadApiUrl}/${imgUrl}`;
 }
