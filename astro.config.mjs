@@ -38,6 +38,7 @@ export default defineConfig({
         optional: true,
         context: "server",
         access: "secret",
+        default: "https://fityannugroho-cms.vercel.app",
       }),
     },
   },
