@@ -48,7 +48,7 @@ export type PayloadCMSPost = {
   _status: boolean;
 };
 
-const PAYLOAD_URL = `${import.meta.env.PAYLOAD_CMS_URL}/api`;
+const PAYLOAD_URL = `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}/api`;
 
 export async function getPosts() {
   const res = await fetch(`${PAYLOAD_URL}/posts`);
@@ -75,5 +75,5 @@ export async function getPost(id: string) {
 }
 
 export function getImageSrc(imgUrl: string) {
-  return `${import.meta.env.PAYLOAD_CMS_URL}/${imgUrl}`;
+  return `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}/${imgUrl}`;
 }

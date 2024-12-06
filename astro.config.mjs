@@ -34,7 +34,7 @@ export default defineConfig({
         context: "server",
         access: "secret",
       }),
-      PAYLOAD_CMS_URL: envField.string({
+      PUBLIC_PAYLOAD_CMS_URL: envField.string({
         optional: true,
         context: "server",
         access: "public",

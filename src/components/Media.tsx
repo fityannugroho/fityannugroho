@@ -18,7 +18,7 @@ const transformUrl = (url: string): string => {
 
   // Check if the URL starts with '/' and is not an absolute URL
   if (url.startsWith("/") && !url.startsWith("//")) {
-    return `${import.meta.env.PAYLOAD_CMS_URL}${url}`;
+    return `${import.meta.env.PUBLIC_PAYLOAD_CMS_URL}${url}`;
   }
 
   return url;
