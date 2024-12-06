@@ -175,6 +175,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 href={node.fields.url}
                 target={node.fields.newTab ? "_blank" : "_self"}
                 disableButtonStyle
+                key={key}
               >
                 {serializeLexical({ nodes: node.children })}
               </Link>
