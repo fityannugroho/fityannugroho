@@ -1,4 +1,4 @@
-import config from "@/lib/config";
+import { GITHUB_TOKEN } from "astro:env/server";
 import type { APIRoute } from "astro";
 import { z } from "astro/zod";
 
@@ -64,8 +64,8 @@ export const GET: APIRoute = async ({ request }) => {
       mode: "cors",
       headers: {
         Accept: "application/vnd.github+json",
-        ...(config.githubToken && {
-          Authorization: `Bearer ${config.githubToken}`,
+        ...(GITHUB_TOKEN && {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
         }),
       },
     },

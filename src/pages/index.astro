@@ -1,13 +1,16 @@
 ---
 import { getCollection } from "astro:content";
-import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
+import { PayloadCMSPostCard } from "@/components/PayloadCMSPostCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { getPosts } from "@/lib/payload-cms";
 import { ArrowRightIcon } from "lucide-react";
 
-const blogEntries = await getCollection("blog");
+const posts = await getPosts();
+posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
 const projects = await getCollection("projects");
 ---
 
@@ -46,11 +49,9 @@ const projects = await getCollection("projects");
   <section class="container container-wrapper py-12 md:py-16">
     <h2 class="text-3xl font-bold mb-6 text-center">My Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        projects.slice(0, 3).map((project) => (
-          <ProjectCard data={project.data} client:only="react" />
-        ))
-      }
+      {projects.slice(0, 3).map((project) => (
+        <ProjectCard data={project.data} client:only="react" />
+      ))}
     </div>
     <div class="flex justify-center mt-6">
       <Link href="/projects">
@@ -63,28 +64,20 @@ const projects = await getCollection("projects");
   <section class="container container-wrapper py-12 md:py-16">
     <h2 class="text-3xl font-bold mb-6 text-center">Blog Posts</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        blogEntries
-          .slice(0, 3)
-          // Sort by date in descending order
-          .sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime())
-          .map((blogPostEntry) => (
-            <a href={`/blog/${blogPostEntry.id}`}>
-              <BlogCard data={blogPostEntry.data} />
-            </a>
-          ))
-      }
+      {posts.slice(0, 3).map((post) =>(
+        <a href={`/blog/${post.slug}`}>
+          <PayloadCMSPostCard data={post} />
+        </a>
+      ))}
     </div>
 
-    {
-      blogEntries.length > 3 && (
-        <div class="flex justify-center mt-6">
-          <Link href="/blog">
-            See More Blog Posts
-            <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
-          </Link>
-        </div>
-      )
-    }
+    {posts.length > 3 && (
+      <div class="flex justify-center mt-6">
+        <Link href="/blog">
+          See More Blog Posts
+          <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
+        </Link>
+      </div>
+    )}
   </section>
 </MainLayout>

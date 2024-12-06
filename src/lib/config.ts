@@ -12,5 +12,4 @@ export default {
    * The default image for the website
    */
   ogImage: "/og-image.png",
-  githubToken: import.meta.env.GITHUB_TOKEN as string | undefined,
 } as const;
