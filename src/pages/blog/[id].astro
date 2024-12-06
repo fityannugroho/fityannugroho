@@ -1,26 +1,34 @@
 ---
-import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import RichText from "@/components/RichText";
 import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { getImageSrc, getPosts } from "@/lib/payload-cms";
 import dayjs from "dayjs";
 
+// The getStaticPaths() is required for static Astro sites.
+// If using SSR, you will not need this function.
 export async function getStaticPaths() {
-  const blogs = await getCollection("blog");
-  return blogs.map((blog) => ({
-    params: { id: blog.id },
-    props: { blog },
-  }));
+  let posts = await getPosts();
+
+  return posts.map((post) => {
+    return {
+      params: { id: post.slug, slug: post.slug },
+      props: {
+        blog: {
+          data: post,
+        },
+        content: post.content,
+      },
+    };
+  });
 }
 
-const { blog } = Astro.props;
-const { Content } = await render(blog);
+const { blog, content } = Astro.props;
 ---
-
 <MainLayout
   title={blog.data.title + " | Fityandhiya Islam Nugroho"}
-  description={blog.data.summary}
-  ogImage={blog.data.cover?.file.src}
+  description={blog.data.meta.description}
+  ogImage={getImageSrc(blog.data.meta.image.url)}
   className="container container-wrapper"
 >
   <article class="prose lg:prose-lg dark:prose-invert mx-auto">
@@ -40,37 +48,36 @@ const { Content } = await render(blog);
       </a>
 
       <time
-        datetime={blog.data.postDate.toISOString()}
+        datetime={new Date(blog.data.createdAt).toISOString()}
         class="text-muted-foreground"
       >
-        {dayjs(blog.data.postDate).format("MMMM D, YYYY")}
+        {dayjs(blog.data.createdAt).format("MMMM D, YYYY")}
       </time>
     </div>
     <h1>{blog.data.title}</h1>
-
     {
-      blog.data.cover && (
-        <Image
-          src={blog.data.cover.file}
-          alt={blog.data.cover.alt}
-          title={blog.data.cover.title}
+      blog.data.meta.image && (
+        <img
+          src={getImageSrc(blog.data.meta.image.url)}
+          alt={blog.data.meta.image.alt}
+          title={blog.data.meta.title}
         />
       )
     }
 
-    <Content />
+    {content && (
+      <RichText content={content} />
+    )}
 
     <div class="flex gap-2 mt-8 md:mt-16">
-      {
-        blog.data.tags.map((tag) => (
-          <a
-            href={`/blog/tag/${tag}`}
-            class:list={[badgeVariants({ variant: "default" }), "no-underline"]}
-          >
-            {tag}
-          </a>
-        ))
-      }
+      {blog.data.categories.map((tag) => tag.title).map((tag) => (
+        <a
+          href={`/blog/tag/${tag}`}
+          class:list={[badgeVariants({ variant: "default" }), "no-underline"]}
+        >
+          {tag}
+        </a>
+      ))}
     </div>
   </article>
 </MainLayout>

@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import { badgeVariants } from "@/components/ui/badge";
+import MainLayout from "@/layouts/MainLayout.astro";
+import dayjs from "dayjs";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blog");
+  return blogs.map((blog) => ({
+    params: { id: blog.id },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
+const { Content } = await render(blog);
+---
+
+<MainLayout
+  title={blog.data.title + " | Fityandhiya Islam Nugroho"}
+  description={blog.data.summary}
+  ogImage={blog.data.cover?.file.src}
+  className="container container-wrapper"
+>
+  <article class="prose lg:prose-lg dark:prose-invert mx-auto">
+    <div class="flex gap-1 items-center mb-4 flex-wrap">
+      <a
+        href="/about"
+        class="flex gap-2 items-center text-muted-foreground mr-1 text-sm"
+      >
+        <img
+          width="24"
+          height="24"
+          src="/profile.webp"
+          class="not-prose w-6 h-6 rounded-full"
+          alt="fityannugroho"
+        />
+        @fityannugroho
+      </a>
+
+      <time
+        datetime={blog.data.postDate.toISOString()}
+        class="text-muted-foreground"
+      >
+        {dayjs(blog.data.postDate).format("MMMM D, YYYY")}
+      </time>
+    </div>
+    <h1>{blog.data.title}</h1>
+
+    {
+      blog.data.cover && (
+        <Image
+          src={blog.data.cover.file}
+          alt={blog.data.cover.alt}
+          title={blog.data.cover.title}
+        />
+      )
+    }
+
+    <Content />
+
+    <div class="flex gap-2 mt-8 md:mt-16">
+      {
+        blog.data.tags.map((tag) => (
+          <a
+            href={`/blog/tag/${tag}`}
+            class:list={[badgeVariants({ variant: "default" }), "no-underline"]}
+          >
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>

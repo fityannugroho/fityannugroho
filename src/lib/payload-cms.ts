@@ -1,3 +1,13 @@
+export type MimeType =
+  | "png"
+  | "jpg"
+  | "jpeg"
+  | "tiff"
+  | "webp"
+  | "gif"
+  | "svg"
+  | "avif";
+
 export type PayloadCMSPost = {
   id: number;
   title: string;

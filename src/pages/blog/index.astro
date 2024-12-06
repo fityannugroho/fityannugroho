@@ -1,58 +1,33 @@
 ---
 import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
+import { PayloadCMSPostCard } from "@/components/PayloadCMSPostCard";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { getImageSrc, getPosts } from "@/lib/payload-cms";
+import { getPosts } from "@/lib/payload-cms";
 
 const blogEntries = await getCollection("blog");
 const posts = await getPosts();
 
-type MimeType =
-  | "png"
-  | "jpg"
-  | "jpeg"
-  | "tiff"
-  | "webp"
-  | "gif"
-  | "svg"
-  | "avif";
+// Sort by date in descending order
+blogEntries.sort(
+  (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 ---
 
 <MainLayout title="Blog | Fityandhiya Islam Nugroho">
   <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Blog</h1>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {
-      blogEntries
-        // Sort by date in descending order
-        .sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime())
-        .map((blogPostEntry) => (
-          <a href={`/blog/${blogPostEntry.id}`}>
-            <BlogCard data={blogPostEntry.data} />
-          </a>
-        ))
-    }
     {posts.map((post) =>(
       <a href={`/blog/${post.slug}`}>
-        <BlogCard
-          data={{
-            title: post.title,
-            summary: post.meta.description,
-            postDate: post.createdAt,
-            tags: post.categories.map((tag) => tag.title),
-            cover: {
-              ...(post.meta.image && {
-                file: {
-                  src: getImageSrc(post.meta.image.url),
-                  width: post.meta.image.width,
-                  height: post.meta.image.height,
-                  format: post.meta.image.mimeType.split('/').pop() as MimeType,
-                },
-                alt: post.meta.image.alt,
-              })
-            }
-          }}
-        />
+        <PayloadCMSPostCard data={post} />
+      </a>
+    ))}
+
+    {blogEntries.map((blogPostEntry) => (
+      <a href={`/blog/static/${blogPostEntry.id}`}>
+        <BlogCard data={blogPostEntry.data} />
       </a>
     ))}
   </div>
