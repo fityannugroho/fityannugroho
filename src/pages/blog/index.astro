@@ -12,7 +12,9 @@ const posts = await getPosts();
 blogEntries.sort(
   (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
 );
-posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+posts.sort(
+  (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+);
 ---
 
 <MainLayout title="Blog | Fityandhiya Islam Nugroho">

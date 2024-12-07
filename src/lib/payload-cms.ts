@@ -26,7 +26,7 @@ export type PayloadCMSPost = {
   }[];
   meta: {
     title: string;
-    image: {
+    image?: {
       id: string;
       alt: string;
       caption: object;
@@ -40,40 +40,57 @@ export type PayloadCMSPost = {
     };
     description: string;
   };
-  publishedAt: Date;
+  publishedAt: string;
   authors: [];
   populatedAuthors: [];
   slug: string;
   slugLock: boolean;
-  updatedAt: Date;
-  createdAt: Date;
+  updatedAt: string;
+  createdAt: string;
   _status: boolean;
+};
+
+type PayloadCMSPostsResponse = {
+  docs: PayloadCMSPost[];
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  limit: number;
+  nextPage: number | null;
+  page: number;
+  pagingCounter: number | null;
+  prevPage: number | null;
+  totalDocs: number;
+  totalPages: number;
 };
 
 const payloadApiUrl = PUBLIC_PAYLOAD_CMS_URL;
 
 export async function getPosts() {
   const res = await fetch(`${payloadApiUrl}/api/posts`);
-  const data = (await res.json()) as {
-    docs: PayloadCMSPost[];
-    hasNextPage: boolean;
-    hasPrevPage: boolean;
-    limit: number;
-    nextPage: number | null;
-    page: number;
-    pagingCounter: number | null;
-    prevPage: number | null;
-    totalDocs: number;
-    totalPages: number;
-  };
+  const data = (await res.json()) as PayloadCMSPostsResponse;
 
   return data.docs;
 }
 
-export async function getPost(id: string) {
+export async function getPost(id: number) {
   const res = await fetch(`${payloadApiUrl}/api/posts/${id}`);
-  const data = (await res.json()) as PayloadCMSPost;
+  const data = (await res.json()) as PayloadCMSPost | { errors: [] };
+
+  if ("errors" in data) {
+    return null;
+  }
+
   return data;
+}
+
+export async function getPostBySlug(slug: string) {
+  const res = await fetch(
+    `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}`,
+  );
+
+  const data = (await res.json()) as PayloadCMSPostsResponse;
+
+  return data.docs[0] ?? null;
 }
 
 export function getImageSrc(imgUrl: string) {
