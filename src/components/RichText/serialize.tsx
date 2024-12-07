@@ -181,6 +181,9 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               </Link>
             );
           }
+          case "horizontalrule": {
+            return <hr key={key} />;
+          }
 
           default:
             return null;
