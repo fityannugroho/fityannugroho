@@ -156,7 +156,13 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 </li>
               );
             }
-            return (
+
+            const hasNestedList = node.children?.some(
+              (child: NodeTypes) => child.type === "list",
+            );
+            return hasNestedList ? (
+              <>{serializedChildren}</>
+            ) : (
               <li key={key} value={node?.value}>
                 {serializedChildren}
               </li>
