@@ -95,7 +95,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
           switch (blockType) {
             case "mediaBlock":
-              // TODO: media not rendered
               return <Media media={block.media} />;
             case "banner":
               return (
@@ -105,10 +104,9 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               );
             case "code":
               return (
-                <pre>
+                <pre key={key}>
                   <code>{block.code}</code>
                 </pre>
-                // <CodeBlock className="col-start-2" key={key} {...block} />
               );
             default:
               return null;
@@ -117,30 +115,18 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
         switch (node.type) {
           case "linebreak": {
-            return <br className="col-start-2" key={key} />;
+            return <br key={key} />;
           }
           case "paragraph": {
-            return (
-              <p className="col-start-2" key={key}>
-                {serializedChildren}
-              </p>
-            );
+            return <p key={key}>{serializedChildren}</p>;
           }
           case "heading": {
             const Tag = node?.tag;
-            return (
-              <Tag className="col-start-2" key={key}>
-                {serializedChildren}
-              </Tag>
-            );
+            return <Tag key={key}>{serializedChildren}</Tag>;
           }
           case "list": {
             const Tag = node?.tag;
-            return (
-              <Tag className="list col-start-2" key={key}>
-                {serializedChildren}
-              </Tag>
-            );
+            return <Tag key={key}>{serializedChildren}</Tag>;
           }
           case "listitem": {
             if (node?.checked != null) {
@@ -169,11 +155,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             );
           }
           case "quote": {
-            return (
-              <blockquote className="col-start-2" key={key}>
-                {serializedChildren}
-              </blockquote>
-            );
+            return <blockquote key={key}>{serializedChildren}</blockquote>;
           }
           case "link": {
             return (
