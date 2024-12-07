@@ -15,10 +15,10 @@ export function PayloadCMSPostCard({ data: post }: Props) {
       data={{
         title: post.title,
         summary: post.meta.description,
-        postDate: post.createdAt,
+        postDate: new Date(post.createdAt),
         tags: post.categories.map((tag) => tag.title),
-        cover: {
-          ...(post.meta.image && {
+        ...(post.meta.image && {
+          cover: {
             file: {
               src: getImageSrc(post.meta.image.url),
               width: post.meta.image.width,
@@ -26,8 +26,8 @@ export function PayloadCMSPostCard({ data: post }: Props) {
               format: post.meta.image.mimeType.split("/").pop() as MimeType,
             },
             alt: post.meta.image.alt,
-          }),
-        },
+          },
+        }),
       }}
     />
   );

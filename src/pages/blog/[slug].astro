@@ -2,33 +2,28 @@
 import RichText from "@/components/RichText";
 import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { getImageSrc, getPosts } from "@/lib/payload-cms";
+import { getImageSrc, getPostBySlug } from "@/lib/payload-cms";
 import dayjs from "dayjs";
 
-// The getStaticPaths() is required for static Astro sites.
-// If using SSR, you will not need this function.
-export async function getStaticPaths() {
-  let posts = await getPosts();
+export const prerender = false;
 
-  return posts.map((post) => {
-    return {
-      params: { id: post.slug, slug: post.slug },
-      props: {
-        blog: {
-          data: post,
-        },
-        content: post.content,
-      },
-    };
-  });
+const { slug } = Astro.params;
+if (!slug) {
+  return Astro.redirect("404");
 }
 
-const { blog, content } = Astro.props;
+const post = await getPostBySlug(slug);
+if (!post) {
+  return Astro.redirect("404");
+}
+
+const blog = { data: post };
+const content = post.content;
 ---
 <MainLayout
   title={blog.data.title + " | Fityandhiya Islam Nugroho"}
   description={blog.data.meta.description}
-  ogImage={getImageSrc(blog.data.meta.image.url)}
+  ogImage={blog.data.meta.image ? getImageSrc(blog.data.meta.image.url) : ''}
   className="container container-wrapper"
 >
   <article class="prose lg:prose-lg dark:prose-invert mx-auto">
