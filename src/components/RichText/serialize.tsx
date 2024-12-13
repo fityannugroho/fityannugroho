@@ -1,6 +1,7 @@
 import { Fragment, type JSX } from "react";
 import { Link } from "../Link";
 import Media from "../Media";
+import { Checkbox } from "../ui/checkbox";
 import {
   IS_BOLD,
   IS_CODE,
@@ -29,7 +30,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         const key = `${node.type}-${index}`;
 
         if (node.type === "text") {
-          let text = <Fragment key={key}>{node.text}</Fragment>;
+          let text: JSX.Element | string = node.text;
           if (node.format & IS_BOLD) {
             text = <strong key={key}>{text}</strong>;
           }
@@ -38,14 +39,14 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           if (node.format & IS_STRIKETHROUGH) {
             text = (
-              <span key={key} style={{ textDecoration: "line-through" }}>
+              <span key={key} className="line-through">
                 {text}
               </span>
             );
           }
           if (node.format & IS_UNDERLINE) {
             text = (
-              <span key={key} style={{ textDecoration: "underline" }}>
+              <span key={key} className="underline">
                 {text}
               </span>
             );
@@ -60,7 +61,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             text = <sup key={key}>{text}</sup>;
           }
 
-          return text;
+          return <Fragment key={key}>{text}</Fragment>;
         }
 
         // NOTE: Hacky fix for
@@ -126,19 +127,23 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           case "list": {
             const Tag = node?.tag;
-            return <Tag key={key}>{serializedChildren}</Tag>;
+            return (
+              <Tag className="my-2" key={key}>
+                {serializedChildren}
+              </Tag>
+            );
           }
           case "listitem": {
             if (node?.checked != null) {
               return (
                 <li
-                  aria-checked={node.checked ? "true" : "false"}
-                  className={` ${node.checked ? "" : ""}`}
                   key={key}
+                  className="flex items-center space-x-2 my-1"
                   tabIndex={-1}
                   value={node?.value}
                 >
-                  {serializedChildren}
+                  <Checkbox checked={node.checked} className="cursor-default" />
+                  <span>{serializedChildren}</span>
                 </li>
               );
             }
