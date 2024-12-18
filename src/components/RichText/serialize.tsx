@@ -1,6 +1,7 @@
 import { Fragment, type JSX } from "react";
 import { Link } from "../Link";
 import Media from "../Media";
+import RelationshipCard from "../RelationshipCard";
 import { Checkbox } from "../ui/checkbox";
 import {
   IS_BOLD,
@@ -64,6 +65,11 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
 
           return <Fragment key={key}>{text}</Fragment>;
+        }
+
+        if (node.type === "relationship") {
+          // @ts-ignore
+          return <RelationshipCard key={key} relation={node} />;
         }
 
         // NOTE: Hacky fix for
