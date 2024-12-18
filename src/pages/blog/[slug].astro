@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import RichText from "@/components/RichText";
 import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
@@ -52,10 +53,13 @@ const content = post.content;
     <h1>{blog.data.title}</h1>
     {
       blog.data.meta.image && (
-        <img
+        <Image
           src={getImageSrc(blog.data.meta.image.url)}
           alt={blog.data.meta.image.alt}
           title={blog.data.meta.title}
+          width={blog.data.meta.image.width}
+          height={blog.data.meta.image.height}
+          loading="eager"
         />
       )
     }

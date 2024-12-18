@@ -30,7 +30,7 @@ export function Navbar({ items, current }: NavbarProps) {
         {/* Logo */}
         <div className="flex items-center gap-4 order-first">
           <a href="/" className="flex items-center gap-1">
-            <img src="/favicon.svg" alt="Logo" className="h-6" />
+            <img src="/favicon.svg" alt="Logo" className="h-6" loading="lazy" />
             <span className="text-primary md:inline-block hidden">
               fityannugroho
             </span>
