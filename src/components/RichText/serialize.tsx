@@ -13,7 +13,9 @@ import {
 } from "./nodeFormat";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export type NodeTypes = any;
+export type NodeTypes = Record<string, any> & {
+  type: string;
+};
 
 type Props = {
   nodes: NodeTypes[];
