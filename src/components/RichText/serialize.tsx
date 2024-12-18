@@ -1,7 +1,7 @@
 import { Fragment, type JSX } from "react";
 import { EmbeddedSocialMedia } from "../EmbeddedSocialMedia";
 import { Link } from "../Link";
-import Media from "../Media";
+import MediaBlock from "../MediaBlock";
 import RelationshipCard from "../RelationshipCard";
 import { Checkbox } from "../ui/checkbox";
 import {
@@ -105,7 +105,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
           switch (blockType) {
             case "mediaBlock":
-              return <Media key={key} media={block.media} />;
+              return <MediaBlock key={key} media={block.media} />;
             case "banner":
               return (
                 <div key={key} className="banner">
