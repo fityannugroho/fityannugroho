@@ -1,4 +1,5 @@
 import { Fragment, type JSX } from "react";
+import { EmbeddedSocialMedia } from "../EmbeddedSocialMedia";
 import { Link } from "../Link";
 import Media from "../Media";
 import RelationshipCard from "../RelationshipCard";
@@ -117,6 +118,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   <code>{block.code}</code>
                 </pre>
               );
+            case "embeddedSocialMedia":
+              return <EmbeddedSocialMedia key={key} link={block.link} />;
             default:
               return null;
           }
