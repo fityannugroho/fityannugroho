@@ -25,7 +25,7 @@ const menus = [
 ---
 
 <BaseLayout {...props}>
-  <Navbar client:idle items={menus} current={Astro.url.pathname} />
+  <Navbar client:only="react" items={menus} current={Astro.url.pathname} />
   <main
     class:list={[
       !disableWrapper && "container container-wrapper py-8 md:py-16",
