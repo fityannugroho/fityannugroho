@@ -96,10 +96,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
           switch (blockType) {
             case "mediaBlock":
-              return <Media media={block.media} />;
+              return <Media key={key} media={block.media} />;
             case "banner":
               return (
-                <div className="banner">
+                <div key={key} className="banner">
                   {serializeLexical(block.content.root)}
                 </div>
               );
@@ -139,10 +139,13 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 <li
                   key={key}
                   className="flex items-center space-x-2 my-1"
-                  tabIndex={-1}
                   value={node?.value}
                 >
-                  <Checkbox checked={node.checked} className="cursor-default" />
+                  <Checkbox
+                    tabIndex={-1}
+                    checked={node.checked}
+                    className="cursor-default"
+                  />
                   <span>{serializedChildren}</span>
                 </li>
               );
@@ -152,7 +155,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               (child: NodeTypes) => child.type === "list",
             );
             return hasNestedList ? (
-              <>{serializedChildren}</>
+              <Fragment key={key}>{serializedChildren}</Fragment>
             ) : (
               <li key={key} value={node?.value}>
                 {serializedChildren}
