@@ -1,16 +1,28 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
+import { mimeTypes } from "@/lib/types";
+import { cn, humanReadableFileSize } from "@/lib/utils";
+import {
+  FileArchiveIcon,
+  FileCodeIcon,
+  FileIcon,
+  FileTextIcon,
+} from "lucide-react";
 import type React from "react";
+import type { NodeTypes } from "./RichText/serialize";
 
-interface MediaProps {
+export type MediaProps = {
   media: {
     url: string;
     alt: string;
     mimeType: string;
     filename: string;
+    filesize: number;
     width?: number;
     height?: number;
+    caption?: NodeTypes;
   };
-}
+  className?: string;
+};
 
 const transformUrl = (url: string): string => {
   if (!url) {
@@ -25,8 +37,8 @@ const transformUrl = (url: string): string => {
   return url;
 };
 
-const Media: React.FC<MediaProps> = ({ media }) => {
-  const { url: _url, alt, mimeType, filename, width, height } = media;
+const Media: React.FC<MediaProps> = ({ media, className }) => {
+  const { url: _url, alt, mimeType, filename, filesize, width, height } = media;
   const url = transformUrl(_url);
 
   if (mimeType.startsWith("image/")) {
@@ -38,27 +50,52 @@ const Media: React.FC<MediaProps> = ({ media }) => {
         width={width}
         height={height}
         style={{ maxWidth: "100%", height: "auto" }}
+        className={className}
       />
     );
   }
 
   if (mimeType.startsWith("video/")) {
     return (
-      // biome-ignore lint/a11y/useMediaCaption: <explanation>
       <video
         controls
         preload="metadata"
         style={{ maxWidth: "100%", height: "auto" }}
+        className={className}
       >
         <source src={url} type={mimeType} />
-        Your browser does not support the video tag.
+        <track kind="captions" />
       </video>
     );
   }
 
+  let Icon = FileIcon;
+  if (Object.values(mimeTypes.text).includes(mimeType)) {
+    Icon = FileTextIcon;
+  }
+  if (Object.values(mimeTypes.code).includes(mimeType)) {
+    Icon = FileCodeIcon;
+  }
+  if (Object.values(mimeTypes.archieve).includes(mimeType)) {
+    Icon = FileArchiveIcon;
+  }
+
   return (
-    <a href={url} download>
-      {filename}
+    <a
+      href={url}
+      download
+      className={cn(
+        "flex items-center gap-4 border bg-card rounded-md px-4 py-2 not-prose",
+        className,
+      )}
+    >
+      <Icon className="w-5 h-5" />
+      <div className="flex flex-col gap-0">
+        <span className="">{filename}</span>
+        <span className="text-sm mb-1">
+          {humanReadableFileSize(filesize ?? 0)} ({mimeType})
+        </span>
+      </div>
     </a>
   );
 };

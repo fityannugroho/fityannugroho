@@ -1,0 +1,50 @@
+type MimeCategory = "text" | "code" | "archieve";
+
+export const mimeTypes: Readonly<{
+  [category in MimeCategory]: Record<string, string>;
+}> = {
+  text: {
+    txt: "text/plain",
+    rtf: "application/rtf",
+    pdf: "application/pdf",
+    doc: "application/msword",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    xls: "application/vnd.ms-excel",
+    xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ppt: "application/vnd.ms-powerpoint",
+    pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    csv: "text/csv",
+    md: "text/markdown",
+    log: "text/plain",
+    odt: "application/vnd.oasis.opendocument.text",
+    ods: "application/vnd.oasis.opendocument.spreadsheet",
+    odp: "application/vnd.oasis.opendocument.presentation",
+    tex: "application/x-tex",
+    epub: "application/epub+zip",
+  },
+  code: {
+    html: "text/html",
+    htm: "text/html",
+    json: "application/json",
+    xml: "application/xml",
+    yaml: "application/x-yaml",
+    yml: "application/x-yaml",
+  },
+  archieve: {
+    zip: "application/zip",
+    tar: "application/x-tar",
+    tar_gz: "application/x-gtar",
+    tgz: "application/gzip",
+    tar_bz2: "application/x-bzip2",
+    tbz: "application/x-bzip2",
+    rar: "application/vnd.rar",
+    "7z": "application/x-7z-compressed",
+    iso: "application/x-iso9660-image",
+    dmg: "application/x-apple-diskimage",
+    gz: "application/gzip",
+    bz2: "application/x-bzip2",
+    xz: "application/x-xz",
+    z: "application/x-compress",
+    lz: "application/x-lzip",
+  },
+} as const;

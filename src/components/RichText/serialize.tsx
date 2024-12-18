@@ -1,6 +1,8 @@
 import { Fragment, type JSX } from "react";
+import { EmbeddedSocialMedia } from "../EmbeddedSocialMedia";
 import { Link } from "../Link";
-import Media from "../Media";
+import MediaBlock from "../MediaBlock";
+import RelationshipCard from "../RelationshipCard";
 import { Checkbox } from "../ui/checkbox";
 import {
   IS_BOLD,
@@ -13,7 +15,9 @@ import {
 } from "./nodeFormat";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export type NodeTypes = any;
+export type NodeTypes = Record<string, any> & {
+  type: string;
+};
 
 type Props = {
   nodes: NodeTypes[];
@@ -64,6 +68,11 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           return <Fragment key={key}>{text}</Fragment>;
         }
 
+        if (node.type === "relationship") {
+          // @ts-ignore
+          return <RelationshipCard key={key} relation={node} />;
+        }
+
         // NOTE: Hacky fix for
         // https://github.com/facebook/lexical/blob/d10c4e6e55261b2fdd7d1845aed46151d0f06a8c/packages/lexical-list/src/LexicalListItemNode.ts#L133
         // which does not return checked: false (only true - i.e. there is no prop for false)
@@ -96,7 +105,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
           switch (blockType) {
             case "mediaBlock":
-              return <Media key={key} media={block.media} />;
+              return <MediaBlock key={key} media={block.media} />;
             case "banner":
               return (
                 <div key={key} className="banner">
@@ -109,6 +118,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   <code>{block.code}</code>
                 </pre>
               );
+            case "embeddedSocialMedia":
+              return <EmbeddedSocialMedia key={key} link={block.link} />;
             default:
               return null;
           }
