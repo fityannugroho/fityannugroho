@@ -8,6 +8,8 @@ import {
   FileTextIcon,
 } from "lucide-react";
 import type React from "react";
+import RichText from "./RichText";
+import type { NodeTypes } from "./RichText/serialize";
 
 interface MediaProps {
   media: {
@@ -18,6 +20,7 @@ interface MediaProps {
     filesize: number;
     width?: number;
     height?: number;
+    caption?: NodeTypes;
   };
   className?: string;
 }
@@ -36,34 +39,57 @@ const transformUrl = (url: string): string => {
 };
 
 const Media: React.FC<MediaProps> = ({ media, className }) => {
-  const { url: _url, alt, mimeType, filename, filesize, width, height } = media;
+  const {
+    url: _url,
+    alt,
+    mimeType,
+    filename,
+    filesize,
+    width,
+    height,
+    caption,
+  } = media;
   const url = transformUrl(_url);
+
+  const Caption = caption ? (
+    <div className="not-prose text-center mb-6">
+      <RichText content={caption} />
+    </div>
+  ) : (
+    <></>
+  );
 
   if (mimeType.startsWith("image/")) {
     return (
-      <img
-        src={url}
-        alt={alt || filename}
-        loading="lazy"
-        width={width}
-        height={height}
-        style={{ maxWidth: "100%", height: "auto" }}
-        className={className}
-      />
+      <>
+        <img
+          src={url}
+          alt={alt || filename}
+          loading="lazy"
+          width={width}
+          height={height}
+          style={{ maxWidth: "100%", height: "auto" }}
+          className={cn({ "!mb-2": caption }, className)}
+        />
+        {Caption}
+      </>
     );
   }
 
   if (mimeType.startsWith("video/")) {
     return (
-      <video
-        controls
-        preload="metadata"
-        style={{ maxWidth: "100%", height: "auto" }}
-        className={className}
-      >
-        <source src={url} type={mimeType} />
-        <track kind="captions" />
-      </video>
+      <>
+        <video
+          controls
+          preload="metadata"
+          style={{ maxWidth: "100%", height: "auto" }}
+          className={cn({ "!mb-2": caption }, className)}
+        >
+          <source src={url} type={mimeType} />
+          <track kind="captions" />
+        </video>
+        {Caption}
+      </>
     );
   }
 
