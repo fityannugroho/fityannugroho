@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
 import {
   AlertTriangleIcon,
-  CheckIcon,
+  CheckCircle2Icon,
   InfoIcon,
   type LucideProps,
+  XCircleIcon,
 } from "lucide-react";
 import type {
   ComponentProps,
@@ -35,9 +36,9 @@ export const bannerIcon: Record<
 > = {
   default: InfoIcon,
   info: InfoIcon,
-  success: CheckIcon,
+  success: CheckCircle2Icon,
   warning: AlertTriangleIcon,
-  destructive: AlertTriangleIcon,
+  destructive: XCircleIcon,
 };
 
 export default function Banner({
