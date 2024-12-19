@@ -1,5 +1,15 @@
 import { cn } from "@/lib/utils";
-import type { ComponentProps } from "react";
+import {
+  AlertCircleIcon,
+  CheckIcon,
+  InfoIcon,
+  type LucideProps,
+} from "lucide-react";
+import type {
+  ComponentProps,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from "react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 type AlertProps = ComponentProps<typeof Alert>;
@@ -17,18 +27,34 @@ const variantBannerStyleMapping: Readonly<
   error: "destructive",
 } as const;
 
+export const bannerIcon: Record<
+  NonNullable<AlertProps["variant"]>,
+  ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >
+> = {
+  default: InfoIcon,
+  success: CheckIcon,
+  warning: AlertCircleIcon,
+  destructive: AlertCircleIcon,
+};
+
 export default function Banner({
   children,
   style,
   className,
   ...props
 }: BannerProps) {
+  const variant = variantBannerStyleMapping[style];
+  const BannerIcon = variant ? bannerIcon[variant] : bannerIcon.default;
+
   return (
     <Alert
       {...props}
-      variant={variantBannerStyleMapping[style]}
+      variant={variant}
       className={cn("not-prose my-6", className)}
     >
+      <BannerIcon className="h-4 w-4" />
       <AlertTitle>{style}</AlertTitle>
       <AlertDescription>{children}</AlertDescription>
     </Alert>
