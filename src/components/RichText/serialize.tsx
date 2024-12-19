@@ -1,4 +1,5 @@
 import { Fragment, type JSX } from "react";
+import Banner from "../Banner";
 import { EmbeddedSocialMedia } from "../EmbeddedSocialMedia";
 import { Link } from "../Link";
 import MediaBlock from "../MediaBlock";
@@ -106,12 +107,13 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           switch (blockType) {
             case "mediaBlock":
               return <MediaBlock key={key} media={block.media} />;
-            case "banner":
+            case "banner": {
               return (
-                <div key={key} className="banner">
-                  {serializeLexical(block.content.root)}
-                </div>
+                <Banner style={block.style}>
+                  {serializedChildrenFn(block.content.root)}
+                </Banner>
               );
+            }
             case "code":
               return (
                 <pre key={key}>
