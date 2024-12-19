@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import {
-  AlertCircleIcon,
+  AlertTriangleIcon,
   CheckIcon,
   InfoIcon,
   type LucideProps,
@@ -21,7 +21,7 @@ export type BannerProps = Omit<AlertProps, "variant"> & {
 const variantBannerStyleMapping: Readonly<
   Record<string, NonNullable<AlertProps["variant"]>>
 > = {
-  info: "default",
+  info: "info",
   success: "success",
   warning: "warning",
   error: "destructive",
@@ -34,9 +34,10 @@ export const bannerIcon: Record<
   >
 > = {
   default: InfoIcon,
+  info: InfoIcon,
   success: CheckIcon,
-  warning: AlertCircleIcon,
-  destructive: AlertCircleIcon,
+  warning: AlertTriangleIcon,
+  destructive: AlertTriangleIcon,
 };
 
 export default function Banner({
@@ -46,7 +47,7 @@ export default function Banner({
   ...props
 }: BannerProps) {
   const variant = variantBannerStyleMapping[style];
-  const BannerIcon = variant ? bannerIcon[variant] : bannerIcon.default;
+  const BannerIcon = variant ? bannerIcon[variant] : bannerIcon.info;
 
   return (
     <Alert
@@ -54,8 +55,8 @@ export default function Banner({
       variant={variant}
       className={cn("not-prose my-6", className)}
     >
-      <BannerIcon className="h-4 w-4" />
-      <AlertTitle>{style}</AlertTitle>
+      <BannerIcon className="h-5 w-5" />
+      <AlertTitle className="capitalize font-bold">{style}</AlertTitle>
       <AlertDescription>{children}</AlertDescription>
     </Alert>
   );
