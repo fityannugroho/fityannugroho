@@ -74,6 +74,37 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              "code::before": {
+                display: "none",
+              },
+              "code::after": {
+                display: "none",
+              },
+              code: {
+                backgroundColor: "hsl(var(--secondary))",
+                padding: "0.125em 0.5em",
+                borderRadius: "calc(var(--radius) - 4px)",
+              },
+            },
+            {
+              blockquote: {
+                fontStyle: "normal",
+                quotes: "none",
+              },
+              "blockquote p:first-of-type::before": {
+                display: "none",
+              },
+              "blockquote p:last-of-type::after": {
+                display: "none",
+              },
+            },
+          ],
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
