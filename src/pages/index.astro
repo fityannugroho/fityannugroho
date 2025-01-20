@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
-import { PayloadCMSPostCard } from "@/components/PayloadCMSPostCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getPosts } from "@/lib/payload-cms";
@@ -68,7 +68,7 @@ const projects = await getCollection("projects");
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.slice(0, 3).map((post) =>(
         <a href={`/blog/${post.slug}`}>
-          <PayloadCMSPostCard data={post} />
+          <BlogCard data={post} />
         </a>
       ))}
     </div>

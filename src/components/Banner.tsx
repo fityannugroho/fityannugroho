@@ -57,7 +57,9 @@ export default function Banner({
       className={cn("not-prose my-6", className)}
     >
       <BannerIcon className="h-5 w-5" />
-      <AlertTitle className="capitalize font-bold">{style}</AlertTitle>
+      <AlertTitle className="capitalize font-bold text-base">
+        {style}
+      </AlertTitle>
       <AlertDescription>{children}</AlertDescription>
     </Alert>
   );
