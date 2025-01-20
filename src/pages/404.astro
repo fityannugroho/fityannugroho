@@ -1,0 +1,17 @@
+---
+import { Link } from "@/components/Link";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { AlertTriangle } from "lucide-react";
+---
+
+<MainLayout
+  title="Page Not Found"
+  description="Oops! The page you're looking for doesn't exist."
+>
+  <div class="text-center">
+    <AlertTriangle size={64} className="text-destructive mx-auto" />
+    <h1 class="text-4xl font-bold mt-4">404 Not Found</h1>
+    <p class="text-lg mt-2">Oops! The page you're looking for doesn't exist.</p>
+    <Link href="/" variant='default' className="mt-4">Go Home</Link>
+  </div>
+</MainLayout>
