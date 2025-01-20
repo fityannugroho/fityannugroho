@@ -54,6 +54,6 @@ export async function getPostBySlug(slug: string) {
   return data.docs[0] ?? null;
 }
 
-export function getImageSrc(imgUrl: string) {
-  return `${payloadApiUrl}/${imgUrl}`;
+export function getImageSrc(imgUrl: string): string {
+  return new URL(imgUrl, payloadApiUrl).toString();
 }
