@@ -4,6 +4,8 @@ import { BlogCard } from "@/components/BlogCard";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getPosts } from "@/lib/payload-cms";
 
+export const prerender = false;
+
 const blogEntries = await getCollection("blog");
 const posts = await getPosts();
 
