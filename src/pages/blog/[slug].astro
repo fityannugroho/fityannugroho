@@ -8,12 +8,12 @@ export const prerender = false;
 
 const { slug } = Astro.params;
 if (!slug) {
-  return Astro.redirect("404");
+  return Astro.redirect("/404");
 }
 
 const post = await getPostBySlug(slug);
 if (!post) {
-  return Astro.redirect("404");
+  return Astro.redirect("/404");
 }
 ---
 <MainLayout
