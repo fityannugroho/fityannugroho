@@ -14,7 +14,7 @@ export default function MediaBlock({
 
   const Caption = caption ? (
     <div className="not-prose text-center mb-6">
-      <RichText content={caption} />
+      <RichText data={caption} />
     </div>
   ) : (
     <></>

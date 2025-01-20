@@ -1,4 +1,5 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
+import type { Media as BaseMedia } from "@/lib/payload-types";
 import { mimeTypes } from "@/lib/types";
 import { cn, humanReadableFileSize } from "@/lib/utils";
 import {
@@ -8,19 +9,9 @@ import {
   FileTextIcon,
 } from "lucide-react";
 import type React from "react";
-import type { NodeTypes } from "./RichText/serialize";
 
 export type MediaProps = {
-  media: {
-    url: string;
-    alt: string;
-    mimeType: string;
-    filename: string;
-    filesize: number;
-    width?: number;
-    height?: number;
-    caption?: NodeTypes;
-  };
+  media: BaseMedia;
   className?: string;
 };
 
@@ -39,6 +30,11 @@ const transformUrl = (url: string): string => {
 
 const Media: React.FC<MediaProps> = ({ media, className }) => {
   const { url: _url, alt, mimeType, filename, filesize, width, height } = media;
+
+  if (!_url || !mimeType || !filename || !width || !height) {
+    return null;
+  }
+
   const url = transformUrl(_url);
 
   if (mimeType.startsWith("image/")) {

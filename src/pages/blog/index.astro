@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
-import { PayloadCMSPostCard } from "@/components/PayloadCMSPostCard";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getPosts } from "@/lib/payload-cms";
 
@@ -23,7 +22,7 @@ posts.sort(
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {posts.map((post) =>(
       <a href={`/blog/${post.slug}`}>
-        <PayloadCMSPostCard data={post} />
+        <BlogCard data={post} />
       </a>
     ))}
 

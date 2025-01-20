@@ -1,4 +1,5 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
+import type { Post } from "./payload-types";
 
 export type MimeType =
   | "png"
@@ -10,48 +11,8 @@ export type MimeType =
   | "svg"
   | "avif";
 
-export type PayloadCMSPost = {
-  id: number;
-  title: string;
-  content?: {
-    [k: string]: unknown;
-  }[];
-  relatedPosts: [];
-  categories: {
-    id: number;
-    title: string;
-    parent: string | null;
-    updatedAt: Date;
-    createdAt: Date;
-  }[];
-  meta: {
-    title: string;
-    image?: {
-      id: string;
-      alt: string;
-      caption: object;
-      url: string;
-      thumbnailURL: string;
-      filename: string;
-      mimeType: string;
-      fileSize: number;
-      width: number;
-      height: number;
-    };
-    description: string;
-  };
-  publishedAt: string;
-  authors: [];
-  populatedAuthors: [];
-  slug: string;
-  slugLock: boolean;
-  updatedAt: string;
-  createdAt: string;
-  _status: boolean;
-};
-
 type PayloadCMSPostsResponse = {
-  docs: PayloadCMSPost[];
+  docs: Post[];
   hasNextPage: boolean;
   hasPrevPage: boolean;
   limit: number;
@@ -74,7 +35,7 @@ export async function getPosts() {
 
 export async function getPost(id: number) {
   const res = await fetch(`${payloadApiUrl}/api/posts/${id}`);
-  const data = (await res.json()) as PayloadCMSPost | { errors: [] };
+  const data = (await res.json()) as Post | { errors: [] };
 
   if ("errors" in data) {
     return null;

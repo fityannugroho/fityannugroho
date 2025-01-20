@@ -1,10 +1,8 @@
 ---
-import { Image } from "astro:assets";
+import BlogHero from "@/components/BlogHero";
 import RichText from "@/components/RichText";
-import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getImageSrc, getPostBySlug } from "@/lib/payload-cms";
-import dayjs from "dayjs";
 
 export const prerender = false;
 
@@ -17,66 +15,15 @@ const post = await getPostBySlug(slug);
 if (!post) {
   return Astro.redirect("404");
 }
-
-const blog = { data: post };
-const content = post.content;
 ---
 <MainLayout
-  title={blog.data.title + " | Fityandhiya Islam Nugroho"}
-  description={blog.data.meta.description}
-  ogImage={blog.data.meta.image ? getImageSrc(blog.data.meta.image.url) : ''}
-  className="container container-wrapper"
+  title={post.title + " | Fityandhiya Islam Nugroho"}
+  description={post.meta?.description || ''}
+  ogImage={post.meta?.image && typeof post.meta.image === 'object' ? getImageSrc(post.meta.image.url || '') : ''}
+  disableWrapper
 >
-  <article class="prose lg:prose-lg dark:prose-invert mx-auto">
-    <div class="flex gap-1 items-center mb-4 flex-wrap">
-      <a
-        href="/about"
-        class="flex gap-2 items-center text-muted-foreground mr-1 text-sm"
-      >
-        <img
-          width="24"
-          height="24"
-          src="/profile.webp"
-          class="not-prose w-6 h-6 rounded-full"
-          alt="fityannugroho"
-        />
-        @fityannugroho
-      </a>
-
-      <time
-        datetime={new Date(blog.data.createdAt).toISOString()}
-        class="text-muted-foreground"
-      >
-        {dayjs(blog.data.createdAt).format("MMMM D, YYYY")}
-      </time>
-    </div>
-    <h1>{blog.data.title}</h1>
-    {
-      blog.data.meta.image && (
-        <Image
-          src={getImageSrc(blog.data.meta.image.url)}
-          alt={blog.data.meta.image.alt}
-          title={blog.data.meta.title}
-          width={blog.data.meta.image.width}
-          height={blog.data.meta.image.height}
-          loading="eager"
-        />
-      )
-    }
-
-    {content && (
-      <RichText content={content} client:only="react" />
-    )}
-
-    <div class="flex gap-2 mt-8 md:mt-16">
-      {blog.data.categories.map((tag) => tag.title).map((tag) => (
-        <a
-          href={`/blog/tag/${tag}`}
-          class:list={[badgeVariants({ variant: "default" }), "no-underline"]}
-        >
-          {tag}
-        </a>
-      ))}
-    </div>
+  <article class="w-full">
+    <BlogHero post={post} />
+    <RichText data={post.content} client:only="react" enableGutter={false} className='max-w-5xl my-10 px-4' />
   </article>
 </MainLayout>
