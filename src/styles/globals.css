@@ -89,19 +89,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  @media (min-width: 768px) {
-    .container-wrapper {
-      padding-left: 3.5rem; /* 56px */
-      padding-right: 3.5rem; /* 56px */
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container-wrapper {
-      padding-left: 8rem; /* 128px */
-      padding-right: 8rem; /* 128px */
-    }
-  }
-}

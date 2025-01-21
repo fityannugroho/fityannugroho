@@ -7,7 +7,7 @@ import LinkedinIcon from "./icons/LinkedinIcon";
 
 export function Hero() {
   return (
-    <section className="container container-wrapper flex flex-col md:flex-row-reverse gap-8 items-center md:justify-around py-24 md:py-32 lg:py-48">
+    <section className="container lg:max-w-[64rem] flex flex-col md:flex-row-reverse gap-8 items-center md:justify-around py-24 md:py-32 lg:py-48">
       {/* Column 1 */}
       <div className="basis-1/2 md:basis-1/4 flex justify-center items-center">
         <img
