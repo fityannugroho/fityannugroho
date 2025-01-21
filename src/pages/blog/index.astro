@@ -27,7 +27,10 @@ posts.sort(
     ))}
 
     {blogEntries.map((blogPostEntry) => (
-      <BlogCard data={{ slug: blogPostEntry.id, ...blogPostEntry.data }} />
+      <BlogCard
+        data={{ slug: blogPostEntry.id, ...blogPostEntry.data }}
+        client:visible
+      />
     ))}
   </div>
 </MainLayout>

@@ -78,6 +78,7 @@ export function BlogCard({ data }: BlogCardProps) {
             alt={post.image.alt}
             height={240}
             width={320}
+            loading="lazy"
           />
         )}
 

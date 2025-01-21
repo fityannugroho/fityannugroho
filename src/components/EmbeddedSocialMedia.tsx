@@ -43,7 +43,12 @@ export const EmbeddedSocialMedia: React.FC<EmbeddedSocialMediaProps> = ({
           id={tweetId}
           components={{
             AvatarImg: (props) => (
-              <img {...props} alt={props.alt} className="rounded-full" />
+              <img
+                {...props}
+                alt={props.alt}
+                className="rounded-full"
+                loading="lazy"
+              />
             ),
             MediaImg: (props) => <img {...props} alt={props.alt} />,
           }}

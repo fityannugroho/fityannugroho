@@ -14,6 +14,7 @@ export function Hero() {
           src="/profile.webp"
           alt="Fityandhiya Islam Nugroho"
           className="rounded-full w-40 h-40 lg:w-48 lg:h-48"
+          loading="eager"
         />
       </div>
       {/* Column 2 */}
