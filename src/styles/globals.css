@@ -89,6 +89,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-}
