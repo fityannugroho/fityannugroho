@@ -16,8 +16,8 @@ export default function BlogHero({ post }: Props) {
   const isManyAuthors = post.populatedAuthors?.length || 0 > 1;
 
   const heroImage =
-    post.meta?.image && typeof post.meta.image === "object"
-      ? post.meta.image
+    post.heroImage && typeof post.heroImage === "object"
+      ? post.heroImage
       : null;
 
   return (
