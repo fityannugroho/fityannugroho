@@ -28,7 +28,7 @@ const menus = [
   <Navbar client:only="react" items={menus} current={Astro.url.pathname} />
   <main
     class:list={[
-      !disableWrapper && "container container-wrapper py-8 md:py-16",
+      !disableWrapper && "container",
       "min-h-[83vh]",
       className,
     ]}
