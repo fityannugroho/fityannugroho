@@ -1,8 +1,9 @@
 import type { CollectionEntry } from "astro:content";
 import { getImageSrc } from "@/lib/payload-cms";
 import type { Post } from "@/lib/payload-types";
+import dayjs from "dayjs";
+import { ClockIcon } from "lucide-react";
 import { Link } from "./Link";
-import { Badge } from "./ui/badge";
 import {
   Card,
   CardDescription,
@@ -22,6 +23,7 @@ export function BlogCard({ data }: BlogCardProps) {
     href?: string;
     image?: { src: string; alt: string };
     categories?: { id: string | number; name: string }[];
+    publishedDate?: Date;
   } = { title: data.title };
 
   const isPayloadCMSPost = "content" in data;
@@ -29,6 +31,9 @@ export function BlogCard({ data }: BlogCardProps) {
   if (isPayloadCMSPost) {
     post.description = data.meta?.description || "";
     post.href = `/blog/${data.slug || ""}`;
+    post.publishedDate = data.publishedAt
+      ? new Date(data.publishedAt)
+      : new Date(data.createdAt);
 
     if (data.heroImage && typeof data.heroImage === "object") {
       post.image = {
@@ -48,6 +53,7 @@ export function BlogCard({ data }: BlogCardProps) {
   } else {
     post.description = data.summary;
     post.href = `/blog/static/${data.slug}`;
+    post.publishedDate = data.postDate;
 
     if (data.cover) {
       post.image = {
@@ -87,14 +93,25 @@ export function BlogCard({ data }: BlogCardProps) {
           </CardDescription>
         )}
       </CardHeader>
-      <CardFooter className="p-0 pt-6">
+
+      <CardFooter className="p-0 pt-5 ml-1 flex flex-wrap gap-3 justify-start">
+        <div className="flex gap-1 items-center">
+          <ClockIcon size={14} />
+          <time
+            className="flex gap-1 items-center text-xs font-medium text-muted-foreground"
+            title="Date published"
+            dateTime={post.publishedDate.toISOString()}
+          >
+            {dayjs(post.publishedDate).format("D MMM YYYY")}
+          </time>
+        </div>
+
         <div className="flex gap-2 flex-wrap">
-          {post.categories?.map(
-            (category) =>
-              typeof category === "object" && (
-                <Badge key={category.id}>{category.name}</Badge>
-              ),
-          )}
+          {post.categories?.map((category) => (
+            <span key={category.id} className="text-xs font-medium lowercase">
+              #{category.name}
+            </span>
+          ))}
         </div>
       </CardFooter>
     </Card>
