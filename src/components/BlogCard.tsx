@@ -1,6 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getImageSrc } from "@/lib/payload-cms";
 import type { Post } from "@/lib/payload-types";
+import { Link } from "./Link";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -11,65 +12,89 @@ import {
 } from "./ui/card";
 
 type BlogCardProps = {
-  data: CollectionEntry<"blog">["data"] | Post;
+  data: (CollectionEntry<"blog">["data"] & { slug: string }) | Post;
 };
 
 export function BlogCard({ data }: BlogCardProps) {
+  const post: {
+    title: string;
+    description?: string;
+    href?: string;
+    image?: { src: string; alt: string };
+    categories?: { id: string | number; name: string }[];
+  } = { title: data.title };
+
   const isPayloadCMSPost = "content" in data;
 
   if (isPayloadCMSPost) {
-    return (
-      <Card>
-        <CardHeader>
-          {data.heroImage && typeof data.heroImage === "object" && (
-            <img
-              className="rounded-sm mb-4 h-40 w-full object-cover"
-              src={getImageSrc(data.heroImage.url || "")}
-              alt={data.heroImage.alt || ""}
-              height={160}
-              width={320}
-            />
-          )}
-          <CardTitle>{data.title}</CardTitle>
-          {data.meta?.description && (
-            <CardDescription>{data.meta.description}</CardDescription>
-          )}
-        </CardHeader>
-        <CardFooter>
-          <div className="flex gap-2 flex-wrap">
-            {data.categories?.map(
-              (category) =>
-                typeof category === "object" && (
-                  <Badge key={category.id}>{category.title}</Badge>
-                ),
-            )}
-          </div>
-        </CardFooter>
-      </Card>
-    );
+    post.description = data.meta?.description || "";
+    post.href = `/blog/${data.slug || ""}`;
+
+    if (data.heroImage && typeof data.heroImage === "object") {
+      post.image = {
+        src: getImageSrc(data.heroImage.url || ""),
+        alt: data.heroImage.alt || "",
+      };
+    }
+
+    if (data.categories) {
+      post.categories = data.categories
+        .filter((category) => typeof category === "object")
+        .map((category) => ({
+          id: category.id,
+          name: category.title,
+        }));
+    }
+  } else {
+    post.description = data.summary;
+    post.href = `/blog/static/${data.slug}`;
+
+    if (data.cover) {
+      post.image = {
+        src: data.cover.file.src,
+        alt: data.cover.alt,
+      };
+    }
+
+    post.categories = data.tags.map((tag) => ({
+      id: tag,
+      name: tag,
+    }));
   }
 
   return (
-    <Card>
+    <Card className="border-none shadow-none">
       <CardHeader>
-        {data.cover && (
+        {post.image && (
           <img
             className="rounded-sm mb-4 h-40 w-full object-cover"
-            src={data.cover.file.src}
-            alt={data.cover.alt}
-            title={data.cover.title}
-            height={data.cover.file.height}
-            width={data.cover.file.width}
+            src={post.image.src}
+            alt={post.image.alt}
+            height={160}
+            width={320}
           />
         )}
-        <CardTitle>{data.title}</CardTitle>
-        <CardDescription>{data.summary}</CardDescription>
+
+        <CardTitle className="leading-5">
+          <Link disableButtonStyle href={post.href}>
+            {post.title}
+          </Link>
+        </CardTitle>
+
+        {post.description && (
+          <CardDescription className="line-clamp-4">
+            {post.description}
+          </CardDescription>
+        )}
       </CardHeader>
       <CardFooter>
         <div className="flex gap-2 flex-wrap">
-          {data.tags.map((tag) => (
-            <Badge key={tag}>{tag}</Badge>
-          ))}
+          {post.categories?.map(
+            (category) =>
+              typeof category === "object" && (
+                <Badge key={category.id}>{category.name}</Badge>
+              ),
+          )}
         </div>
       </CardFooter>
     </Card>
