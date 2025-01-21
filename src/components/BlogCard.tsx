@@ -63,31 +63,31 @@ export function BlogCard({ data }: BlogCardProps) {
   }
 
   return (
-    <Card className="border-none shadow-none">
-      <CardHeader>
+    <Card className="border-none shadow-none p-2">
+      <CardHeader className="p-0">
         {post.image && (
           <img
-            className="rounded-sm mb-4 h-40 w-full object-cover"
+            className="rounded-sm mb-4 w-full object-cover"
             src={post.image.src}
             alt={post.image.alt}
-            height={160}
+            height={240}
             width={320}
           />
         )}
 
-        <CardTitle className="leading-5">
+        <CardTitle className="mx-1 leading-5">
           <Link disableButtonStyle href={post.href}>
             {post.title}
           </Link>
         </CardTitle>
 
         {post.description && (
-          <CardDescription className="line-clamp-4">
+          <CardDescription className="mx-1 line-clamp-4">
             {post.description}
           </CardDescription>
         )}
       </CardHeader>
-      <CardFooter>
+      <CardFooter className="p-0 pt-6">
         <div className="flex gap-2 flex-wrap">
           {post.categories?.map(
             (category) =>
