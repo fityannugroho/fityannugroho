@@ -13,7 +13,7 @@ export default function BlogHero({ post }: Props) {
   const publishedDate = post.publishedAt
     ? new Date(post.publishedAt)
     : new Date(post.createdAt);
-  const isManyAuthors = post.populatedAuthors?.length || 0 > 1;
+  const isManyAuthors = (post.populatedAuthors?.length || 0) > 1;
 
   const heroImage =
     post.heroImage && typeof post.heroImage === "object"
