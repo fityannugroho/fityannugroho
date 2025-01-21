@@ -18,7 +18,7 @@ const { disableProse, ...props } = Astro.props.frontmatter;
 <MainLayout {...props}>
   <article
     class:list={[
-      !disableProse && "prose lg:prose-lg dark:prose-invert mx-auto",
+      !disableProse && "prose dark:prose-invert mx-auto",
     ]}
   >
     <slot />
