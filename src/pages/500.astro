@@ -1,0 +1,42 @@
+---
+import { Link } from "@/components/Link";
+import { Button } from "@/components/ui/button";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { AlertTriangle, HomeIcon, RefreshCwIcon } from "lucide-react";
+---
+
+<MainLayout
+  title="Internal Server Error"
+  description="Oops! Something went wrong on our end."
+>
+  <script>
+    document.querySelector('#tryAgain')?.addEventListener('click', () => {
+      window.location.reload();
+    });
+  </script>
+
+  <div class="text-center">
+    <AlertTriangle size={64} className="text-destructive mx-auto" />
+    <h1 class="text-4xl font-bold mt-4">500 Internal Server Error</h1>
+    <p class="text-lg mt-2">Oops! Something went wrong on our end.</p>
+
+    <div class="flex gap-3 justify-center mt-4">
+      <Button
+        id='tryAgain'
+        variant='default'
+        className="flex items-center gap-2"
+      >
+        <RefreshCwIcon size={16} />
+        Try Again
+      </Button>
+      <Link
+        href="/"
+        variant='outline'
+        className="flex items-center gap-2"
+      >
+        <HomeIcon size={16} />
+        Go Home
+      </Link>
+    </div>
+  </div>
+</MainLayout>
