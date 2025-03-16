@@ -54,7 +54,12 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
       if (!media || typeof media !== "object") {
         return null;
       }
-      return <MediaBlock media={media} />;
+      return (
+        <MediaBlock
+          media={media}
+          mediaClassName="mx-auto lg:w-auto lg:max-h-[72vh]"
+        />
+      );
     },
     code: ({ node }) => (
       <pre>
