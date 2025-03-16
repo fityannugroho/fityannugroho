@@ -21,23 +21,25 @@ export default function BlogHero({ post }: Props) {
       : null;
 
   return (
-    <div className="relative min-h-[600px] w-full overflow-hidden">
+    <div className="relative h-[76vh] w-full overflow-hidden">
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={getImageSrc(heroImage?.url || "")}
-          alt="Blog post hero background"
-          style={{ objectFit: "cover" }}
-          className="object-cover w-full h-full"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 dark:from-background/100 to-transparent" />
-      </div>
+      {heroImage && (
+        <div className="absolute inset-0">
+          <img
+            src={getImageSrc(heroImage?.url || "")}
+            alt="Blog post hero background"
+            style={{ objectFit: "cover" }}
+            className="object-cover w-full h-full"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground dark:from-background to-transparent backdrop-blur-[2px]" />
+        </div>
+      )}
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[600px] max-w-5xl flex-col justify-end px-4 pb-6 pt-24 text-white">
+      <div className="relative z-10 mx-auto flex h-[76vh] max-w-5xl flex-col justify-end px-4 pb-6 pt-24 text-white">
         {/* Categories */}
-        <div className="flex gap-1 mb-6">
+        <div className="flex gap-1 mb-6 flex-wrap">
           {post.categories?.map(
             (category) =>
               typeof category === "object" && (
@@ -45,17 +47,17 @@ export default function BlogHero({ post }: Props) {
                   key={category.id}
                   className={cn(
                     badgeVariants({ variant: "outline" }),
-                    "border-white/50 text-sm tracking-wide text-white",
+                    "border-white/50 bg-foreground/50 dark:bg-background/50 text-sm tracking-wide text-white capitalize",
                   )}
                 >
-                  {category.title}
+                  #{category.title.replaceAll(" ", "")}
                 </span>
               ),
           )}
         </div>
 
         {/* Title */}
-        <h1 className="mb-8 text-4xl font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
+        <h1 className="mb-8 text-4xl font-bold leading-tight tracking-tighter md:text-6xl">
           {post.title}
         </h1>
 

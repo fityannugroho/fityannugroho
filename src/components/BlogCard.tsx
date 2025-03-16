@@ -72,14 +72,16 @@ export function BlogCard({ data }: BlogCardProps) {
     <Card className="border-none shadow-none p-2">
       <CardHeader className="p-0">
         {post.image && (
-          <img
-            className="rounded-sm mb-4 w-full object-cover"
-            src={post.image.src}
-            alt={post.image.alt}
-            height={240}
-            width={320}
-            loading="lazy"
-          />
+          <div className="rounded-sm mb-4 w-full h-[13rem] overflow-hidden">
+            <img
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-125"
+              src={post.image.src}
+              alt={post.image.alt}
+              height={240}
+              width={320}
+              loading="lazy"
+            />
+          </div>
         )}
 
         <CardTitle className="mx-1 leading-5">
