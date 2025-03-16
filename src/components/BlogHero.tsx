@@ -39,7 +39,7 @@ export default function BlogHero({ post }: Props) {
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-[76vh] max-w-5xl flex-col justify-end px-4 pb-6 pt-24 text-white">
         {/* Categories */}
-        <div className="flex gap-1 mb-6">
+        <div className="flex gap-1 mb-6 flex-wrap">
           {post.categories?.map(
             (category) =>
               typeof category === "object" && (
@@ -47,10 +47,10 @@ export default function BlogHero({ post }: Props) {
                   key={category.id}
                   className={cn(
                     badgeVariants({ variant: "outline" }),
-                    "border-white/50 text-sm tracking-wide text-white",
+                    "border-white/50 bg-foreground/50 dark:bg-background/50 text-sm tracking-wide text-white capitalize",
                   )}
                 >
-                  {category.title}
+                  #{category.title.replaceAll(" ", "")}
                 </span>
               ),
           )}
