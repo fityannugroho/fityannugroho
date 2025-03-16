@@ -62,7 +62,12 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
       </pre>
     ),
     // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
-    socialMedia: ({ node }) => <EmbeddedSocialMedia link={node.fields.link} />,
+    socialMedia: ({ node }) => (
+      <EmbeddedSocialMedia
+        link={node.fields.link}
+        className="flex justify-center"
+      />
+    ),
   },
   relationship: ({ node }) => <RelationshipCard relation={node} />,
   listitem: ({ node, nodesToJSX }) => {
