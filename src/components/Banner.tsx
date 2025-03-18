@@ -51,11 +51,7 @@ export default function Banner({
   const BannerIcon = variant ? bannerIcon[variant] : bannerIcon.info;
 
   return (
-    <Alert
-      {...props}
-      variant={variant}
-      className={cn("not-prose my-6", className)}
-    >
+    <Alert {...props} variant={variant} className={cn("my-6", className)}>
       <BannerIcon className="h-5 w-5" />
       <AlertTitle className="capitalize font-bold text-base">
         {style}
