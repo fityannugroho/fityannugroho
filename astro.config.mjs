@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 
 // https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables
@@ -15,18 +15,14 @@ const site = VERCEL_PREVIEW_SITE || "https://fityannugroho.vercel.app";
 // https://astro.build/config
 export default defineConfig({
   site,
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    react(),
-    mdx(),
-  ],
+  integrations: [react(), mdx()],
+
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
   }),
+
   env: {
     schema: {
       GITHUB_TOKEN: envField.string({
@@ -41,5 +37,9 @@ export default defineConfig({
         default: "https://fityannugroho-cms.vercel.app",
       }),
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
