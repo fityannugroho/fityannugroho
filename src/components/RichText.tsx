@@ -44,8 +44,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
         <RichText
           data={node.fields.content}
           enableGutter={false}
-          enableProse={false}
-          className="w-full color-[inherit] prose-base"
+          enableProse={true}
+          className="text-inherit [&_*]:text-inherit prose-p:my-3 [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
         />
       </Banner>
     ),
