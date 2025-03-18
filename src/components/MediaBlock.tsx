@@ -24,7 +24,7 @@ export default function MediaBlock({
     <div className={className}>
       <Media
         media={media}
-        className={cn({ "!mb-2": caption }, mediaClassName)}
+        className={cn({ "mb-2!": caption }, mediaClassName)}
       />
       {Caption}
     </div>

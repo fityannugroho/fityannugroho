@@ -32,7 +32,7 @@ export default function BlogHero({ post }: Props) {
             className="object-cover w-full h-full"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground dark:from-background to-transparent backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-linear-to-t from-foreground dark:from-background to-transparent backdrop-blur-[2px]" />
         </div>
       )}
 
