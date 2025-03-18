@@ -15,21 +15,6 @@ You can call me **Fityan**. I'm a software engineer from 🇮🇩 Indonesia. I l
   </a>
 </p>
 
-## Keep Connected
-
-<a href="https://www.linkedin.com/in/fityannugroho" target="_blank">
-  <img alt="LinkedIn" src="https://img.shields.io/badge/-LinkedIn-0170ad?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-<a href="https://www.twitter.com/fityannugroho" target="_blank">
-  <img alt="X / Twitter" src="https://img.shields.io/badge/-X (Twitter)-000000?style=for-the-badge&logo=x" />
-</a>
-<a href="https://www.youtube.com/@fityannugroho" target="_blank">
-  <img alt="YouTube" src="https://img.shields.io/badge/-YouTube-f70000?style=for-the-badge&logo=youtube&logoColor=white" />
-</a>
-<a href="https://fityannugroho.medium.com" target="_blank">
-  <img alt="Medium" src="https://img.shields.io/badge/-Medium-1d1916?style=for-the-badge&logo=medium&logoColor=white" />
-</a>
-
 ## Support Me
 
 <a href="https://ko-fi.com/J3J1S7T4L" target="_blank"><img height="36" style="border:0px;height:36px;" src="https://storage.ko-fi.com/cdn/kofi1.png?v=3" alt="Buy Me a ko-fi" /></a>

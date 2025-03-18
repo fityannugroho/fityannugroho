@@ -1,10 +1,9 @@
 {
   "name": "fityannugroho",
-  "version": "0.2.1",
-  "description": "My personal website",
-  "main": "index.js",
-  "private": true,
+  "version": "0.3.0",
   "type": "module",
+  "private": true,
+  "description": "fityannugroho's personal website",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -17,9 +16,15 @@
     "type": "git",
     "url": "git+https://github.com/fityannugroho/fityannugroho.git"
   },
-  "keywords": ["personal-website", "astro", "portfolio", "fityannugroho"],
+  "keywords": [
+    "personal-website",
+    "astro",
+    "portfolio",
+    "fityannugroho",
+    "blog",
+    "website"
+  ],
   "author": "Fityandhiya Islam Nugroho <fityannugroho@gmail.com>",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/fityannugroho/fityannugroho/issues"
   },
