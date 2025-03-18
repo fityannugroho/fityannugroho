@@ -45,7 +45,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
           data={node.fields.content}
           enableGutter={false}
           enableProse={true}
-          className="text-inherit [&_*]:text-inherit prose-p:my-3 [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 prose-a:font-semibold"
+          className="text-inherit [&_*]:text-inherit prose-p:my-3 [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
         />
       </Banner>
     ),
