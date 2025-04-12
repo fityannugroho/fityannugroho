@@ -1,11 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
 import { ProjectCard } from "@/components/ProjectCard";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { getPosts } from "@/lib/payload-cms";
+import { getPosts, getProjects } from "@/lib/payload-cms";
 import { ArrowRightIcon } from "lucide-react";
 
 export const prerender = false;
@@ -15,7 +14,7 @@ posts.sort(
   (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
 );
 
-const projects = await getCollection("projects");
+const projects = await getProjects();
 ---
 
 <MainLayout disableWrapper>
@@ -52,9 +51,9 @@ const projects = await getCollection("projects");
 
   <section class="container py-12 md:py-16">
     <h2 class="text-3xl font-bold mb-6 text-center">My Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.slice(0, 3).map((project) => (
-        <ProjectCard data={project.data} client:only="react" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.slice(0, 4).map((project) => (
+        <ProjectCard data={project} />
       ))}
     </div>
     <div class="flex justify-center mt-6">

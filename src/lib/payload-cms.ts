@@ -1,5 +1,5 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
-import type { Post } from "./payload-types";
+import type { Post, Project } from "./payload-types";
 
 export type MimeType =
   | "png"
@@ -56,4 +56,11 @@ export async function getPostBySlug(slug: string) {
 
 export function getImageSrc(imgUrl: string): string {
   return new URL(imgUrl, payloadApiUrl).toString();
+}
+
+export async function getProjects() {
+  const res = await fetch(`${payloadApiUrl}/api/projects`);
+  const data = await res.json();
+
+  return data.docs as Project[];
 }
