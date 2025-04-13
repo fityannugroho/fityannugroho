@@ -5,6 +5,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { getProjects } from "@/lib/payload-cms";
 import { ExternalLinkIcon } from "lucide-react";
 
+export const prerender = false;
+
 const projects = await getProjects();
 ---
 
