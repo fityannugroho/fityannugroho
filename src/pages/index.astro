@@ -20,8 +20,8 @@ const projects = await getProjects();
 <MainLayout disableWrapper>
   <Hero />
 
-  <section class="container py-12 md:py-16 max-w-5xl">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+  <section class="container py-24 md:py-32 lg:py-40 max-w-5xl">
+    <h2 class=" font-bold text-center sr-only">About me</h2>
     <div
       class="py-6 px-4 border-y border-y-primary border-dashed md:text-justify"
     >
@@ -42,15 +42,15 @@ const projects = await getProjects();
 
       <div class="flex justify-center mt-4">
         <Link href="/about">
-          Read More About Me
+          Read more about me
           <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
         </Link>
       </div>
     </div>
   </section>
 
-  <section class="container py-12 md:py-16">
-    <h2 class="text-3xl font-bold mb-6 text-center">My Projects</h2>
+  <section class="container py-16 lg:py-24">
+    <h2 class="text-3xl font-bold mb-10 text-center">My projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.slice(0, 4).map((project) => (
         <ProjectCard data={project} />
@@ -58,14 +58,14 @@ const projects = await getProjects();
     </div>
     <div class="flex justify-center mt-6">
       <Link href="/projects">
-        See More Projects
+        See more projects
         <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
       </Link>
     </div>
   </section>
 
-  <section class="container py-12 md:py-16">
-    <h2 class="text-3xl font-bold mb-6 text-center">Blog Posts</h2>
+  <section class="container py-16 lg:py-24">
+    <h2 class="text-3xl font-bold mb-10 text-center">Blog posts</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.slice(0, 3).map((post) =>(
         <BlogCard data={post} client:visible />
@@ -75,7 +75,7 @@ const projects = await getProjects();
     {posts.length > 3 && (
       <div class="flex justify-center mt-6">
         <Link href="/blog">
-          See More Blog Posts
+          Read another posts
           <ArrowRightIcon className="ml-1 mt-1 w-4 h-4" />
         </Link>
       </div>
