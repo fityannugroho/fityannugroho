@@ -9,12 +9,13 @@ import { ArrowRightIcon } from "lucide-react";
 
 export const prerender = false;
 
-const posts = await getPosts();
-posts.sort(
-  (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
-);
+const posts = await getPosts({
+  sort: { updatedAt: "desc" },
+});
 
-const projects = await getProjects();
+const projects = await getProjects({
+  sort: { updatedAt: "desc" },
+});
 ---
 
 <MainLayout disableWrapper>

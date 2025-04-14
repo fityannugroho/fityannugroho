@@ -7,14 +7,13 @@ import { getPosts } from "@/lib/payload-cms";
 export const prerender = false;
 
 const blogEntries = await getCollection("blog");
-const posts = await getPosts();
+const posts = await getPosts({
+  sort: { updatedAt: "desc" },
+});
 
 // Sort by date in descending order
 blogEntries.sort(
   (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
-);
-posts.sort(
-  (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
 );
 ---
 

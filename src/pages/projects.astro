@@ -7,7 +7,9 @@ import { ExternalLinkIcon } from "lucide-react";
 
 export const prerender = false;
 
-const projects = await getProjects();
+const projects = await getProjects({
+  sort: { updatedAt: "desc" },
+});
 ---
 
 <MainLayout title="My Projects | Fityandhiya Islam Nugroho">
