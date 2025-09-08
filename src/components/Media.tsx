@@ -1,7 +1,4 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
-import type { Media as BaseMedia } from "@/lib/payload-types";
-import { mimeTypes } from "@/lib/types";
-import { cn, humanReadableFileSize } from "@/lib/utils";
 import {
   FileArchiveIcon,
   FileCodeIcon,
@@ -9,6 +6,9 @@ import {
   FileTextIcon,
 } from "lucide-react";
 import type React from "react";
+import type { Media as BaseMedia } from "@/lib/payload-types";
+import { mimeTypes } from "@/lib/types";
+import { cn, humanReadableFileSize } from "@/lib/utils";
 
 export type MediaProps = {
   media: BaseMedia;

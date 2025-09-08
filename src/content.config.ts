@@ -1,4 +1,4 @@
-import { type SchemaContext, defineCollection, z } from "astro:content";
+import { defineCollection, type SchemaContext, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 // 3. Define your collection(s)

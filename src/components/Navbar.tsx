@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
 

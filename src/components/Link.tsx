@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import type { VariantProps } from "class-variance-authority";
 import type { AnchorHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 import { buttonVariants } from "./ui/button";
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &

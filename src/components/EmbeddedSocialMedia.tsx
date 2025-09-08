@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import type { ComponentProps } from "react";
-import { Tweet } from "react-tweet";
+import { Tweet, type TwitterComponents } from "react-tweet";
+import { cn } from "@/lib/utils";
 
 export const socialMedia = {
   x: "X (Twitter)",
@@ -30,6 +30,22 @@ export type EmbeddedSocialMediaProps = ComponentProps<"div"> & {
   link: string;
 };
 
+type AvatarImgProps = Parameters<
+  NonNullable<TwitterComponents["AvatarImg"]>
+>[0];
+
+function AvatarImg(props: AvatarImgProps) {
+  return (
+    <img {...props} alt={props.alt} className="rounded-full" loading="lazy" />
+  );
+}
+
+type MediaImgProps = Parameters<NonNullable<TwitterComponents["MediaImg"]>>[0];
+
+function MediaImg(props: MediaImgProps) {
+  return <img {...props} alt={props.alt} />;
+}
+
 export const EmbeddedSocialMedia: React.FC<EmbeddedSocialMediaProps> = ({
   link,
   ...props
@@ -39,20 +55,7 @@ export const EmbeddedSocialMedia: React.FC<EmbeddedSocialMediaProps> = ({
     const [, tweetId = ""] = link.match(linkValidation.x.regex) ?? [];
     return (
       <div {...props} className={cn("not-prose my-4", props.className)}>
-        <Tweet
-          id={tweetId}
-          components={{
-            AvatarImg: (props) => (
-              <img
-                {...props}
-                alt={props.alt}
-                className="rounded-full"
-                loading="lazy"
-              />
-            ),
-            MediaImg: (props) => <img {...props} alt={props.alt} />,
-          }}
-        />
+        <Tweet id={tweetId} components={{ AvatarImg, MediaImg }} />
       </div>
     );
   }

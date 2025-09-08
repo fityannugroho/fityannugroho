@@ -1,12 +1,4 @@
 import type {
-  BannerBlock as BannerBlockProps,
-  CallToActionBlock as CTABlockProps,
-  CodeBlock as CodeBlockProps,
-  MediaBlock as MediaBlockProps,
-  SocialMediaBlock as SocialMediaBlockProps,
-} from "@/lib/payload-types";
-import { cn } from "@/lib/utils";
-import type {
   DefaultNodeTypes,
   SerializedBlockNode,
 } from "@payloadcms/richtext-lexical";
@@ -18,6 +10,14 @@ import {
   type JSXConvertersFunction,
   RichText as RichTextWithoutBlocks,
 } from "@payloadcms/richtext-lexical/react";
+import type {
+  BannerBlock as BannerBlockProps,
+  CodeBlock as CodeBlockProps,
+  CallToActionBlock as CTABlockProps,
+  MediaBlock as MediaBlockProps,
+  SocialMediaBlock as SocialMediaBlockProps,
+} from "@/lib/payload-types";
+import { cn } from "@/lib/utils";
 import Banner from "./Banner";
 import { EmbeddedSocialMedia } from "./EmbeddedSocialMedia";
 import MediaBlock from "./MediaBlock";

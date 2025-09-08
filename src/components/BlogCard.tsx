@@ -1,8 +1,8 @@
 import type { CollectionEntry } from "astro:content";
-import { getImageSrc } from "@/lib/payload-cms";
-import type { Post } from "@/lib/payload-types";
 import dayjs from "dayjs";
 import { ClockIcon } from "lucide-react";
+import { getImageSrc } from "@/lib/payload-cms";
+import type { Post } from "@/lib/payload-types";
 import { Link } from "./Link";
 import {
   Card,
