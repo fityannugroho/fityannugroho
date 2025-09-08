@@ -65,7 +65,6 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
   blocks: {};
   collections: {
     roles: Role;
@@ -244,6 +243,13 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
 }
 /**
@@ -808,6 +814,20 @@ export interface Form {
              */
             placeholder?: string | null;
             required?: boolean | null;
+            validation?: {
+              /**
+               * Regex pattern to validate the input, e.g. ^[a-zA-Z0-9]+$
+               */
+              regex?: string | null;
+              flags?: {
+                global?: boolean | null;
+                ignoreCase?: boolean | null;
+              };
+              /**
+               * Error message to display if validation fails, e.g. Must be alphanumeric
+               */
+              errorMessage?: string | null;
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: "number";
@@ -931,6 +951,20 @@ export interface Form {
              */
             placeholder?: string | null;
             required?: boolean | null;
+            validation?: {
+              /**
+               * Regex pattern to validate the input, e.g. ^[a-zA-Z0-9]+$
+               */
+              regex?: string | null;
+              flags?: {
+                global?: boolean | null;
+                ignoreCase?: boolean | null;
+              };
+              /**
+               * Error message to display if validation fails, e.g. Must be alphanumeric
+               */
+              errorMessage?: string | null;
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: "text";
@@ -973,6 +1007,98 @@ export interface Form {
             id?: string | null;
             blockName?: string | null;
             blockType: "textarea";
+          }
+        | {
+            name: string;
+            label?: string | null;
+            /**
+             * The earliest date that can be selected.
+             */
+            minDate?: string | null;
+            /**
+             * The latest date that can be selected.
+             */
+            maxDate?: string | null;
+            width?: number | null;
+            /**
+             * This text will be displayed below the field in the form.
+             */
+            helperText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ("ltr" | "rtl") | null;
+                format:
+                  | "left"
+                  | "start"
+                  | "center"
+                  | "right"
+                  | "end"
+                  | "justify"
+                  | "";
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * This text will be displayed as a placeholder in the field.
+             */
+            placeholder?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "date";
+          }
+        | {
+            name: string;
+            label?: string | null;
+            /**
+             * The earliest time that can be selected.
+             */
+            minTime?: string | null;
+            /**
+             * The latest time that can be selected.
+             */
+            maxTime?: string | null;
+            width?: number | null;
+            /**
+             * This text will be displayed below the field in the form.
+             */
+            helperText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ("ltr" | "rtl") | null;
+                format:
+                  | "left"
+                  | "start"
+                  | "center"
+                  | "right"
+                  | "end"
+                  | "justify"
+                  | "";
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * This text will be displayed as a placeholder in the field.
+             */
+            placeholder?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: "datetime";
           }
       )[]
     | null;
@@ -1275,6 +1401,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1655,6 +1788,18 @@ export interface FormsSelect<T extends boolean = true> {
               helperText?: T;
               placeholder?: T;
               required?: T;
+              validation?:
+                | T
+                | {
+                    regex?: T;
+                    flags?:
+                      | T
+                      | {
+                          global?: T;
+                          ignoreCase?: T;
+                        };
+                    errorMessage?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -1700,6 +1845,18 @@ export interface FormsSelect<T extends boolean = true> {
               helperText?: T;
               placeholder?: T;
               required?: T;
+              validation?:
+                | T
+                | {
+                    regex?: T;
+                    flags?:
+                      | T
+                      | {
+                          global?: T;
+                          ignoreCase?: T;
+                        };
+                    errorMessage?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -1710,6 +1867,34 @@ export interface FormsSelect<T extends boolean = true> {
               label?: T;
               width?: T;
               defaultValue?: T;
+              helperText?: T;
+              placeholder?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        date?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              minDate?: T;
+              maxDate?: T;
+              width?: T;
+              helperText?: T;
+              placeholder?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        datetime?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              minTime?: T;
+              maxTime?: T;
+              width?: T;
               helperText?: T;
               placeholder?: T;
               required?: T;
