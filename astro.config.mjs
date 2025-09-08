@@ -17,11 +17,7 @@ export default defineConfig({
   site,
   integrations: [react(), mdx()],
 
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
+  adapter: vercel(),
 
   env: {
     schema: {
@@ -35,6 +31,16 @@ export default defineConfig({
         context: "client",
         access: "public",
         default: "https://fityannugroho-cms.vercel.app",
+      }),
+      UMAMI_SCRIPT_URL: envField.string({
+        optional: true,
+        context: "client",
+        access: "public",
+      }),
+      UMAMI_WEBSITE_ID: envField.string({
+        optional: true,
+        context: "client",
+        access: "public",
       }),
     },
   },
