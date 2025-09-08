@@ -12,7 +12,8 @@
       "!**/node_modules",
       "!**/coverage",
       "!**/.astro",
-      "!**/.vercel"
+      "!**/.vercel",
+      "!**/payload-types.ts"
     ]
   },
   "formatter": {
@@ -62,6 +63,16 @@
           "correctness": {
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/styles/globals.css"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noUnknownAtRules": "off"
           }
         }
       }
