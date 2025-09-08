@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
+import dayjs from "dayjs";
 import { badgeVariants } from "@/components/ui/badge";
 import MainLayout from "@/layouts/MainLayout.astro";
-import dayjs from "dayjs";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blog");

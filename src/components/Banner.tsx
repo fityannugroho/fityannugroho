@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import {
   AlertTriangleIcon,
   CheckCircle2Icon,
@@ -11,6 +10,7 @@ import type {
   ForwardRefExoticComponent,
   RefAttributes,
 } from "react";
+import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 type AlertProps = ComponentProps<typeof Alert>;

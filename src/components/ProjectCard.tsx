@@ -1,6 +1,6 @@
+import { ExternalLinkIcon } from "lucide-react";
 import { getImageSrc } from "@/lib/payload-cms";
 import type { Project } from "@/lib/payload-types";
-import { ExternalLinkIcon } from "lucide-react";
 import { Link } from "./Link";
 import { CodeIcon } from "./Octicons";
 import {

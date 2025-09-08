@@ -16,9 +16,7 @@ export default function MediaBlock({
     <div className="not-prose text-center mb-6">
       <RichText data={caption} />
     </div>
-  ) : (
-    <></>
-  );
+  ) : null;
 
   return (
     <div className={className}>

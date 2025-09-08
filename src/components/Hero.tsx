@@ -1,6 +1,6 @@
-import { IconLink } from "@/components/Link.tsx";
-import XLogoIcon from "@/components/icons/XIcon";
 import { MailIcon } from "lucide-react";
+import XLogoIcon from "@/components/icons/XIcon";
+import { IconLink } from "@/components/Link.tsx";
 import GithubIcon from "./icons/GithubIcon";
 import InstagramIcon from "./icons/InstagramIcon";
 import LinkedinIcon from "./icons/LinkedinIcon";

@@ -1,9 +1,9 @@
+import dayjs from "dayjs";
+import { ClockIcon, UserIcon, UsersIcon } from "lucide-react";
 import { badgeVariants } from "@/components/ui/badge";
 import { getImageSrc } from "@/lib/payload-cms";
 import type { Post } from "@/lib/payload-types";
 import { cn } from "@/lib/utils";
-import dayjs from "dayjs";
-import { ClockIcon, UserIcon, UsersIcon } from "lucide-react";
 
 type Props = {
   post: Post;
