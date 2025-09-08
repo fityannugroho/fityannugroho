@@ -32,6 +32,16 @@ export default defineConfig({
         access: "public",
         default: "https://fityannugroho-cms.vercel.app",
       }),
+      UMAMI_SCRIPT_URL: envField.string({
+        optional: true,
+        context: "client",
+        access: "public",
+      }),
+      UMAMI_WEBSITE_ID: envField.string({
+        optional: true,
+        context: "client",
+        access: "public",
+      }),
     },
   },
 

@@ -1,6 +1,7 @@
 ---
 import Head, { type Props as HeadProps } from "@/components/Head.astro";
 import "@/styles/globals.css";
+import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "astro:env/client";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 export type Props = HeadProps;
@@ -46,7 +47,18 @@ const { title, description, ogImage } = Astro.props;
 </script>
 
 <html lang="en">
-  <Head {title} {description} {ogImage} />
+  <head>
+    <Head {title} {description} {ogImage} />
+
+    {UMAMI_SCRIPT_URL && UMAMI_WEBSITE_ID && (
+      <script
+        is:inline
+        defer
+        src={UMAMI_SCRIPT_URL}
+        data-website-id={UMAMI_WEBSITE_ID}
+      />
+    )}
+  </head>
   <body>
     <slot />
     <SpeedInsights />
