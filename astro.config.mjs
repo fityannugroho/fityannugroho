@@ -17,11 +17,7 @@ export default defineConfig({
   site,
   integrations: [react(), mdx()],
 
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
+  adapter: vercel(),
 
   env: {
     schema: {
