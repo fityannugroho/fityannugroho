@@ -1,6 +1,7 @@
 ---
 import BlogHero from "@/components/BlogHero";
 import RichText from "@/components/RichText";
+import TableOfContent from "@/components/TableOfContent";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getImageSrc, getPostBySlug } from "@/lib/payload-cms";
 
@@ -24,6 +25,15 @@ if (!post) {
 >
   <article class="w-full">
     <BlogHero post={post} />
-    <RichText data={post.content} client:only="react" enableGutter={false} className='max-w-5xl pt-8 pb-20 px-4' />
+    <div class="grid grid-cols-12 max-w-5xl mx-auto lg:gap-x-10 pt-8 pb-20 px-4">
+      <div class="col-span-12 lg:col-span-9">
+        <RichText client:only="react" data={post.content} enableHeadingAnchors={true} enableGutter={false} />
+      </div>
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-20">
+          <TableOfContent client:only="react" data={post.content} />
+        </div>
+      </aside>
+    </div>
   </article>
 </MainLayout>
