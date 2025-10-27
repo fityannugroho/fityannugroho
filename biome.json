@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -10,10 +10,10 @@
     "includes": [
       "**",
       "!**/node_modules",
-      "!**/coverage",
       "!**/.astro",
-      "!**/.vercel",
-      "!**/payload-types.ts"
+      "!**/payload-types.ts",
+      "!!**/coverage",
+      "!!**/.vercel"
     ]
   },
   "formatter": {
@@ -49,6 +49,15 @@
       "arrowParentheses": "always",
       "bracketSameLine": false,
       "quoteStyle": "double"
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space"
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "overrides": [

@@ -3,7 +3,7 @@
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
-@config '../../tailwind.config.mjs';
+@config "../../tailwind.config.mjs";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -166,9 +166,10 @@
     max-width: 80rem;
   }
 
-  @variant 2xl {
+  /* TODO: this becomes error now */
+  /* @variant 2xl {
     max-width: 86rem;
-  }
+  } */
 }
 
 @layer base {
