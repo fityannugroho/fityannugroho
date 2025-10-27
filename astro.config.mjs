@@ -1,23 +1,19 @@
+import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 
-// https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables
-const VERCEL_PREVIEW_SITE =
-  process.env.VERCEL_ENV !== "production" &&
-  process.env.VERCEL_URL &&
-  `https://${process.env.VERCEL_URL}`;
-
-const site = VERCEL_PREVIEW_SITE || "https://fityannugroho.vercel.app";
+const site = process.env.SITE_URL;
 
 // https://astro.build/config
 export default defineConfig({
   site,
   integrations: [react(), mdx()],
 
-  adapter: vercel(),
+  adapter: cloudflare({
+    imageService: "compile",
+  }),
 
   env: {
     schema: {
