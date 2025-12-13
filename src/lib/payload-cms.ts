@@ -50,7 +50,7 @@ export function stringifySortOptions<T extends string | object = string>(
 }
 
 export async function getPosts(options?: { sort?: SortOptions<Post> }) {
-  const url = new URL(`${payloadApiUrl}/api/posts`);
+  const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
 
   if (options?.sort) {
     url.searchParams.append("sort", stringifySortOptions(options.sort));
@@ -75,7 +75,7 @@ export async function getPost(id: number) {
 
 export async function getPostBySlug(slug: string) {
   const res = await fetch(
-    `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}`,
+    `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`,
   );
 
   const data = (await res.json()) as PayloadCMSPostsResponse;
