@@ -63,7 +63,7 @@ export async function getPosts(options?: { sort?: SortOptions<Post> }) {
 }
 
 export async function getPost(id: number) {
-  const res = await fetch(`${payloadApiUrl}/api/posts/${id}`);
+  const res = await fetch(`${payloadApiUrl}/api/posts/${id}?depth=2`);
   const data = (await res.json()) as Post | { errors: [] };
 
   if ("errors" in data) {
@@ -88,7 +88,7 @@ export function getImageSrc(imgUrl: string): string {
 }
 
 export async function getProjects(options?: { sort?: SortOptions<Project> }) {
-  const url = new URL(`${payloadApiUrl}/api/projects`);
+  const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
 
   if (options?.sort) {
     url.searchParams.append("sort", stringifySortOptions(options.sort));
