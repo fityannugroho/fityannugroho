@@ -1,5 +1,6 @@
-import { defineCollection, type SchemaContext, z } from "astro:content";
+import { defineCollection, type SchemaContext } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 // 3. Define your collection(s)
 export const blogSchema = (ctx: SchemaContext) =>
