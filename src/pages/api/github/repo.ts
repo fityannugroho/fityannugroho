@@ -51,7 +51,7 @@ export const GET: APIRoute = async ({ request }) => {
     );
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return jsonResponse({ error: error.flatten().fieldErrors }, 400);
+      return jsonResponse({ error: z.flattenError(error).fieldErrors }, 400);
     }
 
     return jsonResponse({ error: "Error validating payload" }, 500);
