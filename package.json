@@ -31,7 +31,8 @@
   "homepage": "https://github.com/fityannugroho/fityannugroho#readme",
   "funding": "https://github.com/sponsors/fityannugroho",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.12.0",
+    "pnpm": ">=11"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",
