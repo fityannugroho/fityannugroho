@@ -3,10 +3,8 @@
   "compilerOptions": {
     "allowJs": true, // required, and included with all Astro templates
     "verbatimModuleSyntax": true,
-    "ignoreDeprecations": "6.0",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
