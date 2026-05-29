@@ -2,8 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from "astro";
 import type { SupportedLocale } from "@/lib/i18n";
-
-const supportedLocales = ["en", "id"] as const;
+import { supportedLocales } from "@/lib/i18n";
 
 export const GET: APIRoute = async ({ cookies }) => {
   const locale = cookies.get("locale")?.value || "en";
