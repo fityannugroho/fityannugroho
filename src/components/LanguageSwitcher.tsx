@@ -19,12 +19,13 @@ type Props = {
 };
 
 export function LanguageSwitcher({ locale: initialLocale }: Props) {
-  const [locale] = useState<SupportedLocale>(initialLocale);
+  const [locale, setLocale] = useState<SupportedLocale>(initialLocale);
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleChange(newLocale: string) {
     if (!supportedLocales.includes(newLocale as SupportedLocale)) return;
 
+    setLocale(newLocale as SupportedLocale);
     setIsLoading(true);
 
     try {
