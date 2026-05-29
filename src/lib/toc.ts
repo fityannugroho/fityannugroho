@@ -66,6 +66,7 @@ export const extractHeadings = (
   opts?: { levels?: number[] },
 ): TocItem[] => {
   const levels = opts?.levels ?? [1, 2, 3, 4, 5, 6];
+  const slugger = slugifyWithCounter();
   const result: TocItem[] = [];
 
   const walk = (nodes: RichTextNode[]) => {
@@ -76,8 +77,7 @@ export const extractHeadings = (
         const level = Number(tag.replace("h", ""));
         if (levels.includes(level)) {
           const text = getTextFromLexicalNode(node);
-          const slugify = slugifyWithCounter();
-          const id = slugify(text || "");
+          const id = slugger(text || "");
           result.push({ id, text, level });
         }
       }
