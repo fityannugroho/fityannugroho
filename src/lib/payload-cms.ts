@@ -1,6 +1,6 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
-import type { Post, Project } from "./payload-types";
 import type { SupportedLocale } from "./i18n";
+import type { Post, Project } from "./payload-types";
 
 export type MimeType =
   | "png"
@@ -50,7 +50,10 @@ export function stringifySortOptions<T extends string | object = string>(
     .join(",");
 }
 
-export async function getPosts(options?: { sort?: SortOptions<Post>; locale?: SupportedLocale }) {
+export async function getPosts(options?: {
+  sort?: SortOptions<Post>;
+  locale?: SupportedLocale;
+}) {
   const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
 
   if (options?.locale) {
@@ -98,7 +101,10 @@ export function getImageSrc(imgUrl: string): string {
   return new URL(imgUrl, payloadApiUrl).toString();
 }
 
-export async function getProjects(options?: { sort?: SortOptions<Project>; locale?: SupportedLocale }) {
+export async function getProjects(options?: {
+  sort?: SortOptions<Project>;
+  locale?: SupportedLocale;
+}) {
   const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
 
   if (options?.locale) {

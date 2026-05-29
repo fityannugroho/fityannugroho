@@ -1,9 +1,9 @@
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
+import type { SupportedLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { type SupportedLocale } from "@/lib/i18n";
-import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
 
 type NavMenuItemProps = {
@@ -20,7 +20,7 @@ type NavbarProps = {
   /**
    * Current locale
    */
-  locale: SupportedLocale | undefined;
+  locale: SupportedLocale;
 };
 
 export function Navbar({ items, current, locale }: NavbarProps) {

@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { defaultLocale, isSupportedLocale } from "@/lib/i18n";
 import { getPosts } from "@/lib/payload-cms";
-import { isSupportedLocale, defaultLocale } from "@/lib/i18n";
 
 export const prerender = false;
 

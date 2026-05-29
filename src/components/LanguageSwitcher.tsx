@@ -1,5 +1,5 @@
 import { LanguagesIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,62 +9,53 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
-  defaultLocale,
   localeLabels,
-  supportedLocales,
   type SupportedLocale,
+  supportedLocales,
 } from "@/lib/i18n";
 
 type Props = {
-  /**
-   * Initial locale value. If omitted, it will be fetched from `/api/locale` on mount.
-   */
-  locale: SupportedLocale | undefined;
+  locale: SupportedLocale;
 };
 
 export function LanguageSwitcher({ locale: initialLocale }: Props) {
-  const [locale, setLocale] = useState<SupportedLocale>(
-    initialLocale || defaultLocale,
-  );
-
-  useEffect(() => {
-    if (!initialLocale) {
-      fetch("/api/locale")
-        .then((res) => res.json() as Promise<{ locale: string }>)
-        .then((data) => {
-          if (supportedLocales.includes(data.locale as SupportedLocale)) {
-            setLocale(data.locale as SupportedLocale);
-          }
-        })
-        .catch(() => console.warn("Failed to fetch locale"));
-    }
-  }, [initialLocale]);
+  const [locale] = useState<SupportedLocale>(initialLocale);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleChange(newLocale: string) {
     if (!supportedLocales.includes(newLocale as SupportedLocale)) return;
 
-    await fetch("/api/locale", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ locale: newLocale }),
-    });
+    setIsLoading(true);
 
-    window.location.reload();
+    try {
+      const res = await fetch("/api/locale", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ locale: newLocale }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to set locale: ${res.status}`);
+      }
+
+      window.location.reload();
+    } catch (error) {
+      console.warn(error);
+      alert("Failed to switch language. Please try again.");
+      setIsLoading(false);
+    }
   }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild disabled={isLoading}>
         <Button variant="ghost" size="icon">
           <LanguagesIcon className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Switch language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuRadioGroup
-          value={locale}
-          onValueChange={handleChange}
-        >
+        <DropdownMenuRadioGroup value={locale} onValueChange={handleChange}>
           {supportedLocales.map((loc) => (
             <DropdownMenuRadioItem key={loc} value={loc}>
               {localeLabels[loc].label}

@@ -1,9 +1,9 @@
 ---
 import Footer from "@/components/Footer.astro";
 import { Navbar } from "@/components/Navbar";
+import { readLocale } from "@/lib/i18n";
 import type { Props as BaseLayoutProps } from "./BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
-import { isSupportedLocale, defaultLocale } from "@/lib/i18n";
 
 export type Props = BaseLayoutProps & {
   /**
@@ -17,8 +17,7 @@ export type Props = BaseLayoutProps & {
 };
 
 const { className, disableWrapper, ...props } = Astro.props;
-const rawLocale = Astro.cookies.get("locale")?.value ?? null;
-const locale = isSupportedLocale(rawLocale) ? rawLocale : defaultLocale;
+const locale = readLocale(Astro.cookies);
 
 const menus = [
   { title: "About", href: "/about" },
