@@ -54,47 +54,62 @@ export async function getPosts(options?: {
   sort?: SortOptions<Post>;
   locale?: SupportedLocale;
 }) {
-  const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
+  try {
+    const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
 
-  if (options?.locale) {
-    url.searchParams.append("locale", options.locale);
+    if (options?.locale) {
+      url.searchParams.append("locale", options.locale);
+    }
+
+    if (options?.sort) {
+      url.searchParams.append("sort", stringifySortOptions(options.sort));
+    }
+
+    const res = await fetch(url);
+    const data = (await res.json()) as PayloadCMSPostsResponse;
+
+    return data.docs;
+  } catch (error) {
+    console.error("[getPosts] Failed to fetch posts:", error);
+    return [];
   }
-
-  if (options?.sort) {
-    url.searchParams.append("sort", stringifySortOptions(options.sort));
-  }
-
-  const res = await fetch(url);
-  const data = (await res.json()) as PayloadCMSPostsResponse;
-
-  return data.docs;
 }
 
 export async function getPost(id: number, locale?: SupportedLocale) {
-  let url = `${payloadApiUrl}/api/posts/${id}?depth=2`;
-  if (locale) {
-    url += `&locale=${locale}`;
-  }
-  const res = await fetch(url);
-  const data = (await res.json()) as Post | { errors: [] };
+  try {
+    let url = `${payloadApiUrl}/api/posts/${id}?depth=2`;
+    if (locale) {
+      url += `&locale=${locale}`;
+    }
+    const res = await fetch(url);
+    const data = (await res.json()) as Post | { errors: [] };
 
-  if ("errors" in data) {
+    if ("errors" in data) {
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error("[getPost] Failed to fetch post:", error);
     return null;
   }
-
-  return data;
 }
 
 export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
-  let url = `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`;
-  if (locale) {
-    url += `&locale=${locale}`;
+  try {
+    let url = `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`;
+    if (locale) {
+      url += `&locale=${locale}`;
+    }
+    const res = await fetch(url);
+
+    const data = (await res.json()) as PayloadCMSPostsResponse;
+
+    return data.docs[0] ?? null;
+  } catch (error) {
+    console.error("[getPostBySlug] Failed to fetch post by slug:", error);
+    return null;
   }
-  const res = await fetch(url);
-
-  const data = (await res.json()) as PayloadCMSPostsResponse;
-
-  return data.docs[0] ?? null;
 }
 
 export function getImageSrc(imgUrl: string): string {
@@ -105,18 +120,23 @@ export async function getProjects(options?: {
   sort?: SortOptions<Project>;
   locale?: SupportedLocale;
 }) {
-  const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
+  try {
+    const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
 
-  if (options?.locale) {
-    url.searchParams.append("locale", options.locale);
+    if (options?.locale) {
+      url.searchParams.append("locale", options.locale);
+    }
+
+    if (options?.sort) {
+      url.searchParams.append("sort", stringifySortOptions(options.sort));
+    }
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data.docs as Project[];
+  } catch (error) {
+    console.error("[getProjects] Failed to fetch projects:", error);
+    return [];
   }
-
-  if (options?.sort) {
-    url.searchParams.append("sort", stringifySortOptions(options.sort));
-  }
-
-  const res = await fetch(url);
-  const data = await res.json();
-
-  return data.docs as Project[];
 }
