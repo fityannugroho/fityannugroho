@@ -1,7 +1,9 @@
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { type SupportedLocale } from "@/lib/i18n";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "./ui/button";
 
 type NavMenuItemProps = {
@@ -15,9 +17,13 @@ type NavbarProps = {
    * Current page path
    */
   current?: string;
+  /**
+   * Current locale
+   */
+  locale: SupportedLocale | undefined;
 };
 
-export function Navbar({ items, current }: NavbarProps) {
+export function Navbar({ items, current, locale }: NavbarProps) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -66,6 +72,7 @@ export function Navbar({ items, current }: NavbarProps) {
 
         {/* Icon group */}
         <div className="flex gap-1 md:order-last">
+          <LanguageSwitcher locale={locale} />
           <ThemeToggle variant="ghost" />
           <Button
             variant="ghost"

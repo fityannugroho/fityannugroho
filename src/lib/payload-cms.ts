@@ -1,5 +1,6 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
 import type { Post, Project } from "./payload-types";
+import type { SupportedLocale } from "./i18n";
 
 export type MimeType =
   | "png"
@@ -49,8 +50,12 @@ export function stringifySortOptions<T extends string | object = string>(
     .join(",");
 }
 
-export async function getPosts(options?: { sort?: SortOptions<Post> }) {
+export async function getPosts(options?: { sort?: SortOptions<Post>; locale?: SupportedLocale }) {
   const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
+
+  if (options?.locale) {
+    url.searchParams.append("locale", options.locale);
+  }
 
   if (options?.sort) {
     url.searchParams.append("sort", stringifySortOptions(options.sort));
@@ -62,8 +67,12 @@ export async function getPosts(options?: { sort?: SortOptions<Post> }) {
   return data.docs;
 }
 
-export async function getPost(id: number) {
-  const res = await fetch(`${payloadApiUrl}/api/posts/${id}?depth=2`);
+export async function getPost(id: number, locale?: SupportedLocale) {
+  let url = `${payloadApiUrl}/api/posts/${id}?depth=2`;
+  if (locale) {
+    url += `&locale=${locale}`;
+  }
+  const res = await fetch(url);
   const data = (await res.json()) as Post | { errors: [] };
 
   if ("errors" in data) {
@@ -73,10 +82,12 @@ export async function getPost(id: number) {
   return data;
 }
 
-export async function getPostBySlug(slug: string) {
-  const res = await fetch(
-    `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`,
-  );
+export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
+  let url = `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`;
+  if (locale) {
+    url += `&locale=${locale}`;
+  }
+  const res = await fetch(url);
 
   const data = (await res.json()) as PayloadCMSPostsResponse;
 
@@ -87,8 +98,12 @@ export function getImageSrc(imgUrl: string): string {
   return new URL(imgUrl, payloadApiUrl).toString();
 }
 
-export async function getProjects(options?: { sort?: SortOptions<Project> }) {
+export async function getProjects(options?: { sort?: SortOptions<Project>; locale?: SupportedLocale }) {
   const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
+
+  if (options?.locale) {
+    url.searchParams.append("locale", options.locale);
+  }
 
   if (options?.sort) {
     url.searchParams.append("sort", stringifySortOptions(options.sort));
