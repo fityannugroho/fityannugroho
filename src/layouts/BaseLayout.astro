@@ -2,10 +2,12 @@
 import Head, { type Props as HeadProps } from "@/components/Head.astro";
 import "@/styles/globals.css";
 import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "astro:env/client";
+import { readLocale } from "@/lib/i18n";
 
 export type Props = HeadProps;
 
 const { title, description, ogImage } = Astro.props;
+const locale = readLocale(Astro.url, Astro.cookies);
 ---
 
 <script is:inline>
@@ -45,9 +47,13 @@ const { title, description, ogImage } = Astro.props;
   });
 </script>
 
-<html lang="en">
+<html lang={locale}>
   <head>
     <Head {title} {description} {ogImage} />
+
+    <link rel="alternate" hreflang="en" href={`${Astro.url.origin}${Astro.url.pathname}?lang=en`} />
+    <link rel="alternate" hreflang="id" href={`${Astro.url.origin}${Astro.url.pathname}?lang=id`} />
+    <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}${Astro.url.pathname}`} />
 
     {UMAMI_SCRIPT_URL && UMAMI_WEBSITE_ID && (
       <script

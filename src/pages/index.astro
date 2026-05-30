@@ -5,16 +5,21 @@ import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
 import { ProjectCard } from "@/components/ProjectCard";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { readLocale } from "@/lib/i18n";
 import { getPosts, getProjects } from "@/lib/payload-cms";
 
 export const prerender = false;
 
+const locale = readLocale(Astro.url, Astro.cookies);
+
 const posts = await getPosts({
   sort: { updatedAt: "desc" },
+  locale,
 });
 
 const projects = await getProjects({
   sort: { updatedAt: "desc" },
+  locale,
 });
 ---
 

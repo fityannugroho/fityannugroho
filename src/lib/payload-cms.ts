@@ -1,4 +1,5 @@
 import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
+import type { SupportedLocale } from "./i18n";
 import type { Post, Project } from "./payload-types";
 
 export type MimeType =
@@ -49,53 +50,94 @@ export function stringifySortOptions<T extends string | object = string>(
     .join(",");
 }
 
-export async function getPosts(options?: { sort?: SortOptions<Post> }) {
-  const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
+export async function getPosts(options?: {
+  sort?: SortOptions<Post>;
+  locale?: SupportedLocale;
+}) {
+  try {
+    const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
 
-  if (options?.sort) {
-    url.searchParams.append("sort", stringifySortOptions(options.sort));
+    if (options?.locale) {
+      url.searchParams.append("locale", options.locale);
+    }
+
+    if (options?.sort) {
+      url.searchParams.append("sort", stringifySortOptions(options.sort));
+    }
+
+    const res = await fetch(url);
+    const data = (await res.json()) as PayloadCMSPostsResponse;
+
+    return data.docs;
+  } catch (error) {
+    console.error("[getPosts] Failed to fetch posts:", error);
+    return [];
   }
-
-  const res = await fetch(url);
-  const data = (await res.json()) as PayloadCMSPostsResponse;
-
-  return data.docs;
 }
 
-export async function getPost(id: number) {
-  const res = await fetch(`${payloadApiUrl}/api/posts/${id}?depth=2`);
-  const data = (await res.json()) as Post | { errors: [] };
+export async function getPost(id: number, locale?: SupportedLocale) {
+  try {
+    const url = new URL(`${payloadApiUrl}/api/posts/${id}?depth=2`);
+    if (locale) {
+      url.searchParams.set("locale", locale);
+    }
+    const res = await fetch(url);
+    const data = (await res.json()) as Post | { errors: [] };
 
-  if ("errors" in data) {
+    if ("errors" in data) {
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error("[getPost] Failed to fetch post:", error);
     return null;
   }
-
-  return data;
 }
 
-export async function getPostBySlug(slug: string) {
-  const res = await fetch(
-    `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`,
-  );
+export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
+  try {
+    const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
+    url.searchParams.set("where[slug][equals]", slug);
+    if (locale) {
+      url.searchParams.set("locale", locale);
+    }
+    const res = await fetch(url);
 
-  const data = (await res.json()) as PayloadCMSPostsResponse;
+    const data = (await res.json()) as PayloadCMSPostsResponse;
 
-  return data.docs[0] ?? null;
+    return data.docs[0] ?? null;
+  } catch (error) {
+    console.error("[getPostBySlug] Failed to fetch post by slug:", error);
+    return null;
+  }
 }
 
 export function getImageSrc(imgUrl: string): string {
   return new URL(imgUrl, payloadApiUrl).toString();
 }
 
-export async function getProjects(options?: { sort?: SortOptions<Project> }) {
-  const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
+export async function getProjects(options?: {
+  sort?: SortOptions<Project>;
+  locale?: SupportedLocale;
+}) {
+  try {
+    const url = new URL(`${payloadApiUrl}/api/projects?depth=2`);
 
-  if (options?.sort) {
-    url.searchParams.append("sort", stringifySortOptions(options.sort));
+    if (options?.locale) {
+      url.searchParams.append("locale", options.locale);
+    }
+
+    if (options?.sort) {
+      url.searchParams.append("sort", stringifySortOptions(options.sort));
+    }
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data.docs as Project[];
+  } catch (error) {
+    console.error("[getProjects] Failed to fetch projects:", error);
+    return [];
   }
-
-  const res = await fetch(url);
-  const data = await res.json();
-
-  return data.docs as Project[];
 }

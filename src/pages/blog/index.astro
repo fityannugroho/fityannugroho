@@ -2,13 +2,17 @@
 import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { readLocale } from "@/lib/i18n";
 import { getPosts } from "@/lib/payload-cms";
 
 export const prerender = false;
 
+const locale = readLocale(Astro.url, Astro.cookies);
+
 const blogEntries = await getCollection("blog");
 const posts = await getPosts({
   sort: { updatedAt: "desc" },
+  locale,
 });
 
 // Sort by date in descending order

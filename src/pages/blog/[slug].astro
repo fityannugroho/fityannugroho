@@ -3,16 +3,19 @@ import BlogHero from "@/components/BlogHero";
 import RichText from "@/components/RichText";
 import TableOfContent from "@/components/TableOfContent";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { readLocale } from "@/lib/i18n";
 import { getImageSrc, getPostBySlug } from "@/lib/payload-cms";
 
 export const prerender = false;
+
+const locale = readLocale(Astro.url, Astro.cookies);
 
 const { slug } = Astro.params;
 if (!slug) {
   return Astro.redirect("/404");
 }
 
-const post = await getPostBySlug(slug);
+const post = await getPostBySlug(slug, locale);
 if (!post) {
   return Astro.redirect("/404");
 }

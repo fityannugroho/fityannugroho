@@ -1,6 +1,7 @@
 ---
 import Footer from "@/components/Footer.astro";
 import { Navbar } from "@/components/Navbar";
+import { readLocale } from "@/lib/i18n";
 import type { Props as BaseLayoutProps } from "./BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
 
@@ -16,6 +17,7 @@ export type Props = BaseLayoutProps & {
 };
 
 const { className, disableWrapper, ...props } = Astro.props;
+const locale = readLocale(Astro.url, Astro.cookies);
 
 const menus = [
   { title: "About", href: "/about" },
@@ -25,7 +27,7 @@ const menus = [
 ---
 
 <BaseLayout {...props}>
-  <Navbar client:only="react" items={menus} current={Astro.url.pathname} />
+  <Navbar client:only="react" items={menus} current={Astro.url.pathname} locale={locale} />
   <main
     class:list={[
       !disableWrapper && "container py-12",
