@@ -21,7 +21,17 @@ export function isSupportedLocale(
   );
 }
 
-export function readLocale(cookies: AstroCookies): SupportedLocale {
+export function readLocale(url: URL, cookies: AstroCookies): SupportedLocale {
+  const queryLocale = url.searchParams.get("lang");
+  if (isSupportedLocale(queryLocale)) {
+    cookies.set("locale", queryLocale, {
+      path: "/",
+      maxAge: 365 * 86400,
+      sameSite: "lax",
+    });
+    return queryLocale;
+  }
+
   const rawLocale = cookies.get("locale")?.value ?? null;
   return isSupportedLocale(rawLocale) ? rawLocale : defaultLocale;
 }

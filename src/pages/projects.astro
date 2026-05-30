@@ -8,7 +8,7 @@ import { getProjects } from "@/lib/payload-cms";
 
 export const prerender = false;
 
-const locale = readLocale(Astro.cookies);
+const locale = readLocale(Astro.url, Astro.cookies);
 
 const projects = await getProjects({
   sort: { updatedAt: "desc" },

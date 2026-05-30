@@ -17,7 +17,7 @@ export type Props = BaseLayoutProps & {
 };
 
 const { className, disableWrapper, ...props } = Astro.props;
-const locale = readLocale(Astro.cookies);
+const locale = readLocale(Astro.url, Astro.cookies);
 
 const menus = [
   { title: "About", href: "/about" },
