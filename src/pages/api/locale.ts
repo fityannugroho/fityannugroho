@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   cookies.set("locale", locale, {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
-    sameSite: "strict",
+    sameSite: "lax",
     secure: import.meta.env.PROD,
   });
 

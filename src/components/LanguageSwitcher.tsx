@@ -39,7 +39,7 @@ export function LanguageSwitcher({ locale: initialLocale }: Props) {
         throw new Error(`Failed to set locale: ${res.status}`);
       }
 
-      window.location.reload();
+      window.location.href = window.location.href;
     } catch (error) {
       console.warn(error);
       alert("Failed to switch language. Please try again.");
