@@ -43,6 +43,7 @@ export function LanguageSwitcher({ locale: initialLocale }: Props) {
     } catch (error) {
       console.warn(error);
       alert("Failed to switch language. Please try again.");
+      setLocale(initialLocale);
       setIsLoading(false);
     }
   }

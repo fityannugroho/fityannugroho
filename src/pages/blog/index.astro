@@ -2,13 +2,12 @@
 import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { defaultLocale, isSupportedLocale } from "@/lib/i18n";
+import { readLocale } from "@/lib/i18n";
 import { getPosts } from "@/lib/payload-cms";
 
 export const prerender = false;
 
-const rawLocale = Astro.cookies.get("locale")?.value ?? null;
-const locale = isSupportedLocale(rawLocale) ? rawLocale : defaultLocale;
+const locale = readLocale(Astro.cookies);
 
 const blogEntries = await getCollection("blog");
 const posts = await getPosts({

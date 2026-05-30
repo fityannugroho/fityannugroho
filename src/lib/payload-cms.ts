@@ -77,9 +77,9 @@ export async function getPosts(options?: {
 
 export async function getPost(id: number, locale?: SupportedLocale) {
   try {
-    let url = `${payloadApiUrl}/api/posts/${id}?depth=2`;
+    const url = new URL(`${payloadApiUrl}/api/posts/${id}?depth=2`);
     if (locale) {
-      url += `&locale=${locale}`;
+      url.searchParams.set("locale", locale);
     }
     const res = await fetch(url);
     const data = (await res.json()) as Post | { errors: [] };
@@ -97,9 +97,10 @@ export async function getPost(id: number, locale?: SupportedLocale) {
 
 export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
   try {
-    let url = `${payloadApiUrl}/api/posts?where[slug][equals]=${slug}&depth=2`;
+    const url = new URL(`${payloadApiUrl}/api/posts?depth=2`);
+    url.searchParams.set("where[slug][equals]", slug);
     if (locale) {
-      url += `&locale=${locale}`;
+      url.searchParams.set("locale", locale);
     }
     const res = await fetch(url);
 
