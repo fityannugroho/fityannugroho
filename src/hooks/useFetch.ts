@@ -31,9 +31,12 @@ export function useFetch<T>(url?: string) {
   useEffect(() => {
     if (!url) return;
 
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
     setState({ loading: true });
 
-    fetch(url)
+    fetch(url, { signal })
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(res.statusText);
@@ -42,8 +45,15 @@ export function useFetch<T>(url?: string) {
         setState({ loading: false, data: json.data });
       })
       .catch((error) => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
         setState({ loading: false, error });
       });
+
+    return () => {
+      abortController.abort();
+    };
   }, [url]);
 
   return state;
