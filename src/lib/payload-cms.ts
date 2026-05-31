@@ -126,6 +126,10 @@ export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
 }
 
 export function getImageSrc(imgUrl: string): string {
+  if (!imgUrl || imgUrl.startsWith("//")) {
+    return "";
+  }
+
   return new URL(imgUrl, payloadApiUrl).toString();
 }
 
