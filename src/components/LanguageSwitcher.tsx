@@ -1,5 +1,5 @@
-import { LanguagesIcon } from "lucide-react";
 import { navigate } from "astro:transitions/client";
+import { LanguagesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
