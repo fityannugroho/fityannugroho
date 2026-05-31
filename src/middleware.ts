@@ -37,6 +37,7 @@ function buildCSP(umamiScriptUrl: string | undefined): string {
   const directives = {
     "default-src": ["'self'"],
     "script-src": scriptSrc,
+    "style-src": ["'self'", "'unsafe-inline'"],
     "frame-src": ["https://www.youtube.com"],
     "img-src": ["'self'", "data:", "https:"],
     "connect-src": ["'self'", "https://api.github.com"],
