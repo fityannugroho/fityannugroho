@@ -29,6 +29,7 @@ export function readLocale(url: URL, cookies: AstroCookies): SupportedLocale {
       maxAge: 365 * 86400,
       sameSite: "lax",
       secure: import.meta.env.PROD,
+      httpOnly: true,
     });
     return queryLocale;
   }
