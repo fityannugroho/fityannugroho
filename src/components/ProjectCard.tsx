@@ -18,10 +18,10 @@ type ProjectProps = {
 export function ProjectCard({ data }: ProjectProps) {
   return (
     <Card className="overflow-hidden">
-      {typeof data.image === "object" && (
+      {typeof data.image === "object" && data.image.url && (
         <img
           className="w-full h-[10rem] lg:h-[18rem] object-cover"
-          src={getImageSrc(data.image.url as string)}
+          src={getImageSrc(data.image.url)}
           alt={data.image.alt ?? ""}
           height={240}
           width={320}

@@ -11,6 +11,10 @@ export default function RelationshipCard({ relation }: Props) {
     return null;
   }
 
+  if (!relation.value.slug) {
+    return null;
+  }
+
   let href: string;
   switch (relation.relationTo) {
     case "posts":
