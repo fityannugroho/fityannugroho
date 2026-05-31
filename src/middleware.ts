@@ -1,5 +1,5 @@
-import { defineMiddleware } from "astro:middleware";
 import { UMAMI_SCRIPT_URL } from "astro:env/client";
+import { defineMiddleware } from "astro:middleware";
 
 export const onRequest = defineMiddleware(async (_, next) => {
   const response = await next();
@@ -12,7 +12,10 @@ export const onRequest = defineMiddleware(async (_, next) => {
     response.headers.set("X-Content-Type-Options", "nosniff");
     response.headers.set("X-Frame-Options", "DENY");
     response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-    response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    response.headers.set(
+      "Permissions-Policy",
+      "camera=(), microphone=(), geolocation=()",
+    );
 
     // Content Security Policy
     response.headers.set("Content-Security-Policy", buildCSP(UMAMI_SCRIPT_URL));
