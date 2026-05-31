@@ -77,7 +77,7 @@ export default function BlogHero({ post }: Props) {
             className="flex gap-2 items-center mr-1 text-sm"
           >
             {isManyAuthors ? <UsersIcon size={16} /> : <UserIcon size={16} />}
-            {post.populatedAuthors?.map((author) => author.name).join(", ")}
+            {post.populatedAuthors?.map((author) => author.name ?? "Unknown").join(", ")}
           </span>
         </div>
       </div>

@@ -55,11 +55,9 @@ const Media: React.FC<MediaProps> = ({ media, className }) => {
   let Icon = FileIcon;
   if (Object.values(mimeTypes.text).includes(mimeType)) {
     Icon = FileTextIcon;
-  }
-  if (Object.values(mimeTypes.code).includes(mimeType)) {
+  } else if (Object.values(mimeTypes.code).includes(mimeType)) {
     Icon = FileCodeIcon;
-  }
-  if (Object.values(mimeTypes.archieve).includes(mimeType)) {
+  } else if (Object.values(mimeTypes.archive).includes(mimeType)) {
     Icon = FileArchiveIcon;
   }
 
