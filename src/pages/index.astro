@@ -1,5 +1,6 @@
 ---
 import { ArrowRightIcon } from "lucide-react";
+import { getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import { Hero } from "@/components/Hero";
 import { Link } from "@/components/Link";
@@ -16,6 +17,8 @@ const posts = await getPosts({
   sort: { updatedAt: "desc" },
   locale,
 });
+
+const blogEntries = await getCollection("blog");
 
 const projects = await getProjects({
   sort: { updatedAt: "desc" },
@@ -78,7 +81,7 @@ const projects = await getProjects({
       ))}
     </div>
 
-    {posts.length > 3 && (
+    {(posts.length + blogEntries.length) > 3 && (
       <div class="flex justify-center mt-6">
         <Link href="/blog">
           Read another posts

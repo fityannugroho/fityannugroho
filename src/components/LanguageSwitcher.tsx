@@ -1,4 +1,5 @@
 import { LanguagesIcon } from "lucide-react";
+import { navigate } from "astro:transitions/client";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -23,7 +24,7 @@ export function LanguageSwitcher({ locale }: Props) {
 
     const url = new URL(window.location.href);
     url.searchParams.set("lang", newLocale);
-    window.location.href = url.toString();
+    navigate(url.toString());
   }
 
   return (
