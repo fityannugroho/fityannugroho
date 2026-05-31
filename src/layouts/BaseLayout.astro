@@ -37,6 +37,10 @@ const locale = readLocale(Astro.url, Astro.cookies);
       attributes: true,
       attributeFilter: ["class"],
     });
+
+    document.addEventListener("astro:before-swap", () => {
+      observer.disconnect();
+    });
   }
 
   setDarkMode(document);
