@@ -90,7 +90,7 @@ export async function getPost(id: number, locale?: SupportedLocale) {
       console.error(`[getPost] API returned ${res.status}: ${res.statusText}`);
       return null;
     }
-    const data = (await res.json()) as Post | { errors: [] };
+    const data = (await res.json()) as Post | { errors: Array<{ message: string }> };
 
     if ("errors" in data) {
       return null;
