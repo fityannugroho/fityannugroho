@@ -1,4 +1,4 @@
-type MimeCategory = "text" | "code" | "archieve";
+type MimeCategory = "text" | "code" | "archive";
 
 export const mimeTypes: Readonly<{
   [category in MimeCategory]: Record<string, string>;
@@ -30,7 +30,7 @@ export const mimeTypes: Readonly<{
     yaml: "application/x-yaml",
     yml: "application/x-yaml",
   },
-  archieve: {
+  archive: {
     zip: "application/zip",
     tar: "application/x-tar",
     tar_gz: "application/x-gtar",

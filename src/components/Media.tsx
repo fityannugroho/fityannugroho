@@ -1,4 +1,3 @@
-import { PUBLIC_PAYLOAD_CMS_URL } from "astro:env/client";
 import {
   FileArchiveIcon,
   FileCodeIcon,
@@ -6,6 +5,7 @@ import {
   FileTextIcon,
 } from "lucide-react";
 import type React from "react";
+import { getImageSrc } from "@/lib/payload-cms";
 import type { Media as BaseMedia } from "@/lib/payload-types";
 import { mimeTypes } from "@/lib/types";
 import { cn, humanReadableFileSize } from "@/lib/utils";
@@ -15,19 +15,6 @@ export type MediaProps = {
   className?: string;
 };
 
-const transformUrl = (url: string): string => {
-  if (!url) {
-    return "";
-  }
-
-  // Check if the URL starts with '/' and is not an absolute URL
-  if (url.startsWith("/") && !url.startsWith("//")) {
-    return `${PUBLIC_PAYLOAD_CMS_URL}${url}`;
-  }
-
-  return url;
-};
-
 const Media: React.FC<MediaProps> = ({ media, className }) => {
   const { url: _url, alt, mimeType, filename, filesize, width, height } = media;
 
@@ -35,7 +22,7 @@ const Media: React.FC<MediaProps> = ({ media, className }) => {
     return null;
   }
 
-  const url = transformUrl(_url);
+  const url = getImageSrc(_url);
 
   if (mimeType.startsWith("image/")) {
     return (
@@ -68,11 +55,9 @@ const Media: React.FC<MediaProps> = ({ media, className }) => {
   let Icon = FileIcon;
   if (Object.values(mimeTypes.text).includes(mimeType)) {
     Icon = FileTextIcon;
-  }
-  if (Object.values(mimeTypes.code).includes(mimeType)) {
+  } else if (Object.values(mimeTypes.code).includes(mimeType)) {
     Icon = FileCodeIcon;
-  }
-  if (Object.values(mimeTypes.archieve).includes(mimeType)) {
+  } else if (Object.values(mimeTypes.archive).includes(mimeType)) {
     Icon = FileArchiveIcon;
   }
 

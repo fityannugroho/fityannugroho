@@ -28,9 +28,13 @@ export function BlogCard({ data }: BlogCardProps) {
 
   const isPayloadCMSPost = "content" in data;
 
+  if (isPayloadCMSPost && !data.slug) {
+    return null;
+  }
+
   if (isPayloadCMSPost) {
     post.description = data.meta?.description || "";
-    post.href = `/blog/${data.slug || ""}`;
+    post.href = `/blog/${data.slug}`;
     post.publishedDate = data.publishedAt
       ? new Date(data.publishedAt)
       : new Date(data.createdAt);

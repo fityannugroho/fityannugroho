@@ -66,9 +66,13 @@ export async function getPosts(options?: {
     }
 
     const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`[getPosts] API returned ${res.status}: ${res.statusText}`);
+      return [];
+    }
     const data = (await res.json()) as PayloadCMSPostsResponse;
 
-    return data.docs;
+    return data?.docs ?? [];
   } catch (error) {
     console.error("[getPosts] Failed to fetch posts:", error);
     return [];
@@ -82,7 +86,13 @@ export async function getPost(id: number, locale?: SupportedLocale) {
       url.searchParams.set("locale", locale);
     }
     const res = await fetch(url);
-    const data = (await res.json()) as Post | { errors: [] };
+    if (!res.ok) {
+      console.error(`[getPost] API returned ${res.status}: ${res.statusText}`);
+      return null;
+    }
+    const data = (await res.json()) as
+      | Post
+      | { errors: Array<{ message: string }> };
 
     if ("errors" in data) {
       return null;
@@ -103,6 +113,12 @@ export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
       url.searchParams.set("locale", locale);
     }
     const res = await fetch(url);
+    if (!res.ok) {
+      console.error(
+        `[getPostBySlug] API returned ${res.status}: ${res.statusText}`,
+      );
+      return null;
+    }
 
     const data = (await res.json()) as PayloadCMSPostsResponse;
 
@@ -114,6 +130,10 @@ export async function getPostBySlug(slug: string, locale?: SupportedLocale) {
 }
 
 export function getImageSrc(imgUrl: string): string {
+  if (!imgUrl || imgUrl.startsWith("//")) {
+    return "";
+  }
+
   return new URL(imgUrl, payloadApiUrl).toString();
 }
 
@@ -133,6 +153,12 @@ export async function getProjects(options?: {
     }
 
     const res = await fetch(url);
+    if (!res.ok) {
+      console.error(
+        `[getProjects] API returned ${res.status}: ${res.statusText}`,
+      );
+      return [];
+    }
     const data = await res.json();
 
     return data.docs as Project[];

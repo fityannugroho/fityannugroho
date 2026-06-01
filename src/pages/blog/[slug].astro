@@ -1,4 +1,5 @@
 ---
+import type { DefaultTypedEditorState } from "@payloadcms/richtext-lexical";
 import BlogHero from "@/components/BlogHero";
 import RichText from "@/components/RichText";
 import TableOfContent from "@/components/TableOfContent";
@@ -34,8 +35,13 @@ if (!post) {
       </div>
       <aside class="hidden lg:block lg:col-span-3">
         <div class="sticky top-20">
-          <!-- @ts-expect-error -->
-          <TableOfContent client:only="react" data={post.content} />
+          {/*
+           * Payload CMS generated types use a generic lexical structure,
+           * which is structurally incompatible with DefaultTypedEditorState's
+           * stricter discriminated union on node `type`. At runtime the value
+           * is correct, so we assert safely here.
+           */}
+          <TableOfContent client:only="react" data={post.content as unknown as DefaultTypedEditorState} />
         </div>
       </aside>
     </div>

@@ -17,12 +17,15 @@ export function ThemeToggle({
 }: Props) {
   const [theme, setThemeState] = React.useState<
     "theme-light" | "dark" | "system"
-  >("theme-light");
-
-  React.useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setThemeState(isDarkMode ? "dark" : "theme-light");
-  }, []);
+  >(() => {
+    // Read initial theme synchronously to avoid hydration flash
+    if (typeof document !== "undefined") {
+      return document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "theme-light";
+    }
+    return "theme-light";
+  });
 
   React.useEffect(() => {
     const isDark =

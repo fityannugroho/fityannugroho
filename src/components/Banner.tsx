@@ -16,7 +16,7 @@ import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 type AlertProps = ComponentProps<typeof Alert>;
 
 export type BannerProps = Omit<AlertProps, "variant"> & {
-  style: string;
+  bannerStyle: string;
 };
 
 const variantBannerStyleMapping: Readonly<
@@ -43,18 +43,18 @@ export const bannerIcon: Record<
 
 export default function Banner({
   children,
-  style,
+  bannerStyle,
   className,
   ...props
 }: BannerProps) {
-  const variant = variantBannerStyleMapping[style];
+  const variant = variantBannerStyleMapping[bannerStyle];
   const BannerIcon = variant ? bannerIcon[variant] : bannerIcon.info;
 
   return (
     <Alert {...props} variant={variant} className={cn("my-6", className)}>
       <BannerIcon className="h-5 w-5" />
       <AlertTitle className="capitalize font-bold text-base">
-        {style}
+        {bannerStyle}
       </AlertTitle>
       <AlertDescription>{children}</AlertDescription>
     </Alert>

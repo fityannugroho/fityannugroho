@@ -51,7 +51,7 @@ export const createJsxConverters =
       ...defaultConverters,
       blocks: {
         banner: ({ node }) => (
-          <Banner className="mb-4" style={node.fields.style}>
+          <Banner className="mb-4" bannerStyle={node.fields.style}>
             <RichText
               data={node.fields.content}
               enableGutter={false}

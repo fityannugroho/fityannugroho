@@ -37,6 +37,10 @@ const locale = readLocale(Astro.url, Astro.cookies);
       attributes: true,
       attributeFilter: ["class"],
     });
+
+    document.addEventListener("astro:before-swap", () => {
+      observer.disconnect();
+    });
   }
 
   setDarkMode(document);
@@ -55,12 +59,15 @@ const locale = readLocale(Astro.url, Astro.cookies);
     <link rel="alternate" hreflang="id" href={`${Astro.url.origin}${Astro.url.pathname}?lang=id`} />
     <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}${Astro.url.pathname}`} />
 
+    <!-- TODO: compute actual SRI hash for the Umami script -->
     {UMAMI_SCRIPT_URL && UMAMI_WEBSITE_ID && (
       <script
         is:inline
         defer
         src={UMAMI_SCRIPT_URL}
         data-website-id={UMAMI_WEBSITE_ID}
+        crossorigin="anonymous"
+        integrity=""
       />
     )}
   </head>

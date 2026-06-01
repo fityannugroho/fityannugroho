@@ -21,7 +21,7 @@ export const linkValidation: Record<
   },
   youtube: {
     regex:
-      /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})$/,
+      /^(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/(?:embed\/|v\/|shorts\/|live\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[?&].*)?$/,
     message: "Invalid YouTube link",
   },
 };

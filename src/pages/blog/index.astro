@@ -1,9 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import { BlogCard } from "@/components/BlogCard";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { readLocale } from "@/lib/i18n";
 import { getPosts } from "@/lib/payload-cms";
+import type { Post } from "@/lib/payload-types";
 
 export const prerender = false;
 
@@ -15,25 +16,35 @@ const posts = await getPosts({
   locale,
 });
 
-// Sort by date in descending order
-blogEntries.sort(
-  (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
-);
+type StaticPostData = CollectionEntry<"blog">["data"] & { slug: string };
+
+// Merge Payload CMS posts and static MDX posts into a single sorted array
+const allPosts = (
+  [
+    ...posts.map((p) => ({
+      date: new Date(p.publishedAt ?? p.createdAt),
+      kind: "payload" as const,
+      data: p,
+    })),
+    ...blogEntries.map((e) => ({
+      date: e.data.postDate,
+      kind: "static" as const,
+      data: { slug: e.id, ...e.data } satisfies StaticPostData,
+    })),
+  ] as { date: Date; kind: "payload" | "static"; data: Post | StaticPostData }[]
+).sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <MainLayout title="Blog | Fityandhiya Islam Nugroho">
   <h1 class="text-3xl md:text-4xl font-bold text-center mb-10 lg:mb-14">Blog</h1>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {posts.map((post) =>(
-      <BlogCard data={post} />
-    ))}
-
-    {blogEntries.map((blogPostEntry) => (
-      <BlogCard
-        data={{ slug: blogPostEntry.id, ...blogPostEntry.data }}
-        client:visible
-      />
-    ))}
+    {allPosts.map((post) =>
+      post.kind === "payload" ? (
+        <BlogCard data={post.data as Post} />
+      ) : (
+        <BlogCard data={post.data as StaticPostData} client:visible />
+      ),
+    )}
   </div>
 </MainLayout>
