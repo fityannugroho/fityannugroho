@@ -46,7 +46,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@sindresorhus/slugify": "^3.0.0",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.1",
+    "astro": "^7.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.21",
@@ -55,7 +55,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-tweet": "^3.3.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.0",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0"
   },
