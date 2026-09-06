@@ -1,6 +1,9 @@
 import type {
   DefaultNodeTypes,
   SerializedBlockNode,
+  SerializedTableCellNode,
+  SerializedTableNode,
+  SerializedTableRowNode,
 } from "@payloadcms/richtext-lexical";
 import type {
   SerializedEditorState,
@@ -35,7 +38,10 @@ type NodeTypes =
       | BannerBlockProps
       | CodeBlockProps
       | SocialMediaBlockProps
-    >;
+    >
+  | SerializedTableNode
+  | SerializedTableRowNode
+  | SerializedTableCellNode;
 
 export const createJsxConverters =
   (options?: {
@@ -148,6 +154,123 @@ export const createJsxConverters =
                 aria-hidden
               />
             </a>
+          </Tag>
+        );
+      },
+      table: ({ node, nodesToJSX }) => {
+        // Narrow lexical node — generic converter type erases specific table shape
+        const tableNode = node as unknown as SerializedTableNode;
+        const rows = tableNode.children as unknown as
+          | SerializedTableRowNode[]
+          | undefined;
+
+        if (!rows || rows.length === 0) {
+          return (
+            <div className="lexical-table-container">
+              <table className="lexical-table">
+                <tbody>{nodesToJSX({ nodes: tableNode.children })}</tbody>
+              </table>
+            </div>
+          );
+        }
+
+        let headerRows: SerializedTableRowNode[] = [];
+        let bodyRows: SerializedTableRowNode[] = [];
+
+        // Collect leading contiguous header rows — row is header when every cell has headerState>0
+        let idx = 0;
+        while (idx < rows.length) {
+          const currentRow = rows[idx];
+          if (!currentRow) {
+            break;
+          }
+          const cells = currentRow.children as unknown as
+            | SerializedTableCellNode[]
+            | undefined;
+          const rowIsHeader =
+            !!cells &&
+            cells.length > 0 &&
+            cells.every((cell) => Number(cell.headerState ?? 0) > 0);
+          if (!rowIsHeader) {
+            break;
+          }
+          headerRows.push(currentRow);
+          idx += 1;
+        }
+        bodyRows = rows.slice(headerRows.length);
+
+        // Fallback: first row contains any header cell → treat first row as header
+        if (headerRows.length === 0) {
+          const firstRow = rows[0];
+          const firstCells = firstRow?.children as unknown as
+            | SerializedTableCellNode[]
+            | undefined;
+          const hasAnyHeader = !!firstCells?.some(
+            (c) => Number(c.headerState ?? 0) > 0,
+          );
+          if (hasAnyHeader && firstRow) {
+            headerRows = [firstRow];
+            bodyRows = rows.slice(1);
+          } else {
+            bodyRows = rows;
+          }
+        }
+
+        if (headerRows.length === 0) {
+          return (
+            <div className="lexical-table-container">
+              <table className="lexical-table">
+                <tbody>{nodesToJSX({ nodes: bodyRows })}</tbody>
+              </table>
+            </div>
+          );
+        }
+
+        return (
+          <div className="lexical-table-container">
+            <table className="lexical-table">
+              <thead>{nodesToJSX({ nodes: headerRows })}</thead>
+              {bodyRows.length > 0 ? (
+                <tbody>{nodesToJSX({ nodes: bodyRows })}</tbody>
+              ) : null}
+            </table>
+          </div>
+        );
+      },
+      tablerow: ({ node, nodesToJSX }) => {
+        // Narrow lexical node for table row
+        const rowNode = node as unknown as SerializedTableRowNode;
+        return (
+          <tr className="lexical-table-row">
+            {nodesToJSX({ nodes: rowNode.children })}
+          </tr>
+        );
+      },
+      tablecell: ({ node, nodesToJSX }) => {
+        // Narrow lexical node — headerState/colSpan/rowSpan mapped to HTML
+        const cellNode = node as unknown as SerializedTableCellNode;
+        const headerState = Number(cellNode.headerState ?? 0);
+        const Tag = headerState > 0 ? "th" : "td";
+        const colSpan =
+          cellNode.colSpan && Number(cellNode.colSpan) > 1
+            ? Number(cellNode.colSpan)
+            : undefined;
+        const rowSpan =
+          cellNode.rowSpan && Number(cellNode.rowSpan) > 1
+            ? Number(cellNode.rowSpan)
+            : undefined;
+        const style = cellNode.backgroundColor
+          ? { backgroundColor: cellNode.backgroundColor as string }
+          : undefined;
+
+        return (
+          <Tag
+            className={`lexical-table-cell lexical-table-cell-header-${headerState}`}
+            colSpan={colSpan}
+            rowSpan={rowSpan}
+            style={style}
+          >
+            {nodesToJSX({ nodes: cellNode.children })}
           </Tag>
         );
       },

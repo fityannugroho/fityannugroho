@@ -180,3 +180,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .lexical-table-container {
+    margin-block: 1.25rem;
+    overflow-x: auto;
+  }
+  .lexical-table {
+    width: 100%;
+    border-collapse: collapse;
+    @apply w-full border-collapse;
+    margin-block: 0;
+  }
+  .lexical-table p,
+  .prose .lexical-table p {
+    margin: 0;
+  }
+  .lexical-table-cell {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+  }
+  /* Fix prism 'table' token colliding with Tailwind's .table utility */
+  .token.table {
+    display: inline;
+  }
+}
