@@ -58,33 +58,17 @@ describe("RichText tables", () => {
     const { container } = render(<RichText data={simpleTable} />);
 
     const thead = container.querySelector("thead");
-    if (thead) {
-      // When thead is present, header cells should be inside it
-      const theadHeaders = thead.querySelectorAll("th");
-      expect(theadHeaders.length).toBeGreaterThanOrEqual(3);
-    } else {
-      // Fallback: at least first row contains <th>
-      const firstRow = container.querySelector("tr");
-      expect(firstRow).not.toBeNull();
-      const ths = firstRow?.querySelectorAll("th");
-      expect(ths?.length).toBeGreaterThanOrEqual(3);
-    }
+    expect(thead).not.toBeNull();
+    expect(thead?.querySelectorAll("th").length).toBeGreaterThanOrEqual(3);
   });
 
   it("renders body rows in <tbody>", () => {
     const { container } = render(<RichText data={simpleTable} />);
 
     const tbody = container.querySelector("tbody");
-    // RichText contract expects tbody for body rows; allow fallback to table rows
-    if (tbody) {
-      const rows = tbody.querySelectorAll("tr");
-      // simpleTable has 2 body rows
-      expect(rows.length).toBeGreaterThanOrEqual(2);
-      expect(tbody.textContent).toContain("Feature A");
-    } else {
-      const rows = container.querySelectorAll("tr");
-      expect(rows.length).toBeGreaterThanOrEqual(3);
-    }
+    expect(tbody).not.toBeNull();
+    expect(tbody?.querySelectorAll("tr").length).toBeGreaterThanOrEqual(2);
+    expect(tbody?.textContent).toContain("Feature A");
   });
 
   it("applies table row class to rows", () => {
@@ -160,14 +144,10 @@ describe("RichText tables", () => {
     );
 
     expect(coloredCell).toBeDefined();
-    if (coloredCell?.getAttribute("style")) {
-      const styleAttr =
-        coloredCell.getAttribute("style") ??
-        (coloredCell as HTMLElement).style.cssText;
-      expect(styleAttr).toMatch(/#f0f0f0|rgb\(240,?\s*240,?\s*240\)/);
-    } else {
-      expect(coloredCell?.tagName.toLowerCase()).toBe("th");
-    }
+    const styleAttr =
+      coloredCell?.getAttribute("style") ??
+      (coloredCell as HTMLElement).style.cssText;
+    expect(styleAttr).toMatch(/#f0f0f0|rgb\(240,?\s*240,?\s*240\)/);
   });
 
   it("applies lexical-table-cell class to all cells", () => {
