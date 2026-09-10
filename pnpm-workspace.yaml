@@ -6,11 +6,6 @@ allowBuilds:
   sharp: true
   workerd: true
 
-minimumReleaseAgeExclude:
-  - lucide-react@1.42.0
-  - miniflare@5.20260907.0-alpha
-  - wrangler@4.129.1
-
 overrides:
   ajv@>=7.0.0-alpha.0 <8.18.0: '>=8.18.0'
   baseline-browser-mapping@<2.11.0: '>=2.11.21 <3'
