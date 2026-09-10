@@ -7,31 +7,7 @@ allowBuilds:
   workerd: true
 
 overrides:
-  ajv@>=7.0.0-alpha.0 <8.18.0: '>=8.18.0'
-  baseline-browser-mapping@<2.11.0: '>=2.11.21 <3'
-  browserslist@<4.28.9: '>=4.28.9 <5'
-  defu@<=6.1.4: '>=6.1.5'
-  devalue@<5.8.1: '>=5.8.1'
+  # a selector earns its place only by fixing a resolution natural range resolution cannot reach, and must never lift a consumer past the major it declares
   dompurify@<3.4.13: '>=3.4.13 <4'
-  esbuild@>=0.27.3 <0.28.1: '>=0.28.1'
-  fast-uri@>=3.0.0 <3.1.6: '>=3.1.6 <4'
-  fast-uri@>=4.0.0 <4.1.4: '>=4.1.4 <5'
-  file-type@>=13.0.0 <21.3.1: '>=21.3.1'
-  h3@>=1.0.0 <1.15.9: '>=1.15.9'
-  happy-dom@<20.8.9: '>=20.8.9'
-  # ceiling pins to the patched tip consumers declare (immutable <5 = 4.3.9); raise only with a conscious decision
-  immutable@<4.3.9: '>=4.3.9 <5'
-  # ceiling pins to the patched tip consumers declare (js-yaml <5 = 4.3.2); raise only with a conscious decision
-  js-yaml@>=4.0.0 <4.3.2: '>=4.3.2 <5'
-  lodash@>=4.0.0 <=4.17.23: '>=4.17.24'
-  picomatch@>=2.0.0 <2.3.2: '>=2.3.2 <3'
-  picomatch@>=4.0.0 <4.0.4: '>=4.0.4'
-  postcss@<8.5.23: '>=8.5.23'
   sharp@<0.35.4: '>=0.35.4 <1'
-  smol-toml@<1.7.1: '>=1.7.1 <2'
-  svgo@>=4.0.0 <4.1.0: '>=4.1.0 <5'
-  undici@>=7.0.0 <7.29.0: '>=7.29.0'
-  uuid@<11.1.1: '>=11.1.1'
-  ws@<8.21.0: '>=8.21.0'
-  yaml@>=1.0.0 <1.10.3: '>=1.10.3 <2'
-  yaml@>=2.0.0 <2.8.3: '>=2.8.3'
+  yaml@>=2.0.0 <2.8.3: '>=2.8.3 <3'
