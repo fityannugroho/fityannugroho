@@ -9,7 +9,7 @@ allowBuilds:
 overrides:
   ajv@>=7.0.0-alpha.0 <8.18.0: '>=8.18.0'
   baseline-browser-mapping@<2.11.0: '>=2.11.21 <3'
-  browserslist@<4.28.9: '>=4.28.9'
+  browserslist@<4.28.9: '>=4.28.9 <5'
   defu@<=6.1.4: '>=6.1.5'
   devalue@<5.8.1: '>=5.8.1'
   dompurify@<3.4.13: '>=3.4.13 <4'
