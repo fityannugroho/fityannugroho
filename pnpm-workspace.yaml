@@ -6,13 +6,6 @@ allowBuilds:
   sharp: true
   workerd: true
 
-# Supply-chain policy (pnpm >=11 built-in default minimumReleaseAge: 1440).
-# Only exact, unavoidable pins are exempted: lucide-react@1.55.0 is the newest
-# published release and the only version the ^1.55.0 range can resolve to, so the
-# lockfile cannot avoid it. Exempt the pinned version, not the whole package.
-minimumReleaseAgeExclude:
-  - lucide-react@1.55.0
-
 overrides:
   # a selector earns its place only by fixing a resolution natural range resolution cannot reach, and must never lift a consumer past the major it declares
   dompurify@<3.4.16: '>=3.4.16 <4'
