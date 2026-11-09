@@ -26,4 +26,4 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    labels: [ci, dependencies]
+    labels: [ ci, dependencies ]

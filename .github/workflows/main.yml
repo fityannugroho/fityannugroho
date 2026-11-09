@@ -17,22 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [ 22.x, 24.x ]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v7
-    - name: Install pnpm
-      uses: pnpm/action-setup@v6
-      with:
-        version: 11
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v7
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-    - name: Check code style
-      run: pnpm run lint
-    - name: Build project
-      run: pnpm run build
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check code style
+        run: pnpm run lint
+      - name: Build project
+        run: pnpm run build
