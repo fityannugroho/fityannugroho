@@ -1,5 +1,5 @@
 packages:
-  - '.'
+  - "."
 
 allowBuilds:
   esbuild: true
@@ -7,13 +7,6 @@ allowBuilds:
   workerd: true
 
 overrides:
-  # a selector earns its place only by fixing a resolution natural range resolution cannot reach, and must never lift a consumer past the major it declares
-  dompurify@<3.4.16: '>=3.4.16 <4'
-  sharp@<0.35.5: '>=0.35.5 <1'
-  undici@<7.29.1: '>=7.29.1 <8'
-  fast-uri@<3.1.8: '>=3.1.8 <4'
-  fast-copy@<3.1.0: '>=3.1.0 <4'
-  http-cache-semantics@<4.3.0: '>=4.3.0 <5'
-  source-map-js@<1.2.2: '>=1.2.2 <2'
-  smol-toml@<1.9.0: '>=1.9.0 <2'
-  yaml@>=2.0.0 <2.8.3: '>=2.8.3 <3'
+  dompurify@<=3.4.16: ^3.4.17
+  happy-dom@<=21.0.3: ^21.0.4
+  postcss-selector-parser@<6.1.5: ^6.1.5
