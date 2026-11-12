@@ -6,7 +6,7 @@ import { defineConfig, envField } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fityannugroho.me",
+  site: "https://me.fityan.tech",
   integrations: [react(), mdx()],
 
   adapter: cloudflare({
@@ -27,7 +27,7 @@ export default defineConfig({
         optional: true,
         context: "client",
         access: "public",
-        default: "https://fityannugroho-cms.vercel.app",
+        default: "https://cms-me.fityan.tech",
       }),
       UMAMI_SCRIPT_URL: envField.string({
         optional: true,

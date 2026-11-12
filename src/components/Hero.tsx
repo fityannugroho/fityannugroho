@@ -60,7 +60,7 @@ export function Hero() {
             <InstagramIcon className="w-5 h-5" />
           </IconLink>
           <IconLink
-            href="mailto:fityannugroho@gmail.com"
+            href="mailto:me@fityan.tech"
             variant="outline"
             label="Email"
           >
